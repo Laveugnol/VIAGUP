@@ -190,80 +190,49 @@
 
           <div class="row mix-grid margin-top-80">
 
+            <%Viager.all.each do |viager|%>
+              <div class="col-md-4 col-sm-4 "><!-- item -->
 
-            <div class="col-md-4 col-sm-4 mix development"><!-- item -->
+                <div class="item-box">
+                  <figure>
+                    <span class="item-hover">
+                      <span class="overlay dark-5"></span>
+                      <span class="inner">
 
-              <div class="item-box">
-                <figure>
-                  <span class="item-hover">
-                    <span class="overlay dark-5"></span>
-                    <span class="inner">
+                        <a class="ico-rounded" href="portfolio-single-slider.html">
+                          <span class="fa fa-search size-20"></span>
+                        </a>
 
-                      <!-- lightbox -->
-                      <a class="ico-rounded lightbox" href="" data-plugin-options='{"type":"image"}',  style="background-image: url('<%= image_path "bannervieux.jpg" %>');">
-                        <span class="fa fa-plus size-20"></span>
-                      </a>
 
-                      <!-- details -->
-                      <a class="ico-rounded" href="portfolio-single-slider.html">
-                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
-                      </a>
+                      <h4 class="enblanc">Ticket d'entrée: <strong><%=viager.bouquet%>€</strong></h4>
+                      <h4 class="enblanc">Rente: <strong><%=viager.rente%> €/mois</strong></h4>
 
+
+                        <!-- lightbox -->
+                        <!-- details -->
+
+
+                      </span>
                     </span>
-                  </span>
+                  <%= cl_image_tag viager.photo ,:height=> 399, :width=> 600, :crop=>"fill", class: "img-responsive", alt: ""%>
 
-                <!--   <img class="img-responsive" src="assets/images/demo/mockups/600x399/9-min.jpg" width="600" height="399" alt=""> -->
-                  <%= image_tag "bannervieux.jpg", class: "img-responsive", width: "600", height: "399", alt:""%>
-                </figure>
+                  </figure>
 
-                <div class="item-box-desc">
-                  <h3>Nature Photography</h3>
-                  <ul class="list-inline categories nomargin">
-                    <li><a href="#">Photography</a></li>
-                    <li><a href="#">Design</a></li>
-                  </ul>
+                  <div class="item-box-desc">
+                    <h3><%=viager.city%></h3>
+                    <ul class="list-inline categories nomargin">
+                      <li><%=viager.address%></li>
+                      <li><%=viager.zip_code%></li>
+                      <li>Ticket d'entrée: <strong><%=viager.bouquet%>€</strong></li>
+                      <li>Rente: <strong><%=viager.rente%> €/mois</strong></li>
+                      <li>Horizon d'investissment <%=viager.horizon%> ans </li>
+                    </ul>
+                  </div>
+
                 </div>
 
               </div>
-
-            </div><!-- /item -->
-
-
-            <div class="col-md-4 col-sm-4 mix photography"><!-- item -->
-
-              <div class="item-box">
-                <figure>
-                  <span class="item-hover">
-                    <span class="overlay dark-5"></span>
-                    <span class="inner">
-
-                      <!-- lightbox -->
-                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/10-min.jpg" data-plugin-options='{"type":"image"}'>
-                        <span class="fa fa-plus size-20"></span>
-                      </a>
-
-                      <!-- details -->
-                      <a class="ico-rounded" href="portfolio-single-slider.html">
-                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
-                      </a>
-
-                    </span>
-                  </span>
-
-                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/10-min.jpg" width="600" height="399" alt="">
-                </figure>
-
-                <div class="item-box-desc">
-                  <h3>Fashion Design</h3>
-                  <ul class="list-inline categories nomargin">
-                    <li><a href="#">Photography</a></li>
-                    <li><a href="#">Design</a></li>
-                  </ul>
-                </div>
-
-              </div>
-
-            </div><!-- /item -->
+            <%end%><!-- /item -->
 
 
             <div class="col-md-4 col-sm-4 mix design"><!-- item -->
@@ -303,78 +272,7 @@
             </div><!-- /item -->
 
 
-            <div class="col-md-4 col-sm-4 mix design"><!-- item -->
 
-              <div class="item-box">
-                <figure>
-                  <span class="item-hover">
-                    <span class="overlay dark-5"></span>
-                    <span class="inner">
-
-                      <!-- lightbox -->
-                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/12-min.jpg" data-plugin-options='{"type":"image"}'>
-                        <span class="fa fa-plus size-20"></span>
-                      </a>
-
-                      <!-- details -->
-                      <a class="ico-rounded" href="portfolio-single-slider.html">
-                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
-                      </a>
-
-                    </span>
-                  </span>
-
-                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/12-min.jpg" width="600" height="399" alt="">
-                </figure>
-
-                <div class="item-box-desc">
-                  <h3>Architect Project</h3>
-                  <ul class="list-inline categories nomargin">
-                    <li><a href="#">Architecture</a></li>
-                    <li><a href="#">Design</a></li>
-                  </ul>
-                </div>
-
-              </div>
-
-            </div><!-- /item -->
-
-
-            <div class="col-md-4 col-sm-4 mix development"><!-- item -->
-
-              <div class="item-box">
-                <figure>
-                  <span class="item-hover">
-                    <span class="overlay dark-5"></span>
-                    <span class="inner">
-
-                      <!-- lightbox -->
-                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/13-min.jpg" data-plugin-options='{"type":"image"}'>
-                        <span class="fa fa-plus size-20"></span>
-                      </a>
-
-                      <!-- details -->
-                      <a class="ico-rounded" href="portfolio-single-slider.html">
-                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
-                      </a>
-
-                    </span>
-                  </span>
-
-                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/13-min.jpg" width="600" height="399" alt="">
-                </figure>
-
-                <div class="item-box-desc">
-                  <h3>Speaker Design</h3>
-                  <ul class="list-inline categories nomargin">
-                    <li><a href="#">Audio</a></li>
-                    <li><a href="#">Design</a></li>
-                  </ul>
-                </div>
-
-              </div>
-
-            </div><!-- /item -->
 
           </div>
           <!-- testimonials -->
@@ -383,7 +281,7 @@
             <div class="owl-carousel text-center owl-testimonial nomargin" data-plugin-options='{"singleItem": true, "autoPlay": 4000, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
               <div class="testimonial">
                 <figure>
-                  <img class="rounded" src="bannervieux.jpg" alt="" />
+                  <%= cl_image_tag Viager.first.photo ,:height=> 399, :width=> 600, :crop=>"fill", alt: ""%>
                 </figure>
                 <div class="testimonial-content nopadding">
                   <p class="lead">Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero.</p>
