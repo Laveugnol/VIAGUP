@@ -1,0 +1,171 @@
+<!-- wrapper -->
+    <div >
+
+      <!--
+        AVAILABLE HEADER CLASSES
+
+        Default nav height: 96px
+        .header-md    = 70px nav height
+        .header-sm    = 60px nav height
+
+        .noborder     = remove bottom border (only with transparent use)
+        .transparent  = transparent header
+        .translucent  = translucent header
+        .sticky     = sticky header
+        .static     = static header
+        .dark     = dark header
+        .bottom     = header on bottom
+
+        shadow-before-1 = shadow 1 header top
+        shadow-after-1  = shadow 1 header bottom
+        shadow-before-2 = shadow 2 header top
+        shadow-after-2  = shadow 2 header bottom
+        shadow-before-3 = shadow 3 header top
+        shadow-after-3  = shadow 3 header bottom
+
+        .clearfix   = required for mobile menu, do not remove!
+
+        Example Usage:  class="clearfix sticky header-sm transparent noborder"
+      -->
+      <div id="header" class="static clearfix header-sm dark ">
+
+        <!-- TOP NAV -->
+        <header id="topNav">
+          <div class="container">
+
+            <!-- Mobile Menu Button -->
+            <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+              <i class="fa fa-bars"></i>
+            </button>
+
+            <!-- BUTTONS -->
+            <ul class="pull-right nav nav-pills nav-second-main">
+
+              <!-- SEARCH -->
+      <!--         <li class="search">
+                <a href="javascript:;">
+                  <i class="fa fa-search"></i>
+                </a>
+                <div class="search-box">
+                  <form action="page-search-result-1.html" method="get">
+                    <div class="input-group">
+                      <input type="text" name="src" placeholder="Search" class="form-control" />
+                      <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                      </span>
+                    </div>
+                  </form>
+                </div>
+              </li> -->
+              <!-- /SEARCH -->
+               <!-- Different navigation if login or not -->
+              <li>
+              <% if user_signed_in? %>
+
+                <!-- Profile picture and dropdown -->
+                  <div class="navbar-wagon-item">
+                    <div class="dropdown">
+                      <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+                    </div>
+                  </div>
+                <% else %>
+                  <!-- Login text link -->
+                  <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+                <% end %>
+              </li>
+            </ul>
+            <!-- /BUTTONS -->
+
+
+            <!-- Logo -->
+            <%= link_to root_path, class: "logo pull-left" do %>
+            <%= image_tag "logo.png" %>
+            <% end %>
+
+            <!--
+              Top Nav
+
+              AVAILABLE CLASSES:
+              submenu-dark = dark sub menu
+            -->
+            <div class="navbar-collapse pull-right nav-main-collapse collapse">
+              <nav class="nav-main">
+
+                <!--
+                  NOTE
+
+                  For a regular link, remove "dropdown" class from LI tag and "dropdown-toggle" class from the href.
+                  Direct Link Example:
+
+                  <li>
+                    <a href="#">HOME</a>
+                  </li>
+                -->
+                <ul id="topMain" class="nav nav-pills nav-main">
+                  <li class="dropdown active"><!-- HOME -->
+                    <a class="dropdown-toggle" href="#">
+                      HOME
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" href="#">
+                          HOME CORPORATE
+                        </a>
+                      </li>
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" href="#">
+                          HOME PORTFOLIO
+                        </a>
+                      </li>
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" href="#">
+                          HOME BLOG
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+
+
+                  <li class="dropdown"><!-- BLOG -->
+                    <a class="dropdown-toggle" href="#">
+                      BLOG
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" href="#">
+                          DEFAULT
+                        </a>
+                      </li>
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" href="#">
+                          COMMENTS
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <% if user_signed_in? %>
+                  <li class="dropdown"><!-- SHOP -->
+                    <a class="dropdown-toggle" href="#">
+                      <%=current_user.email.upcase%>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+
+                      <li><a href="shop-compare.html">MON PROFIL</a></li>
+                      <li><a href="shop-cart.html">MES INVESTISSEMENTS </a></li>
+                      <li>
+                      <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete %></li>
+                    </ul>
+                  </li>
+                  <% end %>
+
+                </ul>
+
+              </nav>
+            </div>
+
+          </div>
+        </header>
+        <!-- /Top Nav -->
+
+      </div>
+  </div>

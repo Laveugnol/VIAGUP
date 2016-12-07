@@ -1,3 +1,442 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+      <!-- REVOLUTION SLIDER -->
+     <!--  <section id="slider" class="fullwidthbanner-container roundedcorners"> -->
+        <!--
+          Navigation Styles:
 
+            data-navigationStyle="" theme default navigation
+
+            data-navigationStyle="preview1"
+            data-navigationStyle="preview2"
+            data-navigationStyle="preview3"
+            data-navigationStyle="preview4"
+
+          Bottom Shadows
+            data-shadow="1"
+            data-shadow="2"
+            data-shadow="3"
+
+          Slider Height (do not use on fullscreen mode)
+            data-height="300"
+            data-height="350"
+            data-height="400"
+            data-height="450"
+            data-height="500"
+            data-height="550"
+            data-height="600"
+            data-height="650"
+            data-height="700"
+            data-height="750"
+            data-height="800"
+        -->
+        <div class="fullscreenbanner" data-navigationStyle="" data-height="600">
+          <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "bannervieux.jpg" %>');">
+            <div class="banner-content">
+            <h1>VIAG'UP</h1>
+            <p>L'épargne qui prend soin de vous.</p>
+            <%= link_to  viagers_path class: "btn btn-featured btn-blue" do%>
+
+              <span>DECOUVRIR</span>
+              <i class="fa fa-search" aria-hidden="true"></i>
+            <%end%>
+            </div>
+          </div>
+
+     <!--  </section> -->
+      <!-- /REVOLUTION SLIDER -->
+
+      <!-- -->
+      <section>
+        <div class="container">
+
+          <div class="row">
+
+            <div class="col-md-5 col-sm-5">
+              <a class="image-hover lightbox thumbnail" href="http://vimeo.com/56624256" data-plugin-options='{"type":"iframe"}'>
+                <span class="image-hover-icon image-hover-light"><!-- image-hover-light | image-hover-dark -->
+                  <i class="fa fa-vimeo-square"><!-- video icon --></i>
+                </span>
+                <img class="img-responsive" src="assets/images/demo/tr.jpg" alt="...">
+              </a>
+            </div>
+
+            <div class="col-md-7 col-sm-7">
+
+              <header class="margin-bottom-60">
+                <h2>Smarty Website+Admin+RTL</h2>
+                <p class="lead font-lato">The most complete template, ever!</p>
+              </header>
+
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus deserunt, nobis quae eos provident quidem. Quaerat expedita dignissimos perferendis, nihil quo distinctio eius architecto reprehenderit maiores.</p>
+              <p>Similique excepturi voluptates placeat ducimus delectus magnam tempore dolore dolorem quisquam porro modi voluptatum eum saepe dolorum ratione officia sint eos minus.</p>
+
+              <a class="btn btn-default btn-lg size-15 margin-top-30 lightbox" href="http://vimeo.com/56624256" data-plugin-options='{"type":"iframe"}'>WATCH VIDEO</a>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+      <!-- / -->
+
+      <!-- Goodies -->
+      <section>
+        <div class="container">
+
+          <div class="row">
+
+            <div class="col-md-3">
+
+              <div class="box-icon box-icon-center box-icon-transparent box-icon-large">
+                <a class="box-icon-title" href="#">
+                  <i class="fa fa-tablet"></i>
+                  <h2>Fully Reposnive</h2>
+                </a>
+                <p class="text-muted">Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante.</p>
+              </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+              <div class="box-icon box-icon-center box-icon-transparent box-icon-large">
+                <a class="box-icon-title" href="#">
+                  <i class="fa fa-random"></i>
+                  <h2>Clean Design</h2>
+                </a>
+                <p class="text-muted">Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante.</p>
+              </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+              <div class="box-icon box-icon-center box-icon-transparent box-icon-large">
+                <a class="box-icon-title" href="#">
+                  <i class="fa fa-tint"></i>
+                  <h2>Reusable Elements</h2>
+                </a>
+                <p class="text-muted">Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante.</p>
+              </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+              <div class="box-icon box-icon-center box-icon-transparent box-icon-large">
+                <a class="box-icon-title" href="#">
+                  <i class="fa fa-cogs"></i>
+                  <h2>Multipurpose</h2>
+                </a>
+                <p class="text-muted">Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante.</p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+      <!-- Goodies -->
+      <!-- PARALLAX -->
+      <section class="parallax parallax-2 padding-xxs" style="background-image: url('<%= image_path "bannervieux.jpg" %>');">
+        <div class="overlay dark-4"><!-- dark overlay [0 to 9 opacity] --></div>
+
+        <div class="container">
+
+          <div class="row countTo-md text-center">
+
+            <div class="col-xs-6 col-sm-3">
+              <i class="fa fa-users"></i>
+              <span class="countTo" data-speed="3000">1303</span>
+              <h5>HAPPY CLIENTS</h5>
+            </div>
+
+            <div class="col-xs-6 col-sm-3">
+              <i class="fa fa-code"></i>
+              <span class="countTo" data-speed="3000">56000</span>
+              <h5>LINES OF CODE</h5>
+            </div>
+
+            <div class="col-xs-6 col-sm-3">
+              <i class="fa fa-twitter"></i>
+              <span class="countTo" data-speed="3000">4897</span>
+              <h5>TWITTER</h5>
+            </div>
+
+            <div class="col-xs-6 col-sm-3">
+              <i class="fa fa-facebook"></i>
+              <span class="countTo" data-speed="3000">9877</span>
+              <h5>FACEBOOK</h5>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+      <!-- /PARALLAX -->
+
+
+
+      <!-- Works -->
+      <section>
+        <div class="container">
+
+          <header class="margin-bottom-60 text-center">
+            <h2>Nos derniers produits</h2>
+            <p class="lead font-lato">Selectionnés avec soin  &amp; rigueur</p>
+            <hr />
+          </header>
+
+          <div class="row mix-grid margin-top-80">
+
+
+            <div class="col-md-4 col-sm-4 mix development"><!-- item -->
+
+              <div class="item-box">
+                <figure>
+                  <span class="item-hover">
+                    <span class="overlay dark-5"></span>
+                    <span class="inner">
+
+                      <!-- lightbox -->
+                      <a class="ico-rounded lightbox" href="" data-plugin-options='{"type":"image"}',  style="background-image: url('<%= image_path "bannervieux.jpg" %>');">
+                        <span class="fa fa-plus size-20"></span>
+                      </a>
+
+                      <!-- details -->
+                      <a class="ico-rounded" href="portfolio-single-slider.html">
+                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
+                      </a>
+
+                    </span>
+                  </span>
+
+                <!--   <img class="img-responsive" src="assets/images/demo/mockups/600x399/9-min.jpg" width="600" height="399" alt=""> -->
+                  <%= image_tag "bannervieux.jpg", class: "img-responsive", width: "600", height: "399", alt:""%>
+                </figure>
+
+                <div class="item-box-desc">
+                  <h3>Nature Photography</h3>
+                  <ul class="list-inline categories nomargin">
+                    <li><a href="#">Photography</a></li>
+                    <li><a href="#">Design</a></li>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div><!-- /item -->
+
+
+            <div class="col-md-4 col-sm-4 mix photography"><!-- item -->
+
+              <div class="item-box">
+                <figure>
+                  <span class="item-hover">
+                    <span class="overlay dark-5"></span>
+                    <span class="inner">
+
+                      <!-- lightbox -->
+                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/10-min.jpg" data-plugin-options='{"type":"image"}'>
+                        <span class="fa fa-plus size-20"></span>
+                      </a>
+
+                      <!-- details -->
+                      <a class="ico-rounded" href="portfolio-single-slider.html">
+                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
+                      </a>
+
+                    </span>
+                  </span>
+
+                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/10-min.jpg" width="600" height="399" alt="">
+                </figure>
+
+                <div class="item-box-desc">
+                  <h3>Fashion Design</h3>
+                  <ul class="list-inline categories nomargin">
+                    <li><a href="#">Photography</a></li>
+                    <li><a href="#">Design</a></li>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div><!-- /item -->
+
+
+            <div class="col-md-4 col-sm-4 mix design"><!-- item -->
+
+              <div class="item-box">
+                <figure>
+                  <span class="item-hover">
+                    <span class="overlay dark-5"></span>
+                    <span class="inner">
+
+                      <!-- lightbox -->
+                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/11-min.jpg" data-plugin-options='{"type":"image"}'>
+                        <span class="fa fa-plus size-20"></span>
+                      </a>
+
+                      <!-- details -->
+                      <a class="ico-rounded" href="portfolio-single-slider.html">
+                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
+                      </a>
+
+                    </span>
+                  </span>
+
+                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/11-min.jpg" width="600" height="399" alt="">
+                </figure>
+
+                <div class="item-box-desc">
+                  <h3>Ocean Project</h3>
+                  <ul class="list-inline categories nomargin">
+                    <li><a href="#">Photography</a></li>
+                    <li><a href="#">Design</a></li>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div><!-- /item -->
+
+
+            <div class="col-md-4 col-sm-4 mix design"><!-- item -->
+
+              <div class="item-box">
+                <figure>
+                  <span class="item-hover">
+                    <span class="overlay dark-5"></span>
+                    <span class="inner">
+
+                      <!-- lightbox -->
+                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/12-min.jpg" data-plugin-options='{"type":"image"}'>
+                        <span class="fa fa-plus size-20"></span>
+                      </a>
+
+                      <!-- details -->
+                      <a class="ico-rounded" href="portfolio-single-slider.html">
+                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
+                      </a>
+
+                    </span>
+                  </span>
+
+                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/12-min.jpg" width="600" height="399" alt="">
+                </figure>
+
+                <div class="item-box-desc">
+                  <h3>Architect Project</h3>
+                  <ul class="list-inline categories nomargin">
+                    <li><a href="#">Architecture</a></li>
+                    <li><a href="#">Design</a></li>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div><!-- /item -->
+
+
+            <div class="col-md-4 col-sm-4 mix development"><!-- item -->
+
+              <div class="item-box">
+                <figure>
+                  <span class="item-hover">
+                    <span class="overlay dark-5"></span>
+                    <span class="inner">
+
+                      <!-- lightbox -->
+                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/13-min.jpg" data-plugin-options='{"type":"image"}'>
+                        <span class="fa fa-plus size-20"></span>
+                      </a>
+
+                      <!-- details -->
+                      <a class="ico-rounded" href="portfolio-single-slider.html">
+                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
+                      </a>
+
+                    </span>
+                  </span>
+
+                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/13-min.jpg" width="600" height="399" alt="">
+                </figure>
+
+                <div class="item-box-desc">
+                  <h3>Speaker Design</h3>
+                  <ul class="list-inline categories nomargin">
+                    <li><a href="#">Audio</a></li>
+                    <li><a href="#">Design</a></li>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div><!-- /item -->
+
+          </div>
+          <!-- testimonials -->
+          <div class="testimonial-bordered">
+
+            <div class="owl-carousel text-center owl-testimonial nomargin" data-plugin-options='{"singleItem": true, "autoPlay": 4000, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
+              <div class="testimonial">
+                <figure>
+                  <img class="rounded" src="bannervieux.jpg" alt="" />
+                </figure>
+                <div class="testimonial-content nopadding">
+                  <p class="lead">Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero.</p>
+                  <cite>
+                    Joana Doe
+                    <span>Company Ltd.</span>
+                  </cite>
+                </div>
+              </div>
+
+              <div class="testimonial">
+                <figure>
+                  <img class="rounded" src="assets/images/demo/people/300x300/12-min.jpg" alt="" />
+                </figure>
+                <div class="testimonial-content nopadding">
+                  <p class="lead">Quod necessitatibus quis expedita harum provident eos obcaecati id culpa.</p>
+                  <cite>
+                    Melissa Doe
+                    <span>Company Ltd.</span>
+                  </cite>
+                </div>
+              </div>
+
+              <div class="testimonial">
+                <figure>
+                  <img class="rounded" src="assets/images/demo/people/300x300/d-min.jpg" alt="" />
+                </figure>
+                <div class="testimonial-content nopadding">
+                  <p class="lead">Deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum.</p>
+                  <cite>
+                    John Doe
+                    <span>Company Ltd.</span>
+                  </cite>
+                </div>
+              </div>
+
+              <div class="testimonial">
+                <figure>
+                  <img class="rounded" src="assets/images/demo/people/300x300/c-min.jpg" alt="" />
+                </figure>
+                <div class="testimonial-content nopadding">
+                  <p class="lead">Fugit repellendus expedita excepturi iure perferendis provident quia eaque.</p>
+                  <cite>
+                    Simina Doe
+                    <span>Company Ltd.</span>
+                  </cite>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- /testimonials -->
+
+        </div>
+      </section>
+      <!-- /Works -->
