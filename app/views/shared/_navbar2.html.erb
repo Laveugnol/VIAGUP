@@ -64,14 +64,15 @@
 
                 <!-- Profile picture and dropdown -->
                   <div class="navbar-wagon-item">
-                    <div class="dropdown">
-                      <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-                    </div>
+
+                      <%= image_tag "http://placehold.it/30x30", class: "avatar", id: "navbar-wagon-menu"%>
                   </div>
-                <% else %>
+              <% else %>
+                <div>
                   <!-- Login text link -->
                   <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-                <% end %>
+                </div>
+              <% end %>
               </li>
             </ul>
             <!-- /BUTTONS -->
