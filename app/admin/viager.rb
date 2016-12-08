@@ -13,7 +13,7 @@ ActiveAdmin.register Viager do
 #   permitted
 # end
 
-permit_params :address, :city, :zip_code, :country, :old_id, :photo, :rente, :bouquet, :horizon
+permit_params :address, :city, :zip_code, :country, :old_id, :photo, :rente, :bouquet, :horizon, :tri
 
 
  index do
@@ -26,6 +26,7 @@ permit_params :address, :city, :zip_code, :country, :old_id, :photo, :rente, :bo
     column :rente
     column :bouquet
     column :horizon
+    column :tri
     actions
   end
 
