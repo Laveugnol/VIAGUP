@@ -199,9 +199,11 @@
                       <span class="overlay dark-5"></span>
                       <span class="inner">
 
-                        <a class="ico-rounded" href="portfolio-single-slider.html">
+                        <%=link_to viager_path(viager), class: "ico-rounded" do%>
+
                           <span class="fa fa-search size-20"></span>
-                        </a>
+
+                        <%end%>
 
 
                       <h4 class="enblanc">Ticket d'entrée: <strong><%=viager.bouquet%>€</strong></h4>

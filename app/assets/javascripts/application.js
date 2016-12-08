@@ -13,6 +13,9 @@
 //= require jquery.themepunch.tools.min.js
 //= require jquery.themepunch.revolution.min.js
 //= require demo.revolution_slider.js
+//= require owl-carousel/owl.carousel
+
+
 
 
 
