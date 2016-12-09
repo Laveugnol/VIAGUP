@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   resources :viagers
   root to: 'pages#home'
 
-  mount Attachinary::Engine => "/attachinary"
+
 end
