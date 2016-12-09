@@ -28,6 +28,10 @@ gem "jquery-fileupload-rails"
 gem "coffee-rails"
 gem 'country_select'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+
 
 group :development, :test do
   gem 'binding_of_caller'
