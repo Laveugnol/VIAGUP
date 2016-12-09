@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208104013) do
+ActiveRecord::Schema.define(version: 20161208135412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,8 @@ ActiveRecord::Schema.define(version: 20161208104013) do
     t.integer  "rente"
     t.integer  "horizon"
     t.float    "tri"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["old_id"], name: "index_viagers_on_old_id", using: :btree
   end
 

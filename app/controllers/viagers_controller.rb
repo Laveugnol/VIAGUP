@@ -9,6 +9,16 @@ class ViagersController < ApplicationController
   end
 
   def show
+
+    @viager_coordinates = { lat: @viager.latitude, lng: @viager.longitude }
+
+    @hash = Gmaps4rails.build_markers(@viager) do |viager, marker|
+      marker.lat viager.latitude
+      marker.lng viager.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
+
+
   end
 
   def create
