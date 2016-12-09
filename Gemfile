@@ -27,6 +27,7 @@ gem 'carrierwave'
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
 gem 'country_select'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'binding_of_caller'
