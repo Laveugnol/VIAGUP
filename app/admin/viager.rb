@@ -32,14 +32,5 @@ permit_params :address, :city, :zip_code, :country, :old_id, :photo, :rente, :bo
 
 
 
-  # form do |f|
-  #   f.semantic_errors *f.object.errors.keys
-  #   inputs do
-  #     input :address
-
-  #     input :photo, :as => :file
-  #   end
-  #   actions
-  # end
 
 end
