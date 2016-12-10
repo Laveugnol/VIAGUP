@@ -67,7 +67,7 @@
                 <!-- Profile picture and dropdown -->
                   <div class="navbar-wagon-item">
 
-                      <% avatar_url = current_user.facebook_picture_url  || current_user.twitter_picture_url || "http://placehold.it/30x30" %>
+                      <% avatar_url = current_user.facebook_picture_url  || current_user.twitter_picture_url || current_user.google_picture_url || "http://placehold.it/30x30" %>
                       <%= image_tag avatar_url, class: "avatar", id: "navbar-wagon-menu" %>
                   </div>
               <% else %>
