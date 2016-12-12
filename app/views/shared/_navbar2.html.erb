@@ -25,19 +25,19 @@
 
         Example Usage:  class="clearfix sticky header-sm transparent noborder"
       -->
-      <div id="header" class="static clearfix header-sm dark ">
+<div id="header" class="static clearfix header-sm dark ">
 
         <!-- TOP NAV -->
-        <header id="topNav">
-          <div class="container">
+  <header id="topNav">
+    <div class="container">
 
             <!-- Mobile Menu Button -->
-            <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
-              <i class="fa fa-bars"></i>
-            </button>
+      <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+        <i class="fa fa-bars"></i>
+      </button>
 
             <!-- BUTTONS -->
-            <ul class="pull-right nav nav-pills nav-second-main">
+      <ul class="pull-right nav nav-pills nav-second-main">
 
               <!-- SEARCH -->
       <!--         <li class="search">
@@ -57,30 +57,31 @@
               </li> -->
               <!-- /SEARCH -->
                <!-- Different navigation if login or not -->
-              <li>
-              <% if user_signed_in? %>
+        <li>
+          <% if user_signed_in? %>
 
-                <!-- Profile picture and dropdown -->
-                  <div class="navbar-wagon-item ">
+                  <!-- Profile picture and dropdown -->
+            <div class="navbar-wagon-item ">
 
-                      <% avatar_url = current_user.facebook_picture_url  || current_user.twitter_picture_url || current_user.google_picture_url || "http://placehold.it/30x30" %>
-                      <%= image_tag avatar_url, class: "avatar", id: "navbar-wagon-menu" %>
-                  </div>
-              <% else %>
-                <div>
-                  <!-- Login text link -->
-                  <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-                </div>
-              <% end %>
-              </li>
-            </ul>
+              <% avatar_url = current_user.facebook_picture_url  || current_user.twitter_picture_url || current_user.google_picture_url || "http://placehold.it/30x30" %>
+              <%= image_tag avatar_url, class: "avatar", id: "navbar-wagon-menu" %>
+            </div>
+          <% else %>
+            <div>
+                    <!-- Login text link -->
+              <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+            </div>
+          <% end %>
+        </li>
+      </ul>
             <!-- /BUTTONS -->
-
-
             <!-- Logo -->
-            <%= link_to root_path, class: "logo pull-left" do %>
-            <%= image_tag "logo.png" %>
-            <% end %>
+      <div>
+        <%= link_to root_path, class: "logo pull-left" do %>
+        <%= image_tag "logo.png" %>
+        <% end %>
+      </div>
+
 
             <!--
               Top Nav
@@ -88,8 +89,8 @@
               AVAILABLE CLASSES:
               submenu-dark = dark sub menu
             -->
-            <div class="navbar-collapse pull-right nav-main-collapse collapse">
-              <nav class="nav-main">
+          <div class="navbar-collapse pull-right nav-main-collapse collapse">
+            <nav class="nav-main">
 
                 <!--
                   NOTE
@@ -101,70 +102,71 @@
                     <a href="#">HOME</a>
                   </li>
                 -->
-                <ul id="topMain" class="nav nav-pills nav-main">
-                  <li class="dropdown active"><!-- HOME -->
-                    <a class="dropdown-toggle" href="#">
+              <ul id="topMain" class="nav nav-pills nav-main">
+                <li class="dropdown active"><!-- HOME -->
+                  <a class="dropdown-toggle" href="#">
                       HOME
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li class="dropdown">
-                        <a class="dropdown-toggle" href="#">
-                          HOME CORPORATE
-                        </a>
-                      </li>
-                      <li class="dropdown">
-                        <a class="dropdown-toggle" href="#">
-                          HOME PORTFOLIO
-                        </a>
-                      </li>
-                      <li class="dropdown">
-                        <a class="dropdown-toggle" href="#">
-                          HOME BLOG
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="dropdown"><!-- BLOG -->
-                    <a class="dropdown-toggle" href="#">
-                      BLOG
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li class="dropdown">
-                        <a class="dropdown-toggle" href="#">
-                          DEFAULT
-                        </a>
-                      </li>
-                      <li class="dropdown">
-                        <a class="dropdown-toggle" href="#">
-                          COMMENTS
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <% if user_signed_in? %>
-                    <li class="dropdown"><!-- SHOP -->
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown">
                       <a class="dropdown-toggle" href="#">
-                      <% if current_user.first_name && current_user.last_name%>
-                        <%=current_user.first_name.upcase + " " + current_user.last_name.upcase%>
-                      <%else%>
-                        <%=current_user.email%>
-                      <%end%>
+                          HOME CORPORATE
                       </a>
+                    </li>
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" href="#">
+                          HOME PORTFOLIO
+                      </a>
+                    </li>
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" href="#">
+                          HOME BLOG
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropdown"><!-- BLOG -->
+                  <a class="dropdown-toggle" href="#">
+                      BLOG
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" href="#">
+                          DEFAULT
+                      </a>
+                    </li>
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" href="#">
+                          COMMENTS
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                    <li class="dropdown">
+                      <% if user_signed_in? %>
+                        <a class="dropdown-toggle" href="#">
+                          <% if current_user.first_name && current_user.last_name%>
+                            <%=current_user.first_name.upcase + " " + current_user.last_name.upcase%>
+                          <%else%>
+                            <%=current_user.email%>
+                          <%end%>
+                        </a>
                       <ul class="dropdown-menu pull-right">
                         <li><a href="/pages/profil">MON PROFIL</a></li>
                         <li><a href="shop-cart.html">MES INVESTISSEMENTS </a></li>
                         <li>
                         <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete %></li>
                       </ul>
+                      <% end %>
                     </li>
-                  <% end %>
               </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
-        <!-- /Top Nav -->
+        </nav>
+      </div>
     </div>
+  </header>
+        <!-- /Top Nav -->
+</div>
 
 
 
