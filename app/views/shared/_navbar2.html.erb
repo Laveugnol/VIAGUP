@@ -1,8 +1,4 @@
 
-
-<!-- wrapper -->
-    <div>
-
       <!--
         AVAILABLE HEADER CLASSES
 
@@ -128,8 +124,6 @@
                       </li>
                     </ul>
                   </li>
-
-
                   <li class="dropdown"><!-- BLOG -->
                     <a class="dropdown-toggle" href="#">
                       BLOG
@@ -148,29 +142,29 @@
                     </ul>
                   </li>
                   <% if user_signed_in? %>
-                  <li class="dropdown"><!-- SHOP -->
-                    <a class="dropdown-toggle" href="#">
-                      <%=current_user.email.upcase%>
-                    </a>
-                    <ul class="dropdown-menu pull-right">
-
-                      <li><a href="shop-compare.html">MON PROFIL</a></li>
-                      <li><a href="shop-cart.html">MES INVESTISSEMENTS </a></li>
-                      <li>
-                      <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete %></li>
-                    </ul>
-                  </li>
+                    <li class="dropdown"><!-- SHOP -->
+                      <a class="dropdown-toggle" href="#">
+                      <% if current_user.first_name && current_user.last_name%>
+                        <%=current_user.first_name.upcase + " " + current_user.last_name.upcase%>
+                      <%else%>
+                        <%=current_user.email%>
+                      <%end%>
+                      </a>
+                      <ul class="dropdown-menu pull-right">
+                        <li><a href="/pages/profil">MON PROFIL</a></li>
+                        <li><a href="shop-cart.html">MES INVESTISSEMENTS </a></li>
+                        <li>
+                        <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete %></li>
+                      </ul>
+                    </li>
                   <% end %>
-
-                </ul>
-
-              </nav>
-            </div>
-
+              </ul>
+            </nav>
           </div>
-        </header>
+        </div>
+      </header>
         <!-- /Top Nav -->
+    </div>
 
-      </div>
-  </div>
+
 

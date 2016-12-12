@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get "pages/profil"
 
 
   ActiveAdmin.routes(self)

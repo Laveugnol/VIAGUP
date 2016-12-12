@@ -1,0 +1,107 @@
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      <div class="list-group profil_box">
+        <%=link_to "Mon compte", edit_user_registration_path(@user), class: "list-group-item" %>
+        <%=link_to "Profil investisseur", edit_user_registration_path(@user), class: "list-group-item active" %>
+        <%=link_to "Mon épargne", edit_user_registration_path(@user), class: "list-group-item" %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
+        <div class="box-icon-title">
+          <i class="fa fa-database"></i>
+          <h2>Votre profil</h2>
+        </div>
+          <div class="row">
+            <div class="col-xs-5 info_box">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%; min-width: 2em;">
+                  70%
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-7">
+              <% if @user.profil_valid %>
+                  <p>Votre profil a été validé. Vous pouvez désormais consulter les pièces relatives à nos produits.</p>
+              <% elsif @user.profil_completed && @user.profil_valid == false%>
+                 <p>Votre profil est en cours de validation par nos équipes. Vous pourrez bientôt consulter les pièces relatives à nos produits.</p>
+              <%else%>
+                  <p>Votre profil n'est pas complet. Vous ne pouvez pas consulter les pièces relatives à nos produits. Veuillez remplir les informations manquantes en cliquant ci-dessous.</p>
+              <%end%>
+            </div>
+          </div>
+        </div>
+
+              <div class="col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <a class="btn btn-danger btn-xs pull-right">Modifier</a>
+                    <h2 class="panel-title">Informations personnelles</h2>
+                  </div>
+                  <div class="panel-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </div>
+              </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                  <% if @user.doc_sent == false%>
+                    <a class="btn btn-danger btn-xs pull-right">Envoyer les pièces</a>
+                    <%end%>
+                    <h2 class="panel-title">Documents justificatifs</h2>
+                  </div>
+                  <div class="panel-body">
+                    Vous ne nous avez pas encore transmis vos pièces justificatives.
+                    <% if @user.doc_sent%>
+                      Les pièces justificatives ont été envoyées avec succès.
+                   <%else%>
+                     Vous ne nous avez pas encore transmis vos pièces justificatives.
+                    <%end%>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                  <% if @user.profil_completed == false%>
+                    <a class="btn btn-danger btn-xs pull-right">Remplir le formulaire</a>
+                    <%end%>
+                    <h2 class="panel-title">Vos informations investisseur</h2>
+                  </div>
+                  <div class="panel-body">
+                   <% if @user.profil_completed%>
+                    Le certificat d'information client a été signé.
+                   <%else%>
+                    Vous n'avez pas encore rempli votre certificat d'information client.
+                    <%end%>
+                </div>
+              </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h2 class="panel-title">Validation du profil</h2>
+                  </div>
+                  <div class="panel-body">
+                    <% if @user.profil_valid %>
+                      Votre profil a été validé.
+                   <% elsif @user.profil_completed && @user.profil_valid == false%>
+                    Votre profil est en cours de vérification.
+                   <%else%>
+                    Votre profil n'est pas complet.
+                    <%end%>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
