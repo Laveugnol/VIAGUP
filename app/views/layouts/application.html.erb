@@ -14,9 +14,8 @@
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= render 'shared/footer' %>
-
-    <script type="text/javascript">var plugin_path = 'assets/plugins/';</script>
-     <%= javascript_include_tag 'application' %>
+    <script type="text/javascript">var plugin_path = '/plugins/';</script>
+    <%= javascript_include_tag 'application' %>
 
   </body>
 </html>
