@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20161212135739) do
     t.string   "adresse"
     t.string   "complementadresse"
     t.string   "code_postal"
-    t.string   "pays"
+    t.string   "country"
     t.datetime "birth_date"
     t.string   "birth_place"
     t.string   "phone"

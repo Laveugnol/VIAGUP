@@ -11,7 +11,7 @@ class CreateInvestmentProfiles < ActiveRecord::Migration[5.0]
       t.string :adresse
       t.string :complementadresse
       t.string :code_postal
-      t.string :pays
+      t.string :country
       t.datetime :birth_date
       t.string :birth_place
       t.string :phone

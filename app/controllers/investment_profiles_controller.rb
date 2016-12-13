@@ -11,9 +11,10 @@ class InvestmentProfilesController < ApplicationController
      @user.save
 
     if @investment_profile.save
-      redirect_to pages_invest_step2_path(current_user, @investment_profile)
+
+      redirect_to pages_invest_step2_path(@current_user, @investment_profile)
     else
-      render :new
+      render "pages/invest_step1"
     end
   end
 
@@ -33,7 +34,7 @@ class InvestmentProfilesController < ApplicationController
   private
 
   def set_investment_profile
-    @investment_profil = InvestmentProfile.find(params[:id])
+    @investment_profile = InvestmentProfile.find(params[:id])
   end
 
   def investment_profile_params

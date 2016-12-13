@@ -8,6 +8,8 @@
 //= require jquery.themepunch.tools.min.js
 //= require demo.revolution_slider.js
 //= require owl-carousel/owl.carousel
+//= form.validate/jquery.form.min
+//= form.validate/jquery.validation.min
 
 
 
