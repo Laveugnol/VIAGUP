@@ -1,0 +1,63 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="row">
+  <div class="col_xs_12">
+    <ul class="process-steps nav nav-justified">
+      <li class="active">
+        <a href="#">1</a>
+        <h5>Informations</h5>
+      </li>
+      <li>
+        <a href="#">2</a>
+        <h5>Profil investisseur</h5>
+      </li>
+      <li>
+        <a href="#">3</a>
+        <h5>Documents</h5>
+      </li>
+      <li>
+        <a href="#">4</a>
+        <h5>Signature</h5>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<br>
+<br>
+
+<div class="col_xs_12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+
+      <h2 class="panel-title">Préambule</h2>
+    </div>
+      <div class="panel-body">
+      <%= simple_form_for @investment_profile, :url => investment_profiles_path, :method => :post do |f| %>
+
+      <label class="checkbox">
+        <input type='hidden' value='0' name="investment_profile[question1]">
+        <input type="checkbox" value="1" name="investment_profile[question1]">
+        <i></i> Je reconnais m'être incrit en dehors de toute démarche bancaire ou financière tel que décrit à l'article L341-1 du code monétaire et financier
+      </label>
+
+      <label class="checkbox">
+        <input type='hidden' value='0' name="investment_profile[question2]">
+        <input type="checkbox" value="1" name="investment_profile[question2]">
+        <i></i> Je reconnais être conscient des risques de perte en capital et illiquidité que comporte ce type d'investissement
+      </label>
+
+
+      <div>
+      <%= f.button :submit, class: 'btn btn-info btn-xs pull-right' %>
+      <% end %>
+      </div>
+
+    </div>
+  </div>
+
+</div>

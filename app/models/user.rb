@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook, :twitter, :google_oauth2]
 
-
+  has_one :investment_profile
   has_many :rente_shares
   has_many :bouquet_shares
   has_many :rentes, through: :rente_shares, dependent: :nullify

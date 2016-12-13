@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212085835) do
+ActiveRecord::Schema.define(version: 20161212135739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,49 @@ ActiveRecord::Schema.define(version: 20161212085835) do
     t.integer  "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "investment_profiles", force: :cascade do |t|
+    t.boolean  "question1"
+    t.boolean  "question2"
+    t.string   "civilite"
+    t.string   "nom"
+    t.string   "prenom"
+    t.string   "categoriesp"
+    t.string   "expertise"
+    t.string   "adresse"
+    t.string   "complementadresse"
+    t.string   "code_postal"
+    t.string   "country"
+    t.datetime "birth_date"
+    t.string   "birth_place"
+    t.string   "phone"
+    t.string   "mobile"
+    t.string   "ville"
+    t.string   "nationalite"
+    t.string   "invest1"
+    t.string   "invest2"
+    t.string   "invest3"
+    t.string   "invest4"
+    t.string   "invest5"
+    t.string   "invest6"
+    t.string   "invest7"
+    t.string   "invest8"
+    t.string   "patrimoine1"
+    t.string   "patrimoine2"
+    t.string   "patrimoine3"
+    t.string   "patrimoine4"
+    t.string   "patrimoine5"
+    t.string   "patrimoine6"
+    t.string   "patrimoine7"
+    t.string   "patrimoine8"
+    t.string   "patrimoine9"
+    t.string   "blanchiement1"
+    t.string   "blanchiement2"
+    t.integer  "user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["user_id"], name: "index_investment_profiles_on_user_id", using: :btree
   end
 
   create_table "olds", force: :cascade do |t|
@@ -155,6 +198,7 @@ ActiveRecord::Schema.define(version: 20161212085835) do
   add_foreign_key "bouquet_shares", "bouquets"
   add_foreign_key "bouquet_shares", "users"
   add_foreign_key "bouquet_shares", "viagers"
+  add_foreign_key "investment_profiles", "users"
   add_foreign_key "rente_shares", "rentes"
   add_foreign_key "rente_shares", "users"
   add_foreign_key "rente_shares", "viagers"

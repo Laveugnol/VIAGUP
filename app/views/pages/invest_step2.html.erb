@@ -1,0 +1,335 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="row">
+  <div class="col_xs_12">
+    <ul class="process-steps nav nav-justified">
+      <li >
+        <a href="#">1</a>
+        <h5>Informations</h5>
+      </li>
+      <li class="active">
+        <a href="#">2</a>
+        <h5>Profil investisseur</h5>
+      </li>
+      <li>
+        <a href="#">3</a>
+        <h5>Documents</h5>
+      </li>
+      <li>
+        <a href="#">4</a>
+        <h5>Signature</h5>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<br>
+<br>
+<section>
+
+    <div class = "container petit_fond">
+      <%= simple_form_for(@investment_profile, url: investment_profile_path(@investment_profile), html: { method: :patch }) do |f| %>
+      <%= f.error_notification %>
+      <div class= "row">
+        <div class ="col-xs-12 col-sm-6">
+          <div class ="col-xs-6">
+            <p>Civilité</p>
+          </div>
+          <div class ="col-xs-6">
+          <%= f.input :civilite, collection: @civilite, required: true, autofocus: true, label: false %>
+          </div>
+          <div class ="col-xs-6">
+            <p>Nom</p>
+          </div>
+          <div class ="col-xs-6">
+            <%= f.input :nom, required: true, autofocus: true, label: false %>
+          </div>
+          <div class ="col-xs-6">
+            <p>Prénom</p>
+          </div>
+          <div class ="col-xs-6">
+            <%= f.input :prenom, required: true, autofocus: true, label: false %>
+          </div>
+          <div class ="col-xs-6">
+            <p>Catégorie socio-professionnelle</p>
+          </div>
+          <div class ="col-xs-6">
+            <%= f.input :categoriesp, collection: @categorie,  required: true, autofocus: true, label: false %>
+          </div>
+          <div class ="col-xs-6">
+            <p>Votre domaine d'expertise</p>
+          </div>
+          <div class ="col-xs-6">
+            <%= f.input :expertise, collection: @expertise, required: true, autofocus: true, label: false %>
+          </div>
+        </div>
+        <div class = "col-xs-12 col-sm-6">
+          <div class ="col-xs-6">
+            <p>Date de naissance</p>
+          </div>
+          <div class ="col-xs-6">
+            <%= f.input :birth_date, required: true, autofocus: true, label: false %>
+          </div>
+          <div class ="col-xs-6">
+            <p>Lieu de naissance</p>
+          </div>
+          <div class ="col-xs-6">
+            <%= f.input :birth_place, required: true, autofocus: true, label: false %>
+          </div>
+          <div class ="col-xs-6">
+            <p>Nationalité</p>
+          </div>
+          <div class ="col-xs-6">
+            <%= f.input :nationalite, required: true, autofocus: true, label: false %>
+          </div>
+        </div>
+      </div>
+      <div class="divider double-line"><!-- divider --></div>
+      <div class="row">
+        <div class = "col-xs-12 col-sm-6">
+          <div class ="col-xs-6">
+            <p>Adresse</p>
+          </div>
+          <div class ="col-xs-6">
+            <%= f.input :adresse, required: true, autofocus: true, label: false %>
+          </div>
+          <div class ="col-xs-6">
+            <p>Complément d'adresse</p>
+          </div>
+          <div class ="col-xs-6">
+            <%= f.input :complementadresse, required: true, autofocus: true, label: false %>
+          </div>
+          <div class ="col-xs-6">
+            <p>Code postal</p>
+          </div>
+          <div class ="col-xs-6">
+            <%= f.input :code_postal, required: true, autofocus: true, label: false %>
+          </div>
+          <div class ="col-xs-6">
+            <p>Pays</p>
+          </div>
+          <div class ="col-xs-6">
+            <%= f.input :country, required: true, autofocus: true, label: false %>
+          </div>
+        </div>
+        <div class = "col-xs-12 col-sm-6">
+          <div class ="col-xs-6">
+            <p>Téléphone</p>
+          </div>
+          <div class ="col-xs-6">
+            <%= f.input :phone, autofocus: true, label: false %>
+          </div>
+          <div class ="col-xs-6">
+            <p>Téléphone portable</p>
+          </div>
+          <div class ="col-xs-6">
+            <%= f.input :mobile, required: true, autofocus: true, label: false %>
+          </div>
+          <div class ="col-xs-6">
+            <p>Ville</p>
+          </div>
+          <div class ="col-xs-6">
+            <%= f.input :ville, required: true, autofocus: true, label: false %>
+          </div>
+        </div>
+      </div>
+      <div class="divider double-line"><!-- divider --></div>
+      <div class="row">
+        <div class = "col-xs-12">
+          <div class = "col-xs-6 ">
+               <p>Investisseur qualifié</p>
+          </div>
+          <div class = "col-xs-6 ">
+                <%= f.input :invest1, collection: ["oui", "non"], required: true, autofocus: true, label: false %>
+          </div>
+        </div>
+        <!-- <div class = "col-xs-12">
+          <div class = "col-xs-6 ">
+              <p>Connaissez-vous les instruments financiers suivants et/ou avez-vous dé jà effectué des opérations sur les instruments financiers suivants ?</p>
+          </div>
+          <div class = "col-xs-6 ">
+              <%= f.input :invest2, required: true, autofocus: true, label: false %>
+          </div>
+        </div> -->
+
+        <div class = "col-xs-12 ">
+          <div class = "col-xs-6 ">
+              <p>Le montant de l’investissement que vous projetez de réaliser représente-t-il moins de 10 % de votre patrimoine total ?*</p>
+          </div>
+          <div class = "col-xs-6 ">
+              <%= f.input :invest3, collection: ["oui", "non"], required: true, autofocus: true, label: false %>
+          </div>
+        </div>
+        <div class = "col-xs-12 ">
+           <div class = "col-xs-6 ">
+               <p>Quel est le but poursuivi de votre investissement ?</p>
+           </div>
+           <div class = "col-xs-6 ">
+               <%= f.input :invest4, collection: @invest4,  required: true, autofocus: true, label: false %>
+           </div>
+        </div>
+
+        <div class = "col-xs-12 ">
+            <div class = "col-xs-6 ">
+                <p>Avez-vous bien été informé que l’investissement projeté représente un risque de perte en capital pouvant aller jusqu’à sa totalité?</p>
+            </div>
+            <div class = "col-xs-6 ">
+                <%= f.input :invest5, collection: ["oui", "non"], required: true, autofocus: true, label: false %>
+            </div>
+        </div>
+        <div class = "col-xs-12 ">
+          <div class = "col-xs-6 ">
+              <p>Êtes-vous financièrement capable de faire face au risque de perte totale du capital ?*</p>
+          </div>
+          <div class = "col-xs-6 ">
+               <%= f.input :invest6, required: true, collection: ["oui", "non"], autofocus: true, label: false %>
+          </div>
+        </div>
+        <div class = "col-xs-12 ">
+          <div class = "col-xs-6 ">
+              <p>Etes-vous prêt à patienter plus de cinq années avant de récupérer tout ou partie de votre investissement initial ?*</p>
+          </div>
+          <div class = "col-xs-6 ">
+              <%= f.input :invest7, required: true, collection: ["oui", "non"], autofocus: true, label: false %>
+          </div>
+        </div>
+       <!--  <div class = "col-xs-12 ">
+          <div class = "col-xs-6 ">
+              <p>Secteur de préférence*</p>
+          </div>
+          <div class = "col-xs-6 ">
+              <%= f.input :invest8, required: true, autofocus: true, label: false %>
+          </div>
+        </div> -->
+      </div>
+      <div class="divider double-line"><!-- divider --></div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class = "col-xs-12 col-sm-6">
+              <p>Votre situation financière vous permet d'épargner un minimum de ... € par an ?*</p>
+          </div>
+          <div class = "col-xs-12 col-sm-6">
+              <%= f.input :patrimoine1, required: true, autofocus: true, label: false %>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class = "col-xs-12 col-sm-6">
+              <p>Montant de votre patrimoine*</p>
+          </div>
+          <div class = "col-xs-12 col-sm-6">
+              <%= f.input :patrimoine2, collection: @patrimoine2, required: true, autofocus: true, label: false %>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class = "col-xs-12 col-sm-6">
+              <p>Êtes-vous assujetti à l’ISF ?*</p>
+          </div>
+          <div class = "col-xs-12 col-sm-6">
+              <%= f.input :patrimoine3, collection: ["oui", "non"],required: true, autofocus: true, label: false %>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class = "col-xs-12 col-sm-6">
+              <p>Liquidités (en %)</p>
+          </div>
+          <div class = "col-xs-12 col-sm-6">
+              <%= f.input :patrimoine4, required: true, autofocus: true, label: false %>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class = "col-xs-12 col-sm-6">
+              <p>Placement à revenu fixe, produits bancaires (en %)</p>
+          </div>
+          <div class = "col-xs-12 col-sm-6">
+              <%= f.input :patrimoine5, required: true, autofocus: true, label: false %>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class = "col-xs-12 col-sm-6">
+              <p>Biens immobiliers (en %)</p>
+          </div>
+          <div class = "col-xs-12 col-sm-6">
+              <%= f.input :patrimoine6, required: true, autofocus: true, label: false %>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class = "col-xs-12 col-sm-6">
+              <p>Contrats d’assurance (vie, décès, capitalisation) (en %)</p>
+          </div>
+          <div class = "col-xs-12 col-sm-6">
+              <%= f.input :patrimoine7, required: true, autofocus: true, label: false %>
+          </div>
+          </div>
+          <div class="col-xs-12">
+            <div class = "col-xs-12 col-sm-6">
+              <p>Comptes titres (en %)</p>
+            </div>
+            <div class = "col-xs-12 col-sm-6">
+              <%= f.input :patrimoine8  , required: true, autofocus: true, label: false %>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class = "col-xs-12 col-sm-6">
+                <p>Autres (en %)</p>
+            </div>
+            <div class = "col-xs-12 col-sm-6">
+                <%= f.input :patrimoine9  , required: true, autofocus: true, label: false %>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class = "col-xs-12 col-sm-6">
+                <p>Vos revenus proviennent principalement de*</p>
+            </div>
+            <div class = "col-xs-12 col-sm-6">
+                <%= f.input :blanchiement1  , collection: @blanchiement1 , required: true, autofocus: true, label: false %>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class = "col-xs-12 col-sm-6">
+                <p>Les fonds que vous souhaitez investir proviennent-ils de comptes bancaires ouverts auprès d’un établissement bancaire agréé en France ?*</p>
+            </div>
+            <div class = "col-xs-12 col-sm-6">
+                <%= f.input :blanchiement2  , collection: ["oui", "non"], required: true, autofocus: true, label: false %>
+            </div>
+          </div>
+      </div>
+      <div class = "col-xs-12">
+        <%= f.button :submit, "Confirmer", class: "btn btn-primary noradius pull-right" %>
+        <%= link_to "Retour", :back, class: "btn btn-primary noradius pull-left" %>
+      </div>
+  <%end%>
+</div>
+
+
+
+
+</section>
+
+<div class="toggle toggle-transparent toggle-bordered-full">
+
+  <div class="toggle active">
+    <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
+    <div class="toggle-content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+    </div>
+  </div>
+
+  <div class="toggle">
+    <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
+    <div class="toggle-content">
+      <p>Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc.</p>
+    </div>
+  </div>
+
+  <div class="toggle">
+    <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
+    <div class="toggle-content">
+      <p>Ut enim massa, sodales tempor convallis et, iaculis ac massa.</p>
+    </div>
+  </div>
+
+</div>
