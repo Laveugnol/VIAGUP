@@ -12,7 +12,7 @@ class CreateInvestmentProfiles < ActiveRecord::Migration[5.0]
       t.string :complementadresse
       t.string :code_postal
       t.string :pays
-      t.datetime :bitrh_date
+      t.datetime :birth_date
       t.string :birth_place
       t.string :phone
       t.string :mobile
@@ -24,6 +24,7 @@ class CreateInvestmentProfiles < ActiveRecord::Migration[5.0]
       t.string :invest4
       t.string :invest5
       t.string :invest6
+      t.string :invest7
       t.string :invest8
       t.string :patrimoine1
       t.string :patrimoine2
