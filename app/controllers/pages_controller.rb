@@ -23,6 +23,14 @@ class PagesController < ApplicationController
     @blanchiement1 = ["Salaires", "Revenus fonciers", "Pensions, retraites"]
   end
 
+  def invest_step3
+    @investment_profile = current_user.investment_profile
+  end
+
+  def invest_step4
+    @investment_profile = current_user.investment_profile
+  end
+
 
 
 end

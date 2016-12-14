@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :rentes, through: :rente_shares, dependent: :nullify
   has_many :bouquets, through: :bouquet_shares, dependent: :nullify
 
+
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
