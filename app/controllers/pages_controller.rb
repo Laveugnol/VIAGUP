@@ -23,4 +23,6 @@ class PagesController < ApplicationController
     @blanchiement1 = ["Salaires", "Revenus fonciers", "Pensions, retraites"]
   end
 
+
+
 end

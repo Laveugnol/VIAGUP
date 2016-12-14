@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "pages/invest_step1"
   get "pages/invest_step2"
   get "pages/invest_step3"
+  get "pages/invest_step4"
 
 
   ActiveAdmin.routes(self)

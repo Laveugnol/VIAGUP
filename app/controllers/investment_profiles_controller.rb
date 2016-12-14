@@ -12,6 +12,7 @@ class InvestmentProfilesController < ApplicationController
 
     if @investment_profile.save
 
+
       redirect_to pages_invest_step2_path(@current_user, @investment_profile)
     else
       render "pages/invest_step1"
@@ -24,6 +25,8 @@ class InvestmentProfilesController < ApplicationController
   def update
     @investment_profile.update_attributes(investment_profile_params)
     if @investment_profile.save
+      @user.profil_completed = true
+      @user.save
       redirect_to pages_invest_step3_path
     else
       flash[:alert] = "Merci de compléter les champs marqués d'un * !"
