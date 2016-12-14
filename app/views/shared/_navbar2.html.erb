@@ -25,20 +25,17 @@
 
         Example Usage:  class="clearfix sticky header-sm transparent noborder"
       -->
-<div id="header" class="static clearfix header-sm dark ">
 
+<div id="header" class="static clearfix header-sm dark ">
         <!-- TOP NAV -->
   <header id="topNav">
     <div class="container">
-
             <!-- Mobile Menu Button -->
       <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
         <i class="fa fa-bars"></i>
       </button>
-
             <!-- BUTTONS -->
       <ul class="pull-right nav nav-pills nav-second-main">
-
               <!-- SEARCH -->
       <!--         <li class="search">
                 <a href="javascript:;">
@@ -59,17 +56,15 @@
                <!-- Different navigation if login or not -->
         <li>
           <% if user_signed_in? %>
-
-                  <!-- Profile picture and dropdown -->
+            <!-- Profile picture and dropdown -->
             <div class="navbar-wagon-item ">
-
               <% avatar_url = current_user.facebook_picture_url  || current_user.twitter_picture_url || current_user.google_picture_url || "http://placehold.it/30x30" %>
               <%= image_tag avatar_url, class: "avatar", id: "navbar-wagon-menu" %>
             </div>
           <% else %>
             <div>
-                    <!-- Login text link -->
-              <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+              <!-- Login text link -->
+              <%= link_to t(".sign_in", default: "Connexion"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
             </div>
           <% end %>
         </li>
@@ -81,92 +76,89 @@
         <%= image_tag "logo.png" %>
         <% end %>
       </div>
+      <!--
+         Top Nav
 
+         AVAILABLE CLASSES:
+         submenu-dark = dark sub menu
+      -->
+      <div class="navbar-collapse pull-right nav-main-collapse collapse">
+        <nav class="nav-main">
+          <!--
+             NOTE
 
-            <!--
-              Top Nav
-
-              AVAILABLE CLASSES:
-              submenu-dark = dark sub menu
-            -->
-          <div class="navbar-collapse pull-right nav-main-collapse collapse">
-            <nav class="nav-main">
-
-                <!--
-                  NOTE
-
-                  For a regular link, remove "dropdown" class from LI tag and "dropdown-toggle" class from the href.
-                  Direct Link Example:
-
-                  <li>
-                    <a href="#">HOME</a>
-                  </li>
-                -->
-              <ul id="topMain" class="nav nav-pills nav-main">
-                <li class="dropdown active"><!-- HOME -->
+             For a regular link, remove "dropdown" class frotag and "dropdown-toggle" class from the href.
+             Direct Link Example:
+            <li>
+               <a href="#">HOME</a>
+            </li>
+          -->
+          <ul id="topMain" class="nav nav-pills nav-main">
+            <li class="dropdown active"><!-- HOME -->
+              <a class="dropdown-toggle" href="#">
+                HOME
+              </a>
+              <ul class="dropdown-menu">
+                <li class="dropdown">
                   <a class="dropdown-toggle" href="#">
-                      HOME
+                    HOME CORPORATE
                   </a>
-                  <ul class="dropdown-menu">
-                    <li class="dropdown">
-                      <a class="dropdown-toggle" href="#">
-                          HOME CORPORATE
-                      </a>
-                    </li>
-                    <li class="dropdown">
-                      <a class="dropdown-toggle" href="#">
-                          HOME PORTFOLIO
-                      </a>
-                    </li>
-                    <li class="dropdown">
-                      <a class="dropdown-toggle" href="#">
-                          HOME BLOG
-                      </a>
-                    </li>
-                  </ul>
                 </li>
-                <li class="dropdown"><!-- BLOG -->
+                <li class="dropdown">
                   <a class="dropdown-toggle" href="#">
-                      BLOG
+                    HOME PORTFOLIO
                   </a>
-                  <ul class="dropdown-menu">
-                    <li class="dropdown">
-                      <a class="dropdown-toggle" href="#">
-                          DEFAULT
-                      </a>
-                    </li>
-                    <li class="dropdown">
-                      <a class="dropdown-toggle" href="#">
-                          COMMENTS
-                      </a>
-                    </li>
-                  </ul>
                 </li>
-
-                    <li class="dropdown">
-                      <% if user_signed_in? %>
-                        <a class="dropdown-toggle" href="#">
-                          <% if current_user.first_name && current_user.last_name%>
-                            <%=current_user.first_name.upcase + " " + current_user.last_name.upcase%>
-                          <%else%>
-                            <%=current_user.email%>
-                          <%end%>
-                        </a>
-                      <ul class="dropdown-menu pull-right">
-                        <li><a href="/pages/profil">MON PROFIL</a></li>
-                        <li><a href="shop-cart.html">MES INVESTISSEMENTS </a></li>
-                        <li>
-                        <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete %></li>
-                      </ul>
-                      <% end %>
-                    </li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" href="#">
+                    HOME BLOG
+                  </a>
+                </li>
               </ul>
+            </li>
+            <li class="dropdown"><!-- BLOG -->
+              <a class="dropdown-toggle" href="#">
+                BLOG
+              </a>
+              <ul class="dropdown-menu">
+                <li class="dropdown">
+                  <a class="dropdown-toggle" href="#">
+                    DEFAULT
+                  </a>
+                </li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" href="#">
+                    COMMENTS
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <% if user_signed_in? %>
+                <a class="dropdown-toggle" href="#">
+                  <% if current_user.first_name && current_user.last_name%>
+                    <%=current_user.first_name.upcase + " " + current_user.last_name.upcase%>
+                  <%else%>
+                   <%=current_user.email%>
+                  <%end%>
+                </a>
+              <ul class="dropdown-menu pull-right">
+                <li><a href="/pages/profil">MON PROFIL</a></li>
+                <li><a href="shop-cart.html">MES INVESTISSEMENTS </a></li>
+                <li>
+                <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete %></li>
+              </ul>
+              <% end %>
+            </li>
+          </ul>
         </nav>
       </div>
     </div>
   </header>
-        <!-- /Top Nav -->
+  <!-- /Top Nav -->
 </div>
+
 
 
 

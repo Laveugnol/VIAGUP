@@ -34,7 +34,12 @@
     <div class = "container petit_fond">
       <%= simple_form_for(@investment_profile, url: investment_profile_path(@investment_profile), html: { method: :patch }) do |f| %>
       <%= f.error_notification %>
-      <div class= "row">
+        <div class="toggle toggle-transparent toggle-bordered-full">
+
+            <div class="toggle active">
+                <label>Fiche d'identité</label>
+                  <div class="toggle-content">
+                    <div class= "row">
         <div class ="col-xs-12 col-sm-6">
           <div class ="col-xs-6">
             <p>Civilité</p>
@@ -72,7 +77,9 @@
             <p>Date de naissance</p>
           </div>
           <div class ="col-xs-6">
-            <%= f.input :birth_date, required: true, autofocus: true, label: false %>
+
+          <input type="text" class="form-control datepicker" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" name="investment_profile[birth_place]" required>
+
           </div>
           <div class ="col-xs-6">
             <p>Lieu de naissance</p>
@@ -87,9 +94,13 @@
             <%= f.input :nationalite, required: true, autofocus: true, label: false %>
           </div>
         </div>
-      </div>
-      <div class="divider double-line"><!-- divider --></div>
-      <div class="row">
+                    </div>
+                  </div>
+            </div>
+            <div class="toggle active">
+              <label>Coordonnées</label>
+                <div class="toggle-content">
+                  <div class="row">
         <div class = "col-xs-12 col-sm-6">
           <div class ="col-xs-6">
             <p>Adresse</p>
@@ -136,9 +147,13 @@
             <%= f.input :ville, required: true, autofocus: true, label: false %>
           </div>
         </div>
-      </div>
-      <div class="divider double-line"><!-- divider --></div>
-      <div class="row">
+                  </div>
+                </div>
+            </div>
+            <div class="toggle active">
+              <label>Investissement</label>
+                <div class="toggle-content">
+                  <div class="row">
         <div class = "col-xs-12">
           <div class = "col-xs-6 ">
                <p>Investisseur qualifié</p>
@@ -205,9 +220,13 @@
               <%= f.input :invest8, required: true, autofocus: true, label: false %>
           </div>
         </div> -->
-      </div>
-      <div class="divider double-line"><!-- divider --></div>
-      <div class="row">
+                  </div>
+                </div>
+            </div>
+            <div class="toggle active">
+              <label>Patrimoine</label>
+                <div class="toggle-content">
+                  <div class="row">
         <div class="col-xs-12">
           <div class = "col-xs-12 col-sm-6">
               <p>Votre situation financière vous permet d'épargner un minimum de ... € par an ?*</p>
@@ -296,7 +315,12 @@
                 <%= f.input :blanchiement2  , collection: ["oui", "non"], required: true, autofocus: true, label: false %>
             </div>
           </div>
-      </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+
       <div class = "col-xs-12">
         <%= f.button :submit, "Confirmer", class: "btn btn-primary noradius pull-right" %>
         <%= link_to "Retour", :back, class: "btn btn-primary noradius pull-left" %>
@@ -304,32 +328,6 @@
   <%end%>
 </div>
 
-
-
-
 </section>
 
-<div class="toggle toggle-transparent toggle-bordered-full">
 
-  <div class="toggle active">
-    <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
-    <div class="toggle-content">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-    </div>
-  </div>
-
-  <div class="toggle">
-    <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
-    <div class="toggle-content">
-      <p>Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc.</p>
-    </div>
-  </div>
-
-  <div class="toggle">
-    <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</label>
-    <div class="toggle-content">
-      <p>Ut enim massa, sodales tempor convallis et, iaculis ac massa.</p>
-    </div>
-  </div>
-
-</div>
