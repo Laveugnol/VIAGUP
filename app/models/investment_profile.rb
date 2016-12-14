@@ -16,6 +16,9 @@ class InvestmentProfile < ApplicationRecord
   # validates :birth_place, presence: true
   # validates :birth_date, presence: true
 
+  mount_uploader :idcard, IdcardUploader
+  mount_uploader :justificatif, JustificatifUploader
+
 
 
 end

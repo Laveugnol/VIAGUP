@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "pages/invest_step2"
   get "pages/invest_step3"
   get "pages/invest_step4"
+  patch "investment_profiles/update_step3"
 
 
   ActiveAdmin.routes(self)

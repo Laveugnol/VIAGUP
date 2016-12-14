@@ -1,5 +1,5 @@
 class InvestmentProfilesController < ApplicationController
-  before_action :set_investment_profile, only: [ :edit, :update ]
+  before_action :set_investment_profile, only: [ :edit, :update]
   def new
   end
 
@@ -23,11 +23,26 @@ class InvestmentProfilesController < ApplicationController
   end
 
   def update
+    @user = current_user
     @investment_profile.update_attributes(investment_profile_params)
     if @investment_profile.save
       @user.profil_completed = true
       @user.save
       redirect_to pages_invest_step3_path
+    else
+      flash[:alert] = "Merci de compléter les champs marqués d'un * !"
+      render :new
+    end
+  end
+
+  def update_step3
+    @user = current_user
+    @investment_profile = current_user.investment_profile
+    @investment_profile.update_attributes(investment_profile_params)
+    if @investment_profile.save
+      @user.doc_sent = true
+      @user.save
+      redirect_to pages_invest_step4_path
     else
       flash[:alert] = "Merci de compléter les champs marqués d'un * !"
       render :new
@@ -47,7 +62,7 @@ class InvestmentProfilesController < ApplicationController
                    :invest1, :invest2, :invest3, :invest4, :invest5, :invest6,
                    :invest8, :patrimoine1, :patrimoine2, :patrimoine3, :patrimoine4,
                    :patrimoine5, :patrimoine6, :patrimoine7, :patrimoine8,
-                   :patrimoine9, :blanchiement1, :blanchiement2)
+                   :patrimoine9, :blanchiement1, :blanchiement2, :idcard, :idcard_cache, :justificatif, :justificatif_cache)
   end
 
 end
