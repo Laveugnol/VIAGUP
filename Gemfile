@@ -32,6 +32,7 @@ gem 'omniauth-twitter'
 gem "omniauth-google-oauth2"
 
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+gem 'universign'
 
 
 group :development, :test do
