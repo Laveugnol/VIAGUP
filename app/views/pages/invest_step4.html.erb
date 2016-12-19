@@ -1,9 +1,37 @@
-<section>
+<br>
 <br>
 <br>
 <br>
 <br>
 
-<%= cl_image_tag @investment_profile.justificatif ,:height=> 399, :width=> 600, :crop=>"fill", class: "img-responsive", alt: ""%>
-<%= cl_image_tag @investment_profile.idcard ,:height=> 399, :width=> 600, :crop=>"fill", class: "img-responsive", alt: ""%>
-</section>
+<div class="row">
+  <div class="col_xs_12">
+    <ul class="process-steps nav nav-justified">
+      <li >
+        <a href="#">1</a>
+        <h5>Informations</h5>
+      </li>
+      <li>
+        <a href="#">2</a>
+        <h5>Profil investisseur</h5>
+      </li>
+      <li >
+        <a href="#">3</a>
+        <h5>Documents</h5>
+      </li>
+      <li class="active">
+        <a href="#">4</a>
+        <h5>Signature</h5>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<%= form_tag signatures_path, method: :post do %>
+
+  <%= hidden_field_tag :name, current_user.investment_profile.prenom %>
+
+  <%= hidden_field_tag :email, current_user.email %>
+  <%= submit_tag 'Signer votre charte investisseur' %>
+<% end %>
+
