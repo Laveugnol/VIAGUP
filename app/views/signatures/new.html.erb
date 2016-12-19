@@ -1,0 +1,13 @@
+
+<br>
+<br>
+<br>
+<br>
+
+<%= form_tag signatures_path, method: :post do %>
+
+  <%= hidden_field_tag :name, current_user.investment_profile.prenom %>
+
+  <%= hidden_field_tag :email, current_user.email %>
+  <%= submit_tag 'Create Embedded Signature Request' %>
+<% end %>

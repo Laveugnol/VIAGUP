@@ -1,0 +1,65 @@
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="row">
+  <div class="col_xs_12">
+    <ul class="process-steps nav nav-justified">
+      <li >
+        <a href="#">1</a>
+        <h5>Informations</h5>
+      </li>
+      <li>
+        <a href="#">2</a>
+        <h5>Profil investisseur</h5>
+      </li>
+      <li >
+        <a href="#">3</a>
+        <h5>Documents</h5>
+      </li>
+      <li class="active">
+        <a href="#">4</a>
+        <h5>Signature</h5>
+      </li>
+    </ul>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<div class='row'>
+  <div class =' offset-xs-3 col_xs_6 offset-xs-3'>
+    <%= form_tag pages_finalize_path, method: :post do %>
+
+    <%= submit_tag 'Finaliser mon profil!' %>
+<% end %>
+  </div>
+</div>
+
+
+<!-- app/views/signatures/embedded_signature.html.erb -->
+
+<!-- Gotta include the HelloSign embedded.js library -->
+<script src="//s3.amazonaws.com/cdn.hellofax.com/js/embedded.js" type="text/javascript"></script>
+<!-- Open the embedded signer iFrame -->
+<script type="text/javascript">
+// <![CDATA[
+  HelloSign.init('a035585860221ecb40da4669f3c62ef9');
+  HelloSign.open({
+    'url': '<%= @sign_url %>',
+    'skipDomainVerification': true,
+
+    'allowCancel': true,
+    "debug": true,
+
+    'messageListener': function(eventData) {
+      alert("HelloSign event received");
+    }
+  });
+// ]]>
+</script>
