@@ -22,19 +22,29 @@ gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 gem 'cloudinary', '1.1.0'
-gem 'carrierwave' # faudra peut être le virer si ça merde avec attachinary
-gem "attachinary", github: "assembler/attachinary"
+gem 'carrierwave'
+
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
 gem 'country_select'
-gem "geocoder"
 
+gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
+
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem "omniauth-google-oauth2"
+
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+
+gem 'hellosign-ruby-sdk'
+
+
 
 group :development, :test do
   gem 'binding_of_caller'

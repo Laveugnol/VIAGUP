@@ -1,0 +1,196 @@
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      <div class="list-group profil_box">
+        <%=link_to "Mon compte", edit_user_registration_path(@user), class: "list-group-item" %>
+        <%=link_to "Profil investisseur", pages_profil_path(@user), class: "list-group-item active" %>
+        <%=link_to "Mon épargne", edit_user_registration_path(@user), class: "list-group-item" %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
+        <div class="box-icon-title">
+          <i class="fa fa-database"></i>
+          <h2>Votre profil</h2>
+        </div>
+          <div class="row">
+            <div class="col-xs-4 info_box text-center">
+              <%if @user.profil_valid%>
+                <div class="piechart" data-color="green" data-size="40" data-percent="100" data-width="4" data-animate="3000">
+                  <span class="countTo font-raleway" data-speed="3000">100</span>
+                </div>
+              <%elsif @user.certificat%>
+                <div class="piechart" data-color="green" data-size="40" data-percent="90" data-width="4" data-animate="3000">
+                  <span class="countTo font-raleway" data-speed="3000">90</span>
+                </div>
+              <%elsif @user.doc_sent%>
+                <div class="piechart" data-color="green" data-size="40" data-percent="60" data-width="4" data-animate="3000">
+                  <span class="countTo font-raleway" data-speed="3000">60</span>
+                </div>
+              <%elsif @user.profil_completed%>
+                <div class="piechart" data-color="green" data-size="40" data-percent="50" data-width="4" data-animate="3000">
+                  <span class="countTo font-raleway" data-speed="3000">50</span>
+                </div>
+              <%elsif @user.investment_profile%>
+                <div class="piechart" data-color="green" data-size="40" data-percent="20" data-width="4" data-animate="3000">
+                  <span class="countTo font-raleway" data-speed="3000">20</span>
+                </div>
+              <%else%>
+                <div class="piechart" data-color="green" data-size="40" data-percent="10" data-width="4" data-animate="3000">
+                  <span class="countTo font-raleway" data-speed="3000">10</span>
+                </div>
+              <%end%>
+            </div>
+            <div class="col-xs-8">
+              <% if @user.profil_valid %>
+                  <p>Votre profil a été validé. Vous pouvez désormais consulter les pièces relatives à nos produits.</p>
+              <% elsif @user.profil_completed && @user.profil_valid == false%>
+                 <p>Votre profil est en cours de validation par nos équipes. Vous pourrez bientôt consulter les pièces relatives à nos produits.</p>
+              <%else%>
+                  <p>Votre profil n'est pas complet. Vous ne pouvez pas consulter les pièces relatives à nos produits. Veuillez remplir les informations manquantes en cliquant ci-dessous.</p>
+              <%end%>
+            </div>
+          </div>
+        </div>
+
+              <div class="col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                  <% if step_1_done == false%>
+                    <div class="panel-heading">
+
+                      <a class="btn btn-danger btn-xs pull-right" href="/pages/invest_step1">Remplir le formulaire</a>
+
+                      <h2 class="panel-title">Vos informations personnelles</h2>
+                    </div>
+                    <div class="panel-body">
+                       Vous devez au préalable remplir le formulaire d'information investisseur.
+                    </div>
+                    <% elsif step_1_done && @user.profil_completed == false %>
+                      <div class="panel-heading">
+
+                        <a class="btn btn-danger btn-xs pull-right" href="/pages/invest_step2">Remplir le formulaire</a>
+
+                        <h2 class="panel-title">Vos informations personnelles</h2>
+                        </div>
+                      <div class="panel-body">
+                        Vous devez au préalable remplir le formulaire (partie 2) d'information investisseur.
+                      </div>
+                    <% else%>
+                      <div class="panel-heading">
+                         <h2 class="panel-title">Vos informations personnelles</h2>
+                      </div>
+                      <div class="panel-body">
+                         Vos informations sont à jour.
+                      </div>
+                    <%end%>
+                  </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                  <% if step_1_done == false%>
+                    <div class="panel-heading">
+
+                      <a class="btn btn-danger btn-xs pull-right" href="/pages/invest_step1">Remplir le formulaire</a>
+
+                      <h2 class="panel-title">Documents justificatifs</h2>
+                    </div>
+                    <div class="panel-body">
+                       Vous devez au préalable remplir le formulaire d'information investisseur.
+                    </div>
+                  <% elsif step_1_done && @user.profil_completed != true %>
+                    <div class="panel-heading">
+
+                        <a class="btn btn-danger btn-xs pull-right" href="/pages/invest_step2">Remplir le formulaire</a>
+
+                        <h2 class="panel-title">Documents justificatifs</h2>
+                      </div>
+                      <div class="panel-body">
+                         Vous devez au préalable remplir le formulaire (partie 2) d'information investisseur.
+                      </div>
+                    <% elsif @user.profil_completed == true && @user.doc_sent == false%>
+                      <div class="panel-heading">
+                        <a class="btn btn-danger btn-xs pull-right" href="/pages/invest_step3">Envoyer les pièces</a>
+
+                        <h2 class="panel-title">Documents justificatifs</h2>
+                      </div>
+                      <div class="panel-body">
+                         Vous ne nous avez pas encore transmis vos pièces justificatives.
+                      </div>
+                    <% else %>
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Documents justificatifs</h2>
+                      </div>
+                      <div class="panel-body">
+                         Vos pièces ont bien été transmises.
+                      </div>
+                  <%end%>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                  <% if step_1_done == false%>
+                    <div class="panel-heading">
+                      <a class="btn btn-danger btn-xs pull-right" href="/pages/invest_step1">Remplir le formulaire</a>
+                      <h2 class="panel-title">Vos informations investisseur</h2>
+                    </div>
+                    <div class="panel-body">
+                      Vous devez remplir le formulaire d'information investisseur.
+                    </div>
+                  <% elsif @user.profil_completed == false%>
+                    <div class="panel-heading">
+                      <a class="btn btn-danger btn-xs pull-right" href="/pages/invest_step2">Remplir le formulaire</a>
+                      <h2 class="panel-title">Vos informations investisseur</h2>
+                    </div>
+                    <div class="panel-body">
+                      Vous devez remplir le formulaire d'information investisseur.
+                    </div>
+                  <%elsif @user.profil_completed == true && @user.doc_sent == false%>
+                    <div class="panel-heading">
+                      <a class="btn btn-danger btn-xs pull-right" href="/pages/invest_step3">Envoyer les pièces</a>
+                      <h2 class="panel-title">Vos informations investisseur</h2>
+                    </div>
+                    <div class="panel-body">
+                      Vous devez envoyer vos pièces justificatives avant de signer votre certificat d'investisseur.
+                    </div>
+                  <%elsif @user.doc_sent == true && @user.certificat == false%>
+                    <div class="panel-heading">
+                      <a class="btn btn-danger btn-xs pull-right" href="/pages/invest_step4">Signer votre certificat</a>
+                      <h2 class="panel-title">Vos informations investisseur</h2>
+                    </div>
+                    <div class="panel-body">
+                          Vous devez signer votre certificat en ligne.
+                    </div>
+                    <%else%>
+                    <div class="panel-heading">
+                      <h2 class="panel-title">Vos informations investisseur</h2>
+                    </div>
+                    <div class="panel-body">
+                      Vous informations sont à jour.
+                    </div>
+                  <%end%>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h2 class="panel-title">Validation du profil</h2>
+                  </div>
+                  <div class="panel-body">
+                    <% if @user.profil_valid %>
+                      Votre profil a été validé.
+                    <%else%>
+                      Votre profil n'est pas  encore validé.
+                    <%end%>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
