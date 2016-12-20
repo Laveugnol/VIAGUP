@@ -230,7 +230,8 @@
           <!-- LEFT -->
           <div class="col-md-6 col-sm-6 nopadding nomargin">
 
-            <img class="img-responsive" src="assets/images/demo/mockups/1200x800/4-min.jpg" alt="image" />
+
+            <div id="map" style="width: 100%; height: 800px;"></div>
 
           </div>
 
@@ -605,4 +606,27 @@
 
         </div>
       </section>
+
+
+
+<% content_for(:after_js) do %>
+
+  <%= javascript_tag do %>
+
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+
+  <% end %>
+<% end %>
 

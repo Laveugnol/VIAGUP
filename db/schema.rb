@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 20161214136955) do
     t.boolean  "profil_completed",       default: false
     t.boolean  "doc_sent",               default: false
     t.boolean  "certificat",             default: false
-
+    t.string   "idcard"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

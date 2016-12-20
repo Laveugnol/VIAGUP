@@ -27,6 +27,15 @@ gem 'carrierwave'
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
 gem 'country_select'
+
+gem "geocoder"
+gem "coffee-rails"
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
+
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem "omniauth-google-oauth2"
@@ -34,6 +43,7 @@ gem "omniauth-google-oauth2"
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 gem 'hellosign-ruby-sdk'
+
 
 
 group :development, :test do
