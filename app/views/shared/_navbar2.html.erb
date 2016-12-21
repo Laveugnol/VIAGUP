@@ -26,10 +26,10 @@
         Example Usage:  class="clearfix sticky header-sm transparent noborder"
       -->
 
-<div id="header" class="static clearfix header-sm dark ">
+<div id="header" class="static clearfix header-sm dark">
         <!-- TOP NAV -->
   <header id="topNav">
-    <div class="container">
+    <div class="container bold">
             <!-- Mobile Menu Button -->
       <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
         <i class="fa fa-bars"></i>
@@ -64,7 +64,10 @@
           <% else %>
             <div>
               <!-- Login text link -->
-              <%= link_to t(".sign_in", default: "Connexion"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+              <%= link_to t(".sign_in", default: "Connexion"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link connexion" %>
+
+              <!-- Login text link -->
+              <%= link_to t(".sign_up", default: "Inscription"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link inscription" %>
             </div>
           <% end %>
         </li>
@@ -82,7 +85,7 @@
          AVAILABLE CLASSES:
          submenu-dark = dark sub menu
       -->
-      <div class="navbar-collapse pull-right nav-main-collapse collapse">
+      <div class="navbar-collapse pull-right nav-main-collapse collapse submenu-dark">
         <nav class="nav-main">
           <!--
              NOTE
@@ -93,24 +96,24 @@
                <a href="#">HOME</a>
             </li>
           -->
-          <ul id="topMain" class="nav nav-pills nav-main">
-            <li class="dropdown active"><!-- HOME -->
+          <ul id="topMain" class="nav nav-pills nav-main bold">
+            <li class="dropdown"><!-- HOME -->
               <a class="dropdown-toggle" href="#">
                 HOME
               </a>
               <ul class="dropdown-menu">
                 <li class="dropdown">
-                  <a class="dropdown-toggle" href="#">
+                  <a class="" href="#">
                     HOME CORPORATE
                   </a>
                 </li>
                 <li class="dropdown">
-                  <a class="dropdown-toggle" href="#">
+                  <a class="" href="#">
                     HOME PORTFOLIO
                   </a>
                 </li>
                 <li class="dropdown">
-                  <a class="dropdown-toggle" href="#">
+                  <a class="" href="#">
                     HOME BLOG
                   </a>
                 </li>
@@ -122,12 +125,12 @@
               </a>
               <ul class="dropdown-menu">
                 <li class="dropdown">
-                  <a class="dropdown-toggle" href="#">
+                  <a class="" href="#">
                     DEFAULT
                   </a>
                 </li>
-                <li class="dropdown">
-                  <a class="dropdown-toggle" href="#">
+                <li class="">
+                  <a class="" href="#">
                     COMMENTS
                   </a>
                 </li>
