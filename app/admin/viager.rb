@@ -30,7 +30,4 @@ permit_params :address, :city, :zip_code, :country, :old_id, :photo, :rente, :bo
     actions
   end
 
-
-
-
 end

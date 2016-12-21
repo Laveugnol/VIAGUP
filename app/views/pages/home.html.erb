@@ -29,13 +29,13 @@
             data-height="800"
         -->
         <div class="fullscreenbanner" data-navigationStyle="" data-height="600">
-          <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "bannervieux.jpg" %>');">
+          <div class="banner" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%), url('<%= image_path "bannervieux.jpg" %>');">
             <div class="banner-content">
             <h1>VIAG'UP</h1>
             <p>L'épargne collaborative &amp; solidaire </p>
-            <%= link_to  viagers_path class: "btn btn-featured btn-blue" do%>
+            <%= link_to  viagers_path, class: "btn-yours tof" do%>
 
-              <span>DECOUVRIR</span>
+              <span>Découvrir nos projets</span>
               <i class="fa fa-search" aria-hidden="true"></i>
             <%end%>
             </div>
@@ -43,45 +43,9 @@
 
      <!--  </section> -->
       <!-- /REVOLUTION SLIDER -->
-
-      <!-- -->
+    <!-- Goodies -->
       <section>
-        <div class="container">
-
-          <div class="row">
-
-            <div class="col-md-5 col-sm-5">
-              <a class="image-hover lightbox thumbnail" href="http://vimeo.com/56624256" data-plugin-options='{"type":"iframe"}'>
-                <span class="image-hover-icon image-hover-light"><!-- image-hover-light | image-hover-dark -->
-                  <i class="fa fa-vimeo-square"><!-- video icon --></i>
-                </span>
-                <img class="img-responsive" src="assets/images/demo/tr.jpg" alt="...">
-              </a>
-            </div>
-
-            <div class="col-md-7 col-sm-7">
-
-              <header class="margin-bottom-60">
-                <h2>Smarty Website+Admin+RTL</h2>
-                <p class="lead font-lato">The most complete template, ever!</p>
-              </header>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus deserunt, nobis quae eos provident quidem. Quaerat expedita dignissimos perferendis, nihil quo distinctio eius architecto reprehenderit maiores.</p>
-              <p>Similique excepturi voluptates placeat ducimus delectus magnam tempore dolore dolorem quisquam porro modi voluptatum eum saepe dolorum ratione officia sint eos minus.</p>
-
-              <a class="btn btn-default btn-lg size-15 margin-top-30 lightbox" href="http://vimeo.com/56624256" data-plugin-options='{"type":"iframe"}'>WATCH VIDEO</a>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-      <!-- / -->
-
-      <!-- Goodies -->
-      <section>
-        <div class="container">
+        <div class="container boldy">
 
           <div class="row">
 
@@ -90,9 +54,9 @@
               <div class="box-icon box-icon-center box-icon-transparent box-icon-large">
                 <a class="box-icon-title" href="#">
                   <i class="fa fa-tablet"></i>
-                  <h2>Fully Reposnive</h2>
+                  <h2>100% en ligne</h2>
                 </a>
-                <p class="text-muted">Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante.</p>
+                <p class="text-muted">Le banquier, l'agent immo et le notaire, c'est fini. Nous nous occupons de tout.</p>
               </div>
 
             </div>
@@ -101,10 +65,10 @@
 
               <div class="box-icon box-icon-center box-icon-transparent box-icon-large">
                 <a class="box-icon-title" href="#">
-                  <i class="fa fa-random"></i>
-                  <h2>Clean Design</h2>
+                  <i class="fa fa-users"></i>
+                  <h2>Investir ensemble</h2>
                 </a>
-                <p class="text-muted">Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante.</p>
+                <p class="text-muted">Epargnez avec vos proches ou intégrez une équipe en cours de constitution.</p>
               </div>
 
             </div>
@@ -113,10 +77,10 @@
 
               <div class="box-icon box-icon-center box-icon-transparent box-icon-large">
                 <a class="box-icon-title" href="#">
-                  <i class="fa fa-tint"></i>
-                  <h2>Reusable Elements</h2>
+                  <i class="fa fa-eur"></i>
+                  <h2>Diversifier</h2>
                 </a>
-                <p class="text-muted">Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante.</p>
+                <p class="text-muted">Ne mettez pas tous vos oeufs dans le même panier, répartissez votre épargne sur plusieurs projets.</p>
               </div>
 
             </div>
@@ -125,10 +89,10 @@
 
               <div class="box-icon box-icon-center box-icon-transparent box-icon-large">
                 <a class="box-icon-title" href="#">
-                  <i class="fa fa-cogs"></i>
-                  <h2>Multipurpose</h2>
+                  <i class=" fa fa-bar-chart"></i>
+                  <h2>Reporting</h2>
                 </a>
-                <p class="text-muted">Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante.</p>
+                <p class="text-muted">Suivez l'évolution de votre épargne dans votre espace privé.</p>
               </div>
 
             </div>
@@ -138,45 +102,40 @@
         </div>
       </section>
       <!-- Goodies -->
-      <!-- PARALLAX -->
-      <section class="parallax parallax-2 padding-xxs" style="background-image: url('<%= image_path "bannervieux.jpg" %>');">
-        <div class="overlay dark-4"><!-- dark overlay [0 to 9 opacity] --></div>
-
+      <!-- -->
+      <section>
         <div class="container">
 
-          <div class="row countTo-md text-center">
+          <div class="row">
 
-            <div class="col-xs-6 col-sm-3">
-              <i class="fa fa-users"></i>
-              <span class="countTo" data-speed="3000">1303</span>
-              <h5>HAPPY CLIENTS</h5>
+            <div class="col-md-5 col-sm-5">
+              <a class="image-hover lightbox thumbnail" href="https://www.youtube.com/watch?v=s8LO44_cFYA" data-plugin-options='{"type":"iframe"}'>
+                <span class="image-hover-icon image-hover-light"><!-- image-hover-light | image-hover-dark -->
+                  <i class="fa fa-youtube-square"><!-- video icon --></i>
+                </span>
+                <%=image_tag "Impact_Investment.jpg", class: "img-responsive"%>
+              </a>
             </div>
 
-            <div class="col-xs-6 col-sm-3">
-              <i class="fa fa-code"></i>
-              <span class="countTo" data-speed="3000">56000</span>
-              <h5>LINES OF CODE</h5>
-            </div>
+            <div class="col-md-7 col-sm-7">
 
-            <div class="col-xs-6 col-sm-3">
-              <i class="fa fa-twitter"></i>
-              <span class="countTo" data-speed="3000">4897</span>
-              <h5>TWITTER</h5>
-            </div>
+              <header class="margin-bottom-60">
+                <h2>L'impact investing: Comment ça marche?</h2>
+                <p class="lead font-lato">un jeu à somme non nulle</p>
+              </header>
 
-            <div class="col-xs-6 col-sm-3">
-              <i class="fa fa-facebook"></i>
-              <span class="countTo" data-speed="3000">9877</span>
-              <h5>FACEBOOK</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus deserunt, nobis quae eos provident quidem. Quaerat expedita dignissimos perferendis, nihil quo distinctio eius architecto reprehenderit maiores.</p>
+              <p>Similique excepturi voluptates placeat ducimus delectus magnam tempore dolore dolorem quisquam porro modi voluptatum eum saepe dolorum ratione officia sint eos minus.</p>
+
+              <a class="btn btn-yours btn-lg size-15 margin-top-30 lightbox" href="https://www.youtube.com/watch?v=s8LO44_cFYA" data-plugin-options='{"type":"iframe"}'>EXPLICATIONS</a>
+
             </div>
 
           </div>
 
         </div>
       </section>
-      <!-- /PARALLAX -->
-
-
+      <!-- / -->
 
       <!-- Works -->
       <section>
@@ -237,106 +196,103 @@
             <%end%><!-- /item -->
 
 
-            <div class="col-md-4 col-sm-4 mix design"><!-- item -->
 
-              <div class="item-box">
-                <figure>
-                  <span class="item-hover">
-                    <span class="overlay dark-5"></span>
-                    <span class="inner">
-
-                      <!-- lightbox -->
-                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/11-min.jpg" data-plugin-options='{"type":"image"}'>
-                        <span class="fa fa-plus size-20"></span>
-                      </a>
-
-                      <!-- details -->
-                      <a class="ico-rounded" href="portfolio-single-slider.html">
-                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
-                      </a>
-
-                    </span>
-                  </span>
-
-                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/11-min.jpg" width="600" height="399" alt="">
-                </figure>
-
-                <div class="item-box-desc">
-                  <h3>Ocean Project</h3>
-                  <ul class="list-inline categories nomargin">
-                    <li><a href="#">Photography</a></li>
-                    <li><a href="#">Design</a></li>
-                  </ul>
-                </div>
-
-              </div>
-
-            </div><!-- /item -->
 
 
 
 
           </div>
+        </div>
+      </section>
           <!-- testimonials -->
-          <div class="testimonial-bordered">
-
-            <div class="owl-carousel text-center owl-testimonial nomargin" data-plugin-options='{"singleItem": true, "autoPlay": 4000, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
-              <div class="testimonial">
-                <figure>
-                  <%= cl_image_tag Viager.first.photo ,:height=> 399, :width=> 600, :crop=>"fill", alt: ""%>
+      <section class="alternate">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-xs-12">
+              <div class="testimonial testimonial-bordered padding-15">
+                <figure class="pull-left">
+                  <%=image_tag "Impact_Investment.jpg", class: "rounded"%>
                 </figure>
-                <div class="testimonial-content nopadding">
-                  <p class="lead">Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero.</p>
+                <div class="testimonial-content">
+                  <p>"Le succès c'est d'aller d'échec en échec sans perdre son enthousiasme" W.Churchill</p>
                   <cite>
-                    Joana Doe
-                    <span>Company Ltd.</span>
-                  </cite>
-                </div>
-              </div>
-
-              <div class="testimonial">
-                <figure>
-                  <img class="rounded" src="assets/images/demo/people/300x300/12-min.jpg" alt="" />
-                </figure>
-                <div class="testimonial-content nopadding">
-                  <p class="lead">Quod necessitatibus quis expedita harum provident eos obcaecati id culpa.</p>
-                  <cite>
-                    Melissa Doe
-                    <span>Company Ltd.</span>
-                  </cite>
-                </div>
-              </div>
-
-              <div class="testimonial">
-                <figure>
-                  <img class="rounded" src="assets/images/demo/people/300x300/d-min.jpg" alt="" />
-                </figure>
-                <div class="testimonial-content nopadding">
-                  <p class="lead">Deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum.</p>
-                  <cite>
-                    John Doe
-                    <span>Company Ltd.</span>
-                  </cite>
-                </div>
-              </div>
-
-              <div class="testimonial">
-                <figure>
-                  <img class="rounded" src="assets/images/demo/people/300x300/c-min.jpg" alt="" />
-                </figure>
-                <div class="testimonial-content nopadding">
-                  <p class="lead">Fugit repellendus expedita excepturi iure perferendis provident quia eaque.</p>
-                  <cite>
-                    Simina Doe
-                    <span>Company Ltd.</span>
+                    Arnaud
+                    <span>Viag'up</span>
                   </cite>
                 </div>
               </div>
             </div>
-
+            <div class="col-md-4 col-xs-12">
+              <div class="testimonial testimonial-bordered padding-15">
+                <figure class="pull-left">
+                  <%=image_tag "guillaume.JPG", class: "rounded"%>
+                </figure>
+                <div class="testimonial-content">
+                  <p>"On ne boirait pas un coup?" self</p>
+                  <cite>
+                    Guillaume
+                    <span>Viag'up</span>
+                  </cite>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+              <div class="testimonial testimonial-bordered padding-15">
+                <figure class="pull-left">
+                  <%=image_tag "vieux1.jpeg", class: "rounded"%>
+                </figure>
+                <div class="testimonial-content">
+                  <p>J'ai pu reprendre mes cours de skateboard!</p>
+                  <cite>
+                    Jean-Jacques
+                    <span>Senior heureux</span>
+                  </cite>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
           <!-- /testimonials -->
 
         </div>
+
+      <!-- /Works -->
+      <!-- PARALLAX -->
+      <section class="parallax parallax-2 padding-xxs" style="background-image: url('<%= image_path "city.jpg" %>');">
+        <div class="overlay dark-4"><!-- dark overlay [0 to 9 opacity] --></div>
+
+        <div class="container boldy">
+
+          <div class="row countTo-md text-center">
+
+
+
+            <div class="col-xs-6 col-sm-4">
+              <i class="fa fa-home"></i>
+              <span class="countTo" data-speed="3000">17</span>
+              <h4>VIAGERS</h4>
+            </div>
+
+            <div class="col-xs-6 col-sm-4">
+              <i class="fa fa-money"></i>
+              <span class="countTo" data-speed="3000">350</span>
+              <h4>EPARGNANTS</h4>
+            </div>
+
+            <div class="col-xs-6 col-sm-4">
+              <i class="fa fa-facebook"></i>
+              <span class="countTo" data-speed="3000">350</span>
+              <h4>FACEBOOK</h4>
+            </div>
+
+          </div>
+
+        </div>
       </section>
+      <!-- /PARALLAX -->
+
+
+
+
       <!-- /Works -->
