@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161220160045) do
+ActiveRecord::Schema.define(version: 20161221161818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,9 @@ ActiveRecord::Schema.define(version: 20161220160045) do
     t.datetime "updated_at", null: false
     t.string   "first_name"
     t.string   "last_name"
+    t.text     "descriptif"
+    t.string   "sexe"
+    t.text     "projet"
   end
 
   create_table "rente_shares", force: :cascade do |t|
@@ -194,8 +197,8 @@ ActiveRecord::Schema.define(version: 20161220160045) do
     t.string   "zip_code"
     t.string   "country"
     t.integer  "old_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "photo"
     t.integer  "bouquet"
     t.integer  "rente"
@@ -203,6 +206,22 @@ ActiveRecord::Schema.define(version: 20161220160045) do
     t.float    "tri"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "type"
+    t.string   "habitable"
+    t.string   "piece"
+    t.string   "niveaux"
+    t.boolean  "ascenceur"
+    t.boolean  "balcon"
+    t.string   "annee"
+    t.string   "terrain"
+    t.string   "annexe"
+    t.string   "maison"
+    t.string   "venale"
+    t.string   "decote"
+    t.integer  "number_share"
+    t.string   "salon"
+    t.string   "chambre"
+    t.string   "exterieur"
     t.index ["old_id"], name: "index_viagers_on_old_id", using: :btree
   end
 

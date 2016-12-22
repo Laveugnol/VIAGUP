@@ -2,6 +2,9 @@ class Viager < ApplicationRecord
   belongs_to :old
 
   mount_uploader :photo, PhotoUploader
+  mount_uploader :salon, SalonUploader
+  mount_uploader :chambre, ChambreUploader
+  mount_uploader :exterieur, ExterieurUploader
 
   geocoded_by :full_address
   after_validation :geocode, if: :address_changed?

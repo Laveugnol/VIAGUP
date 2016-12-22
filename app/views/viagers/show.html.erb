@@ -4,214 +4,171 @@
 
 
 
-<section class="page-header page-header-xs">
+<section  id="carousel_section">
         <div class="container">
-
-          <h2><%=@viager.city.upcase%></h1>
-          <span class="font-lato size-18 hidden-xs">Rente: <%=@viager.rente%>€/mois</span>
-          <h1>TRI <%=@viager.tri%>%  sur <%=@viager.horizon%> ans</h2>
-
-
-
-        </div>
-      </section>
       <!-- /PAGE HEADER -->
 
 
 
+                <!--
+          controlls-over    = navigation buttons over the image
+          buttons-autohide  = navigation buttons visible on mouse hover only
 
-      <!-- OWL SLIDER -->
-      <section id="slider">
+          data-plugin-options:
+            "singleItem": true
+            "autoPlay": true (or ms. eg: 4000)
+            "navigation": true
+            "pagination": true
+            "transitionStyle":"fadeUp" (fade,backSlide,goDown,fadeUp)
+        -->
+        <div class="row">
+          <div class="col-xs-6">
 
-        <div class="owl-carousel buttons-autohide controlls-over nomargin" data-plugin-options='{"singleItem": true, "autoPlay": true, "navigation": true, "pagination": true, "transitionStyle":"fade"}'>
-          <div>
-           <%= cl_image_tag @viager.photo ,:height=> 399, :width=> 600, :crop=>"fill", class: "img-responsive", alt: ""%>
+            <div class="owl-carousel buttons-autohide controlls-over" data-plugin-options='{"singleItem": true, "autoPlay": true, "navigation": true, "pagination": true, "transitionStyle":"fade"}'>
+              <div>
+                <%= cl_image_tag @viager.photo ,:height=> 800, :width=> 1200, :crop=>"fill", class: "img-responsive" %>
+              </div>
+              <div>
+               <%= cl_image_tag @viager.salon ,:height=> 800, :width=> 1200, :crop=>"fill", class: "img-responsive"%>
+              </div>
+              <div>
+                <%= cl_image_tag @viager.chambre ,:height=> 800, :width=> 1200, :crop=>"fill", class: "img-responsive"%>
+              </div>
+            </div>
           </div>
-          <div>
-            <img class="img-responsive" src="assets/images/demo/panorama/2-min.jpg" alt="">
+          <div class="col-xs-6">
+            <div class="panel panel-default">
+              <div class="panel-body" id="icones">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <%= image_tag "77_Essential_Icons_Location Marker.svg"%>
+                    <h3><%=@viager.city.capitalize%></h3>
+                  </div>
+                  <div class="col-xs-6">
+                    <%= image_tag "77_Essential_Icons_Home.svg"%>
+                    <h3><%=@viager.maison.capitalize%></h3>
+                  </div>
+                  <div class="col-xs-6">
+                    <%= image_tag "77_Essential_Icons_Bar Graph.svg"%>
+                    <h3><%=@viager.tri%> %</h3>
+                  </div>
+                  <div class="col-xs-6">
+                    <%= image_tag "77_Essential_Icons_Clock.svg"%>
+                    <h3><%=@viager.horizon%> ans</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-footer">
+                <div class="row">
+                  <div class=' col-xs-push-3 col-xs-9'>
+                    <h3 id="card_footer"><span class="label " id="progression"> En cours de financement</span></h3>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
           </div>
-        </div>
-
-      </section>
-      <!-- /OWL SLIDER -->
-
-
-
-      <!-- CALLOUT -->
-      <div class="alert alert-transparent bordered-bottom">
-        <div class="container">
-
-          <div class="row">
-
-            <div class="col-md-9 col-sm-12"><!-- left text -->
-              <h3>Il reste <span><strong>XXXX</strong></span> parts disponible!</h3>
-
-            </div><!-- /left text -->
-
-
-            <div class="col-md-3 col-sm-12 text-right"><!-- right btn -->
-              <a href="#purchase" rel="nofollow"  class="btn btn-primary btn-lg">SOUSCRIRE</a>
-            </div><!-- /right btn -->
-
-          </div>
-
         </div>
       </div>
-      <!-- /CALLOUT -->
 
+    </section>
+      <!-- /OWL SLIDER -->
+      <section class="callout-dark heading-title heading-arrow-bottom">
+        <div class="container">
 
+          <div class="text-center">
+            <h3 class="size-30">Le viager </h3>
+            <p>Votre future épargne en quelques chiffres </p>
+          </div>
 
+        </div>
+      </section>
 
       <!-- -->
-      <section>
+      <section id="offre">
         <div class="container">
 
           <div class="row nomargin">
 
-            <div class="col-md-8 col-sm-8">
+            <div class="col-md-9 col-sm-9">
 
               <!-- Subtitle -->
               <div class="heading-title heading-border">
-                <h2>Project Name <span>Details</span></h2>
+                <h2>L'offre de <span><%=@viager.old.first_name%></span></h2>
 
                 <ul class="list-inline categories nomargin">
-                  <li><a href="#">Photography</a></li>
-                  <li><a href="#">Design</a></li>
+                  <li><%=@viager.city%></li>
+                  <li>France</li>
                 </ul>
 
               </div>
               <!-- /Subtitle -->
 
-              <p>Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum.</p>
-              <p class="font-lato size-18">Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p><%=@viager.old.descriptif%></p>
+              <div class="heading-title heading-border">
+                <h3>Ses projets</h3>
+              </div>
+              <p class="font-lato size-18"><%=@viager.old.projet%></p>
+                <div class="row" id="cta">
+                  <div class="offset-xs-5 col-xs-5"></div>
+
+              <%= link_to "Souscrire",  viagers_path, class: "btn-yours-big tof"%>
+                </div>
 
             </div>
 
-            <div class="col-md-4 col-sm-4">
+            <div class="col-md-3 col-sm-3">
 
               <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h2 class="panel-title">6 parts disponibles</h2>
+                  <div class="progress">
+                    <div id="progression" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%; min-width: 5em;">
+                      70%
+                    </div>
+                  </div>
+                </div>
                 <div class="panel-body">
+                  Valeur vénale
+                  <p class="card"><%= @viager.venale %>€</p>
+                  Valeur décôtée
+                  <p class="card"><%= @viager.decote %>€</p>
+                  Rendement estimé
+                  <p class="card"><%= @viager.tri %>%</p>
+                  Ticket d'entrée/part
+                  <p class="card"><%= @viager.bouquet %>€</p>
+                  Rente mensuelle/part
+                  <p class="card"><%= @viager.rente/@viager.number_share %>€</p>
+                  Détention estimée
+                  <p class="card"><%= @viager.horizon %> ans</p>
 
-                  <p class="font-lato size-18">Integer posuere erat a ante venenatis dapibus posuere velit aliquet nulla sed consectetur.</p>
-
+                </div>
+              <!--   <div class="panel-body">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   <ul class="portfolio-detail-list list-unstyled nomargin">
                     <li><span><i class="fa fa-user"></i>Author:</span> Smarty Inc.</li>
                     <li><span><i class="fa fa-calendar"></i>Released:</span> 29th June 2015</li>
                     <li><span><i class="fa fa-lightbulb-o"></i>Technologies:</span> HTML / CSS / JAVASCRIPT</li>
                     <li><span><i class="fa fa-link"></i>Website:</span> <a href="#">www.stepofweb.com</a></li>
                   </ul>
-
-                </div>
-
-                <div class="panel-footer">
-
-                  <!-- Social Icons -->
-                  <a href="#" class="social-icon social-icon-sm social-icon-transparent social-facebook" data-toggle="tooltip" data-placement="top" title="Facebook">
-
-                    <i class="icon-facebook"></i>
-                    <i class="icon-facebook"></i>
-                  </a>
-
-                  <a href="#" class="social-icon social-icon-sm social-icon-transparent social-twitter" data-toggle="tooltip" data-placement="top" title="Twitter">
-                    <i class="icon-twitter"></i>
-                    <i class="icon-twitter"></i>
-                  </a>
-
-                  <a href="#" class="social-icon social-icon-sm social-icon-transparent social-gplus" data-toggle="tooltip" data-placement="top" title="Google plus">
-                    <i class="icon-gplus"></i>
-                    <i class="icon-gplus"></i>
-                  </a>
-
-                  <a href="#" class="social-icon social-icon-sm social-icon-transparent social-linkedin" data-toggle="tooltip" data-placement="top" title="Linkedin">
-                    <i class="icon-linkedin"></i>
-                    <i class="icon-linkedin"></i>
-                  </a>
-
-                  <a href="#" class="social-icon social-icon-sm social-icon-transparent social-pinterest" data-toggle="tooltip" data-placement="top" title="Pinterest">
-                    <i class="icon-pinterest"></i>
-                    <i class="icon-pinterest"></i>
-                  </a>
-                  <!-- /Social Icons -->
-
-                </div>
-
-              </div>
+                </div> -->
 
             </div>
 
           </div>
 
+        </div>
         </div>
       </section>
       <!-- -->
-
-
-
-
-      <!-- PARALLAX -->
-      <section class="section-video padding-xlg">
-        <div class="overlay dark-7"><!-- dark overlay [1 to 9 opacity] --></div>
-
-        <div class="section-container-video">
-
-          <video poster="assets/images/demo/video/back.jpg" preload="auto" loop autoplay muted>
-            <source src='assets/images/demo/video/back.webm' type='video/webm' />
-            <source src='assets/images/demo/video/back.mp4' type='video/mp4' />
-          </video>
-
-        </div>
-
-        <div class="container">
-
-          <!--
-            OPTIONAL : VIDEO TITLE / SUBTITLE
-          -->
-          <!--
-          <div class="text-center margin-bottom-100">
-            <h3 class="nomargin">HTML5 VIDEO SECTION</h3>
-            <p class="font-lato weight-300 lead nomargin-top">We can't solve problems by using the same kind of thinking we used when we created them.</p>
-          </div>
-          -->
-
-          <div class="text-center hidden-xs">
-
-            <!-- Counter -->
-            <div class="piechart" data-color="#ffffff" data-trackcolor="rgba(255,255,255,0.2)" data-size="150" data-percent="87" data-width="2" data-animate="1700">
-              <span class="size-30"><span class="countTo" data-speed="4000">87</span>%</span>
-            </div>
-
-            <!-- Counter -->
-            <div class="piechart" data-color="#ffffff" data-trackcolor="rgba(255,255,255,0.2)" data-size="150" data-percent="66" data-width="2" data-animate="1700">
-              <span class="size-30"><span class="countTo" data-speed="4000">66</span>%</span>
-            </div>
-
-            <!-- Counter -->
-            <div class="piechart" data-color="#ffffff" data-trackcolor="rgba(255,255,255,0.2)" data-size="150" data-percent="97" data-width="2" data-animate="1700">
-              <span class="size-30"><span class="countTo" data-speed="4000">97</span>%</span>
-            </div>
-
-            <!-- Counter -->
-            <div class="piechart" data-color="#ffffff" data-trackcolor="rgba(255,255,255,0.2)" data-size="150" data-percent="76" data-width="2" data-animate="1700">
-              <span class="size-30"><span class="countTo" data-speed="4000">76</span>%</span>
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-      <!-- /PARALLAX -->
-
-
-
 
       <!-- CALLOUT -->
       <section class="callout-dark heading-title heading-arrow-bottom">
         <div class="container">
 
           <div class="text-center">
-            <h3 class="size-30">The Future Of Multipurpose</h3>
-            <p>We can't solve problems by using the same kind of thinking we used when we created them.</p>
+            <h3 class="size-30"><%= image_tag "location_marker_white.svg"%>Localisation du bien </h3>
+            <p>Vous ne connaissez pas le secteur? Aucune inquiétude, nous nous en sommes chargés. </p>
           </div>
 
         </div>
@@ -238,18 +195,28 @@
 
             <div class="padding-40">
 
-              <h2>Multipurpose Unlimited Options</h2>
+              <h2><%= image_tag "77_Essential_Icons_List.svg"%>Le dynamisme du secteur</h2>
               <p>Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum.</p>
               <p class="font-lato size-18">Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
 
               <div class="row margin-top-60">
 
-                <div class="col-md-6">
-                  <div class="heading-title heading-border-bottom heading-color">
-                    <h3>Precision</h3>
+                <div class="col-md-8">
+                  <div class="heading-title heading-border-bottom heading-color" id="descriptif">
+                    <h3>Descriptif du bien</h3>
                   </div>
-                  <p>Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel fastidii propriae philosophia cu mea. Utinam ipsum everti necessitatibus at fuisset splendide.</p>
+                  <ul>
+                    <li>TYPE DE BIEN : <strong><%=@viager.maison.capitalize%></strong></li>
+                    <li>SURFACE HABITABLE : <strong><%=@viager.habitable%> m²</strong></li>
+                    <li>NOMBRE DE PIÈCE(S) : <strong><%=@viager.piece%></strong></li>
+                    <li>NOMBRE DE NIVEAU(X) : <strong><%=@viager.niveaux%></strong></li>
+                    <li>ACCÈS PAR ASCENSEUR : <strong><%=@viager.ascenceur%></strong></li>
+                    <li>BALCON/TERRASSE : <strong><%=@viager.balcon%></strong></li>
+                    <li>ÉPOQUE DE CONSTRUCTION : <strong><%=@viager.annee%></strong></li>
+                    <li>SURFACE DU TERRAIN : <strong><%=@viager.terrain%> m²</strong></li>
+                    <li>ANNEXE(S)/SURFACE(S) SUPPLÉMENTAIRE(S) : <strong><%=@viager.annexe%></strong></li>
+                  </ul>
 
                   <a href="#">
                     Read
@@ -265,24 +232,15 @@
 
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <div class="heading-title heading-border-bottom heading-color">
-                    <h3>Simplicity</h3>
+                    <h3>Créditrentier</h3>
                   </div>
-                  <p>Fabulas definitiones ei pri per recteque hendrerit scriptorem in errem scribentur mel fastidii propriae philosophia cu mea. Utinam ipsum everti necessitatibus at fuisset splendide.</p>
-
-                  <a href="#">
-                    Read
-                    <!-- /word rotator -->
-                    <span class="word-rotator" data-delay="2000">
-                      <span class="items">
-                        <span>more</span>
-                        <span>now</span>
-                      </span>
-                    </span><!-- /word rotator -->
-                    <i class="glyphicon glyphicon-menu-right size-12"></i>
-                  </a>
-
+                    <ul>
+                      <li><strong><%=@viager.old.first_name.capitalize%></strong></li>
+                      <li><strong><%=@viager.old.sexe.capitalize%></strong></li>
+                      <li><strong><%=@viager.old.age%> ans</strong></li>
+                    </ul>
                 </div>
 
               </div>
