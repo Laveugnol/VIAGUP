@@ -163,35 +163,29 @@
                           <span class="fa fa-search size-20"></span>
 
                         <%end%>
-
-
-                      <h4 class="enblanc">Ticket d'entrée: <strong><%=viager.bouquet%>€</strong></h4>
+                      <h4 class="enblanc">Ticket d'entrée: <strong><%=viager.bouquet*viager.number_share%>€</strong></h4>
                       <h4 class="enblanc">Rente: <strong><%=viager.rente%> €/mois</strong></h4>
-
-
                         <!-- lightbox -->
                         <!-- details -->
-
-
                       </span>
                     </span>
                   <%= cl_image_tag viager.photo ,:height=> 399, :width=> 600, :crop=>"fill", class: "img-responsive", alt: ""%>
 
                   </figure>
 
+
                   <div class="item-box-desc">
-                    <h3><%=viager.city%></h3>
+                    <h3><%=viager.city%>, <%=viager.zip_code%></h3>
                     <ul class="list-inline categories nomargin">
-                      <li><%=viager.address%></li>
-                      <li><%=viager.zip_code%></li>
+                      <div id="progression" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%; min-width: 5em;">
+                      70%
+                      </div>
                       <li>Ticket d'entrée: <strong><%=viager.bouquet%>€</strong></li>
-                      <li>Rente: <strong><%=viager.rente%> €/mois</strong></li>
-                      <li>Horizon d'investissment <%=viager.horizon%> ans </li>
+                      <li>Part: <strong><%=viager.rente%> €/mois</strong></li>
+                      <li>Horizon d'investissment: <strong><%=viager.horizon%> ans </strong></li>
                     </ul>
                   </div>
-
                 </div>
-
               </div>
             <%end%><!-- /item -->
 

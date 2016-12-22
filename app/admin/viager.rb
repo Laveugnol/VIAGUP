@@ -13,7 +13,10 @@ ActiveAdmin.register Viager do
 #   permitted
 # end
 
-permit_params :address, :city, :zip_code, :country, :old_id, :photo, :rente, :bouquet, :horizon, :tri
+permit_params :address, :city, :zip_code, :country, :old_id, :photo,
+              :rente, :bouquet, :horizon, :tri, :habitable, :piece,
+              :niveaux, :ascenceur, :balcon, :annee, :terrain, :annexe, :maison,
+              :venale, :decote, :number_share, :salon , :chambre, :exterieur
 
 
  index do
