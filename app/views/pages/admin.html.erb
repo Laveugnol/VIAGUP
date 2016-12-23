@@ -1,0 +1,52 @@
+<div class="container creation">
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+
+      <div class="form-login" id="centerbuttons">
+      <h3 class="text-center">Creer un viager</h3>
+
+          <%= simple_form_for [@viager] do |f| %>
+            <%= f.input :address,label: 'Adresse?'%>
+            <%= f.input :city,label: 'ville?'%>
+            <%= f.input :zip_code,label: 'code postal?'%>
+            <%= f.input :country,label: 'pays?'%>
+            <%= f.input :rente,label: 'rente totale?'%>
+            <%= f.input :bouquet,label: 'bouquet/personne?'%>
+            <%= f.input :horizon,label: 'horizon?'%>
+            <%= f.input :tri,label: 'TRI?'%>
+            <%= f.input :habitable,label: 'nombre de m2 habitable?'%>
+            <%= f.input :piece,label: 'nombre de piece?'%>
+            <%= f.input :niveaux,label: 'Combien de niveaux?'%>
+            <label class="checkbox">
+              <input type='hidden' value='0' name="viager[ascenseur]">
+              <input type="checkbox" value="1" name="viager[ascenseur]">
+              <i></i> Ascenceur?
+            </label>
+            <label class="checkbox">
+              <input type='hidden' value='0' name="viager[balcon]">
+              <input type="checkbox" value="1" name="viager[balcon]">
+              <i></i> Balcon?
+            </label>
+            <%= f.input :annee,label: 'Annee de construction?'%>
+            <%= f.input :terrain,label: 'Surface du terrain?'%>
+            <%= f.input :annexe,label: "Presence d'une annexe?"%>
+            <%= f.input :maison,label: "Type d'habitation?"%>
+            <%= f.input :venale,label: 'Valeur vénale?'%>
+            <%= f.input :decote,label: 'Valeur decotée?'%>
+            <%= f.input :number_share,label: 'Nombre de parts'%>
+            <%= f.input :photo,label: 'Photo qui claque'%>
+            <%= f.input :photo_cache, as: :hidden %>
+            <%= f.input :salon ,label: 'Photo du salon'%>
+            <%= f.input :salon_cache, as: :hidden %>
+            <%= f.input :chambre,label: 'Photo de la chambre '%>
+            <%= f.input :chambre_cache, as: :hidden %>
+
+          <%= f.submit "C'est parti", class: "btn-yours2" %>
+          <% end %>
+
+        </div>
+
+      </div>
+    </div>
+  </div>

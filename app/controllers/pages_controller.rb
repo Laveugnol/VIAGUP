@@ -39,6 +39,15 @@ class PagesController < ApplicationController
     redirect_to pages_profil_path
   end
 
+  def admin
+    @viager = Viager.new
+  end
+
+  def old
+    @viager = Viager.find(params[:id])
+    @old = Old.new
+  end
+
 
 
 end

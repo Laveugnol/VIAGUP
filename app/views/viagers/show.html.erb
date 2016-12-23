@@ -111,8 +111,66 @@
               <p class="font-lato size-18"><%=@viager.old.projet%></p>
                 <div class="row" id="cta">
                   <div class="offset-xs-5 col-xs-5"></div>
+                    <button type="button" class="btn-yours-big tof" data-toggle="modal" data-target="#myModal">
+                      Souscrire
+                    </button>
+                </div>
 
-              <%= link_to "Souscrire",  viagers_path, class: "btn-yours-big tof"%>
+                <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Espace de réservation de vos parts</h4>
+                      </div>
+
+
+                      <!-- Modal Body -->
+                      <div class="modal-body">
+                        <h4><%=@viager.city.capitalize%>,  <%=@viager.horizon.to_s%> ans.</h4>
+                        <%= cl_image_tag @viager.photo ,:crop=>"fill", class: "avatar-square" %>
+                        <h4>Conditions</h4>
+                          <ul>
+                            <li>Vous vous apprétez à reserver des parts d'une société civile immobilière.</li>
+                             <li>Cette société sera constituée si <a href="#" data-toggle="popover" class="btn" title="A quoi correspond ce montant?" data-content="Il correspond aux frais de notaires, aux frais d'agence immobilière ainsi qu'aux frais de constitution de la SCI." id="popinfo"><%=separateur(@viager.bouquet*@viager.number_share)%>€</a> sont financés par la communauté d'investisseurs avant le METTRE UNE DATE DE FIN.</li>
+                             <li>Cet investissement représente un risque d'illiquidité (difficultés à revendre vos parts avant le terme) ainsi qu'un risque de perte en capital important. Pour plus de détails, veuillez vous reporter à l'onglet concernant les risques de  l'investissement participatif.</li>
+
+                          </ul>
+
+                        <h4>Nombre de parts souhaitées</h4>
+                        <input type="text" min="0" max="<%=@viager.number_share%>" class="form-control stepper" id="nombre_de_parts">
+
+                        <h4>Montant de votre investissement</h4>
+                        <button type="button" class="btn-treehouse clickable" >Simulation</button>
+                        <ul id="insertion">
+
+                        </ul>
+                      </div>
+
+                      <!-- Modal Footer -->
+                      <div class="modal-footer">
+
+                        <button type="button" class="btn-treehouse" data-dismiss="modal">Revenir à l'offre</button>
+                        <button class="confirmation">
+                        <%= form_tag (signatures_reservation_path(@viager)), method: :post do %>
+
+                        <%= hidden_field_tag :name, current_user.investment_profile.prenom %>
+                        <%= hidden_field_tag :id, @viager.id %>
+                        <div id="part">
+
+                        </div>
+                        <%= hidden_field_tag :email, current_user.email %>
+                        <%= submit_tag 'Réserver', class: "btn-yours-small" %>
+                        <%end%>
+                        </button>
+
+
+                      </div>
+
+                    </div>
+                  </div>
                 </div>
 
             </div>
@@ -582,6 +640,34 @@
         }
       });
     });
+
+
+
+    $(document).ready(function() {
+
+      $(".clickable").click(function(event) {
+      var part = $('#nombre_de_parts').val();
+      var bouquet = "<%=@viager.bouquet%>";
+      var rente = "<%=@viager.rente/@viager.number_share%>";
+      var mensuel =rente * part;
+      var invest = bouquet * part;
+      $('#insertion').html('<li>Vous contribuerez à hauteur de <strong>'+invest+'€</strong> dès la constitution de la SCI.</li><li>Vous serez prélevé à hauteur de <strong>'+mensuel+'€/mois</strong> au titre de la rente.</li>');
+
+          });
+
+      $(".confirmation").hover(function(event) {
+      var part = $('#nombre_de_parts').val();
+      $('#part').html('<input type="hidden" name="part" value="'+part+'" />');
+
+          });
+
+
+
+
+    });
+
+
+
 
   <% end %>
 <% end %>

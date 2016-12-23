@@ -1,5 +1,7 @@
 class Viager < ApplicationRecord
   belongs_to :old
+  has_many :bouquet_shares,  dependent: :destroy
+  has_many :rente_shares,  dependent: :destroy
 
   mount_uploader :photo, PhotoUploader
   mount_uploader :salon, SalonUploader

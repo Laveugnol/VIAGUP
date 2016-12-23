@@ -97,6 +97,11 @@
             </li>
           -->
           <ul id="topMain" class="nav nav-pills nav-main bold">
+            <% if current_user.admin%>
+            <li class="dropdown">
+              <%=link_to "ADMIN", pages_admin_path, class: "dropdown-toggle"%>
+            </li>
+            <%end%>
             <li class="dropdown"><!-- HOME -->
               <a class="dropdown-toggle" href="#">
                 HOME
