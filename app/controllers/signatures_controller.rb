@@ -26,6 +26,7 @@ class SignaturesController < ApplicationController
     @user = current_user
 
     params[:part].to_i.times do
+
     end
 
     render :embedded_signature

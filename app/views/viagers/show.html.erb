@@ -61,7 +61,12 @@
               <div class="panel-footer">
                 <div class="row">
                   <div class=' col-xs-push-3 col-xs-9'>
+                    <% if part_available_count(@viager) != 0%>
                     <h3 id="card_footer"><span class="label " id="progression"> En cours de financement</span></h3>
+                    <% else %>
+                    <h3 id="card_footer"><span class="label " id="cloture"> Financé</span></h3>
+                    <%end%>
+
                   </div>
                 </div>
               </div>
@@ -134,13 +139,13 @@
                         <h4>Conditions</h4>
                           <ul>
                             <li>Vous vous apprétez à reserver des parts d'une société civile immobilière.</li>
-                             <li>Cette société sera constituée si <a href="#" data-toggle="popover" class="btn" title="A quoi correspond ce montant?" data-content="Il correspond aux frais de notaires, aux frais d'agence immobilière ainsi qu'aux frais de constitution de la SCI." id="popinfo"><%=separateur(@viager.bouquet*@viager.number_share)%>€</a> sont financés par la communauté d'investisseurs avant le METTRE UNE DATE DE FIN.</li>
+                             <li>Cette société sera constituée si <a href="#" data-toggle="popover" class="btn" title="A quoi correspond ce montant?" data-content="Il correspond aux frais de notaires, aux frais d'agence immobilière ainsi qu'aux frais de constitution de la SCI." id="popinfo"><%=separateur(@viager.bouquet)%>€</a> sont financés par la communauté d'investisseurs avant le METTRE UNE DATE DE FIN.</li>
                              <li>Cet investissement représente un risque d'illiquidité (difficultés à revendre vos parts avant le terme) ainsi qu'un risque de perte en capital important. Pour plus de détails, veuillez vous reporter à l'onglet concernant les risques de  l'investissement participatif.</li>
 
                           </ul>
 
                         <h4>Nombre de parts souhaitées</h4>
-                        <input type="text" min="0" max="<%=@viager.number_share%>" class="form-control stepper" id="nombre_de_parts">
+                        <input type="text" min="0" max="<%=part_available_count(@viager)%>" class="form-control stepper" id="nombre_de_parts">
 
                         <h4>Montant de votre investissement</h4>
                         <button type="button" class="btn-treehouse clickable" >Simulation</button>
@@ -179,10 +184,10 @@
 
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h2 class="panel-title">6 parts disponibles</h2>
+                  <h2 class="panel-title"><%=part_available_count(@viager)%> part(s) disponible(s)</h2>
                   <div class="progress">
-                    <div id="progression" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%; min-width: 5em;">
-                      70%
+                    <div id="progression" class="progress-bar" role="progressbar" aria-valuenow="<%=share_assigned_percentage(@viager)%>" aria-valuemin="0" aria-valuemax="100" style="width: <%=share_assigned_percentage(@viager)%>%; min-width: 1em;">
+                      <%=share_assigned_percentage(@viager)%>%
                     </div>
                   </div>
                 </div>
@@ -194,7 +199,7 @@
                   Rendement estimé
                   <p class="card"><%= @viager.tri %>%</p>
                   Ticket d'entrée/part
-                  <p class="card"><%= @viager.bouquet %>€</p>
+                  <p class="card"><%= @viager.bouquet/@viager.number_share %>€</p>
                   Rente mensuelle/part
                   <p class="card"><%= @viager.rente/@viager.number_share %>€</p>
                   Détention estimée

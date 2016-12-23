@@ -163,8 +163,8 @@
                           <span class="fa fa-search size-20"></span>
 
                         <%end%>
-                      <h4 class="enblanc">Ticket d'entrée: <strong><%=viager.bouquet*viager.number_share%>€</strong></h4>
-                      <h4 class="enblanc">Rente: <strong><%=viager.rente%> €/mois</strong></h4>
+                      <h4 class="enblanc">Ticket d'entrée: <strong><%=viager.bouquet/viager.number_share%>€</strong></h4>
+                      <h4 class="enblanc">Rente: <strong><%=viager.rente/viager.number_share%> €/mois</strong></h4>
                         <!-- lightbox -->
                         <!-- details -->
                       </span>
@@ -177,11 +177,14 @@
                   <div class="item-box-desc">
                     <h3><%=viager.city%>, <%=viager.zip_code%></h3>
                     <ul class="list-inline categories nomargin">
-                      <div id="progression" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%; min-width: 5em;">
-                      70%
+                      <div class="progress">
+                        <div id="progression" class="progress-bar" role="progressbar" aria-valuenow="<%=share_assigned_percentage(viager)%>" aria-valuemin="0" aria-valuemax="100" style="width: <%=share_assigned_percentage(viager)%>%; min-width: 1em;">
+                        <%=share_assigned_percentage(viager)%>%
+                        </div>
                       </div>
-                      <li>Ticket d'entrée: <strong><%=viager.bouquet%>€</strong></li>
-                      <li>Part: <strong><%=viager.rente%> €/mois</strong></li>
+
+                      <li>Ticket d'entrée: <strong><%=viager.bouquet/viager.number_share%> €</strong></li>
+                      <li>Part: <strong><%=viager.rente/viager.number_share%> €/mois</strong></li>
                       <li>Horizon d'investissment: <strong><%=viager.horizon%> ans </strong></li>
                     </ul>
                   </div>
