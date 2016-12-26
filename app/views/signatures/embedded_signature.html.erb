@@ -63,7 +63,7 @@
 <!-- Open the embedded signer iFrame -->
 <script type="text/javascript">
 // <![CDATA[
-  HelloSign.init('a035585860221ecb40da4669f3c62ef9');
+  HelloSign.init('<%=ENV['HELLO_SIGN_CLIENT']%>');
   HelloSign.open({
     'url': '<%= @sign_url %>',
     'skipDomainVerification': true,
