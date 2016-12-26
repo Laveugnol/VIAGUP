@@ -1,10 +1,15 @@
+require "json"
+require "rest-client"
+
 class SignaturesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:callbacks]
   skip_before_action :verify_authenticity_token, only: [:callbacks]
   before_action :set_viager, only: [:reservation]
 
   def callbacks
+
     render json: 'Hello API Event Received', status: 200
+
   end
 
   def new

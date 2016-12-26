@@ -1,2 +1,56 @@
-<h1>Viagers#index</h1>
-<p>Find me in app/views/viagers/index.html.erb</p>
+<section>
+        <div class="container">
+
+          <header class="margin-bottom-60 text-center">
+            <h2>Nos derniers produits</h2>
+            <p class="lead font-lato">Selectionnés avec soin  &amp; rigueur</p>
+            <hr />
+          </header>
+
+          <div class="row mix-grid margin-top-80">
+
+            <%@viagers.each do |viager|%>
+              <div class="col-md-4 col-sm-4 "><!-- item -->
+
+                <div class="item-box">
+                  <figure>
+                    <span class="item-hover">
+                      <span class="overlay dark-5"></span>
+                      <span class="inner">
+
+                        <%=link_to viager_path(viager), class: "ico-rounded" do%>
+
+                          <span class="fa fa-search size-20"></span>
+
+                        <%end%>
+                      <h4 class="enblanc">Ticket d'entrée: <strong><%=viager.bouquet/viager.number_share%>€</strong></h4>
+                      <h4 class="enblanc">Rente: <strong><%=viager.rente/viager.number_share%> €/mois</strong></h4>
+                        <!-- lightbox -->
+                        <!-- details -->
+                      </span>
+                    </span>
+                  <%= cl_image_tag viager.photo ,:height=> 399, :width=> 600, :crop=>"fill", class: "img-responsive", alt: ""%>
+
+                  </figure>
+
+
+                  <div class="item-box-desc">
+                    <h3><%=viager.city%>, <%=viager.zip_code%></h3>
+                    <ul class="list-inline categories nomargin">
+                      <div class="progress">
+                        <div id="progression" class="progress-bar" role="progressbar" aria-valuenow="<%=share_assigned_percentage(viager)%>" aria-valuemin="0" aria-valuemax="100" style="width: <%=share_assigned_percentage(viager)%>%; min-width: 1em;">
+                        <%=share_assigned_percentage(viager)%>%
+                        </div>
+                      </div>
+
+                      <li>Ticket d'entrée: <strong><%=viager.bouquet/viager.number_share%> €</strong></li>
+                      <li>Part: <strong><%=viager.rente/viager.number_share%> €/mois</strong></li>
+                      <li>Horizon d'investissment: <strong><%=viager.horizon%> ans </strong></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            <%end%><!-- /item -->
+          </div>
+        </div>
+      </section>

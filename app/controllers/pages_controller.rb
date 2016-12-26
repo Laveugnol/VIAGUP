@@ -36,6 +36,7 @@ class PagesController < ApplicationController
 
     current_user.certificat = true
     current_user.save
+
     redirect_to pages_profil_path
   end
 

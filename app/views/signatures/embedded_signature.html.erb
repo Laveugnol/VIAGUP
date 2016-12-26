@@ -1,46 +1,60 @@
 
-<br>
-<br>
-<br>
-<br>
-<br>
+<section>
+        <div class="container">
 
-<div class="row">
-  <div class="col_xs_12">
-    <ul class="process-steps nav nav-justified">
-      <li >
-        <a href="#">1</a>
-        <h5>Informations</h5>
-      </li>
-      <li>
-        <a href="#">2</a>
-        <h5>Profil investisseur</h5>
-      </li>
-      <li >
-        <a href="#">3</a>
-        <h5>Documents</h5>
-      </li>
-      <li class="active">
-        <a href="#">4</a>
-        <h5>Signature</h5>
-      </li>
-    </ul>
-  </div>
-</div>
-<br>
-<br>
-<br>
-<br>
+          <header class="margin-bottom-60 text-center">
+            <h2>Nos derniers produits</h2>
+            <p class="lead font-lato">Selectionnés avec soin  &amp; rigueur</p>
+            <hr />
+          </header>
 
-<div class='row'>
-  <div class =' offset-xs-3 col_xs_6 offset-xs-3'>
-    <%= form_tag pages_finalize_path, method: :post do %>
+          <div class="row mix-grid margin-top-80">
 
-    <%= submit_tag 'Finaliser mon profil!' %>
-<% end %>
-  </div>
-</div>
+            <%Viager.all.each do |viager|%>
+              <div class="col-md-4 col-sm-4 "><!-- item -->
 
+                <div class="item-box">
+                  <figure>
+                    <span class="item-hover">
+                      <span class="overlay dark-5"></span>
+                      <span class="inner">
+
+                        <%=link_to viager_path(viager), class: "ico-rounded" do%>
+
+                          <span class="fa fa-search size-20"></span>
+
+                        <%end%>
+                      <h4 class="enblanc">Ticket d'entrée: <strong><%=viager.bouquet/viager.number_share%>€</strong></h4>
+                      <h4 class="enblanc">Rente: <strong><%=viager.rente/viager.number_share%> €/mois</strong></h4>
+                        <!-- lightbox -->
+                        <!-- details -->
+                      </span>
+                    </span>
+                  <%= cl_image_tag viager.photo ,:height=> 399, :width=> 600, :crop=>"fill", class: "img-responsive", alt: ""%>
+
+                  </figure>
+
+
+                  <div class="item-box-desc">
+                    <h3><%=viager.city%>, <%=viager.zip_code%></h3>
+                    <ul class="list-inline categories nomargin">
+                      <div class="progress">
+                        <div id="progression" class="progress-bar" role="progressbar" aria-valuenow="<%=share_assigned_percentage(viager)%>" aria-valuemin="0" aria-valuemax="100" style="width: <%=share_assigned_percentage(viager)%>%; min-width: 1em;">
+                        <%=share_assigned_percentage(viager)%>%
+                        </div>
+                      </div>
+
+                      <li>Ticket d'entrée: <strong><%=viager.bouquet/viager.number_share%> €</strong></li>
+                      <li>Part: <strong><%=viager.rente/viager.number_share%> €/mois</strong></li>
+                      <li>Horizon d'investissment: <strong><%=viager.horizon%> ans </strong></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            <%end%><!-- /item -->
+          </div>
+        </div>
+      </section>
 
 <!-- app/views/signatures/embedded_signature.html.erb -->
 
@@ -57,8 +71,38 @@
     'allowCancel': true,
     "debug": true,
 
-    'messageListener': function(eventData) {
-      alert("HelloSign event received");
+    // 'messageListener': function(eventData) {
+    //   alert("HelloSign event received");
+    // }
+
+    messageListener: function(eventData) {
+        // l("Got message data: " + JSON.stringify(eventData));
+
+
+        if (eventData.event == HelloSign.EVENT_SIGNED) {
+          //do something for document getting signed
+          $.ajax({
+            type: "POST",
+            url: "http://6e792dc4.ngrok.io/pages/finalize",
+            success: function(data) {
+              console.log("Contrat signé");
+            }
+          });
+        }
+        else if (eventData.event == HelloSign.EVENT_CANCELED) {
+      //do something else for document closing before getting signed
+          alert("Signature du contrat interromptue");
+        }
+        else if (eventData.event == HelloSign.EVENT_ERROR) {
+      //do something for an error situation
+          alert("erreur");
+        }
+        else if (eventData.event == HelloSign.EVENT_SENT) {
+      //not used in this example
+      //only used for embedded requesting
+
+        }
+
     }
   });
 // ]]>
