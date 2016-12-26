@@ -150,7 +150,7 @@
                 </a>
               <ul class="dropdown-menu pull-right">
                 <li><a href="/pages/profil">MON PROFIL</a></li>
-                <li><a href="shop-cart.html">MES INVESTISSEMENTS </a></li>
+                <li><%=link_to "MON EPARGNE", pages_epargne_path(current_user)%></li>
                 <li>
                 <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete %></li>
               </ul>

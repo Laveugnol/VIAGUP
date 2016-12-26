@@ -652,7 +652,7 @@
 
       $(".clickable").click(function(event) {
       var part = $('#nombre_de_parts').val();
-      var bouquet = "<%=@viager.bouquet%>";
+      var bouquet = "<%=@viager.bouquet/@viager.number_share%>";
       var rente = "<%=@viager.rente/@viager.number_share%>";
       var mensuel =rente * part;
       var invest = bouquet * part;

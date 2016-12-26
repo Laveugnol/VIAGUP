@@ -1,0 +1,81 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+  <div class="row">
+  <div class="col-xs-offset-3 col-xs-9">
+      <p><i class="fa fa-heart" aria-hidden="true"></i>
+        Merci pour votre confiance. Losque 100% des parts auront été souscrites, vous recevrez les statuts de la SCI par mail afin de valider votre association.
+      </p>
+    </div>
+    <div class="col-xs-offset-5 col-xs-7">
+      <span> <%= link_to "Vos investissments", pages_profil_path(current_user), class: "btn-treehouse-small" %>
+      <%= link_to "Nos offres", viagers_path, class: "btn-yours-small" %></span>
+    </div>
+  </div>
+</div>
+<br>
+
+
+
+<script src="//s3.amazonaws.com/cdn.hellofax.com/js/embedded.js" type="text/javascript"></script>
+<!-- Open the embedded signer iFrame -->
+<script type="text/javascript">
+// <![CDATA[
+
+  var parts = "<%=@parts%>";
+
+  HelloSign.init('<%=ENV['HELLO_SIGN_CLIENT']%>');
+
+  HelloSign.open({
+    'url': '<%= @sign_url %>',
+
+    'skipDomainVerification': true,
+
+    'allowCancel': true,
+    "debug": true,
+
+
+
+    messageListener: function(eventData) {
+        // l("Got message data: " + JSON.stringify(eventData));
+
+
+        if (eventData.event == HelloSign.EVENT_SIGNED) {
+          //do something for document getting signed
+          $.ajax({
+            type: "POST",
+            url: "http://6e792dc4.ngrok.io/pages/attribution",
+            // url: "http://localhost:3000/pages/attribution",
+
+            success: function() {
+              console.log("Contrat signé");
+
+            }
+          });
+        }
+        else if (eventData.event == HelloSign.EVENT_CANCELED) {
+      //do something else for document closing before getting signed
+          alert("Signature du contrat interrompue");
+        }
+        else if (eventData.event == HelloSign.EVENT_ERROR) {
+      //do something for an error situation
+          alert("erreur");
+        }
+        else if (eventData.event == HelloSign.EVENT_SENT) {
+      //not used in this example
+      //only used for embedded requesting
+
+        }
+
+    }
+  });
+
+// ]]>
+</script>

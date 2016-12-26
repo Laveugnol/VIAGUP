@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   post "signatures/reservation"
   get "pages/admin"
   get "pages/old"
+  post "pages/attribution"
+  get "pages/epargne"
+  get "signatures/embedded_subscription"
 
 
 

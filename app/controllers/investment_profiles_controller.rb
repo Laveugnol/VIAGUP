@@ -4,7 +4,6 @@ class InvestmentProfilesController < ApplicationController
   end
 
   def create
-
      @user = current_user
      @investment_profile = InvestmentProfile.new(investment_profile_params)
      @investment_profile.user = @user
@@ -23,6 +22,7 @@ class InvestmentProfilesController < ApplicationController
   end
 
   def update
+
     @user = current_user
     @investment_profile.update_attributes(investment_profile_params)
     if @investment_profile.save
@@ -58,8 +58,8 @@ class InvestmentProfilesController < ApplicationController
   def investment_profile_params
     params.require(:investment_profile).permit(:question1, :question2, :civilite,
                    :nom, :prenom, :categoriesp, :expertise, :adresse, :complementadresse,
-                   :code_postal, :pays, :bitrh_date, :birth_place, :phone, :mobile, :ville, :nationalite,
-                   :invest1, :invest2, :invest3, :invest4, :invest5, :invest6,
+                   :code_postal, :country, :birth_date, :birth_place, :phone, :mobile, :ville, :nationalite,
+                   :invest1, :invest2, :invest3, :invest4, :invest5, :invest6, :invest7,
                    :invest8, :patrimoine1, :patrimoine2, :patrimoine3, :patrimoine4,
                    :patrimoine5, :patrimoine6, :patrimoine7, :patrimoine8,
                    :patrimoine9, :blanchiement1, :blanchiement2, :idcard, :idcard_cache, :justificatif, :justificatif_cache)

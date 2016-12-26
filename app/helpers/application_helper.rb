@@ -11,7 +11,7 @@ module ApplicationHelper
     if part_total == part_dispo
       0
     else
-      (part_assign / part_total)*100
+      (part_assign.to_f / part_total)*100
     end
   end
 

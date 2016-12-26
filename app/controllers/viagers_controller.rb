@@ -29,7 +29,7 @@ class ViagersController < ApplicationController
 
       @viager.number_share.times do
         RenteShare.create(viager_id: @viager.id, assign: false, valeur: (@viager.rente/@viager.number_share))
-        BouquetShare.create(viager_id: @viager.id, assign: false, valeur: @viager.bouquet)
+        BouquetShare.create(viager_id: @viager.id, assign: false, valeur: (@viager.bouquet/@viager.number_share))
 
       end
 

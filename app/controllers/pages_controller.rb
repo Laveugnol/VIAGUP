@@ -40,6 +40,22 @@ class PagesController < ApplicationController
     redirect_to pages_profil_path
   end
 
+  def attribution
+    @number = current_user.investment_profile.essai.to_i
+    @viager_id = Viager.find(current_user.investment_profile.product)
+    @number.times do
+      @rente_share = RenteShare.where(viager_id: @viager_id, assign: false).first
+      @rente_share.user_id = current_user.id
+      @rente_share.assign = true
+      @rente_share.save
+      @bouquet_share = BouquetShare.where(viager_id: @viager_id, assign: false).first
+      @bouquet_share.user_id = current_user.id
+      @bouquet_share.assign = true
+      @bouquet_share.save
+    end
+
+  end
+
   def admin
     @viager = Viager.new
   end
@@ -47,6 +63,10 @@ class PagesController < ApplicationController
   def old
     @viager = Viager.find(params[:id])
     @old = Old.new
+  end
+
+  def epargne
+    @user = current_user
   end
 
 
