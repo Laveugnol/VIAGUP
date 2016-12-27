@@ -27,11 +27,26 @@
   </div>
 </div>
 
-<%= form_tag signatures_path, method: :post do %>
+<br>
+<br>
 
-  <%= hidden_field_tag :name, current_user.investment_profile.prenom %>
 
-  <%= hidden_field_tag :email, current_user.email %>
-  <%= submit_tag 'Signer votre charte investisseur' %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <p><i class="fa fa-info-circle" aria-hidden="true"></i>
+        Vous vous apprétez à signer votre fiche d'information investisseur. Cette dernière valide les données que vous nous avez confiées précédemment et nous permet par ailleurs de vous accompagner de la meilleure façon qu'il soit.
+      </p>
+    </div>
+    <div class="col-xs-push-4 col-xs-8">
+      <%= form_tag signatures_path, method: :post do %>
+      <%= hidden_field_tag :name, current_user.investment_profile.prenom %>
+      <%= hidden_field_tag :email, current_user.email %>
+      <%= submit_tag 'Signer votre charte investisseur', class: "btn-yours-small" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
 

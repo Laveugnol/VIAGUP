@@ -29,6 +29,23 @@
 
 <br>
 <br>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <p><i class="fa fa-info-circle" aria-hidden="true"></i>
+        Ces informations sont nécessaires au moment de la constitution des statuts de la SCI.
+      </p>
+    </div>
+    <div class="col-xs-12">
+      <p><i class="fa fa-wrench" aria-hidden="true"></i>
+        La pièce d'identité (recto/verso) doit être contenue en un seul fichier. Si vous rencontrez des difficultés lors du chargement, envoyez-les à Administration@viagup.com.
+      </p>
+    </div>
+  </div>
+</div>
+
 <div class = "container petit_fond">
   <%= simple_form_for(@investment_profile, url: investment_profiles_update_step3_path, html: { method: :patch }) do |f| %>
   <%= f.error_notification %>
@@ -68,12 +85,16 @@
         </div>
       </div>
     </div>
-      <div class = "col-xs-12">
-          <%= f.button :submit, "Confirmer", class: "btn btn-primary noradius pull-right" %>
-          <%= link_to "Retour", :back, class: "btn btn-primary noradius pull-left" %>
+      <div class = "col-xs-offset-5 col-xs-7">
+        <span>  <%= link_to "Retour", :back, class: "btn-treehouse-small" %>
+
+          <%= f.button :submit, "Confirmer", class: "btn-yours-small" %></span>
+
       </div>
   <%end%>
 </div>
+
+<br>
 
 <!--       <%= simple_form_for(@investment_profile, url: investment_profiles_update_step3_path(@investment_profile), html: { method: :patch }) do |f| %>
       <%= f.error_notification %>

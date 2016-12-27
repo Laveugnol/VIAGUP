@@ -11,6 +11,14 @@ Rails.application.routes.draw do
   post "pages/finalize"
   patch "investment_profiles/update_step3"
   get "signatures/embedded_signature"
+  post "signatures/reservation"
+  get "pages/admin"
+  get "pages/old"
+  post "pages/attribution"
+  get "pages/epargne"
+  get "signatures/embedded_subscription"
+
+
 
   post '/signatures/callbacks',
     to: 'signatures#callbacks'
@@ -21,7 +29,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-
+  resources :olds
   resources :viagers
   resources :investment_profiles
   root to: 'pages#home'

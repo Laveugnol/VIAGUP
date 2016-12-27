@@ -27,6 +27,24 @@
   color: white;
 }
 
+
+.btn-treehouse-small {
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: #6AD58B;
+  transition: background 0.3s ease;
+  font-size: 14px;
+  padding-bottom: 12px;
+}
+.btn-treehouse-small:hover {
+  opacity: 1;
+  background: #3ac162;
+  text-decoration: none;
+  color: white;
+}
+
 /* Build your own button classes ! */
 .btn-yours{
   color: white;
@@ -39,6 +57,18 @@
   transition: background 0.8s;
   font-size: 20px;
 }
+.btn-yours-small{
+  color: white;
+  background: $bleu_CTA;
+  border: 1.5px solid #247291;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-weight: bold;
+  opacity: 0.8;
+  transition: background 0.8s;
+  font-size: 14px;
+}
+
 .btn-yours-big{
   color: white;
   background: $bleu_CTA;
@@ -50,6 +80,15 @@
   transition: background 0.8s;
   font-size: 30px;
 }
+
+.btn-yours-small:hover{
+ opacity: 1;
+  text-decoration: none;
+  color: white;
+  transition: background 0s;
+  background: $bleu_CTA;
+}
+
 .btn-yours-big:hover{
   opacity: 1;
   text-decoration: none;
@@ -85,4 +124,8 @@
   transition: background 0s;
   background: $jaunepipi;
 
+}
+
+.special_height{
+  height: 39px;
 }

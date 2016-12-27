@@ -1,0 +1,28 @@
+<div class="container creation">
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+
+      <div class="form-login" id="centerbuttons">
+      <h3 class="text-center">Ajouter un vieux</h3>
+
+          <%= simple_form_for [@old] do |f| %>
+
+
+            <%= f.input :first_name,label: 'Prenom du vendeur'%>
+            <%= f.input :last_name,label: 'Nom du vendeur'%>
+            <%= f.input :lifespan,label: 'durée de vie'%>
+            <%= f.input :projet,label: 'son projet'%>
+            <%= f.input :descriptif,label: 'sa description'%>
+            <%= f.input :age,label: 'Age du vendeur'%>
+            <%= f.input :sexe,label: 'homme ou femme?'%>
+            <%= f.input_field :viager_id, as: :hidden, value: @viager.id%>
+
+          <%= f.submit "C'est parti", class: "btn-yours2" %>
+          <% end %>
+
+        </div>
+
+      </div>
+    </div>
+  </div>

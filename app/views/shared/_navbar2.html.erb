@@ -97,24 +97,26 @@
             </li>
           -->
           <ul id="topMain" class="nav nav-pills nav-main bold">
+            <% if current_user != nil%>
+            <% if current_user.admin && current_user != nil%>
+            <li class="dropdown">
+              <%=link_to "ADMIN", pages_admin_path, class: "dropdown-toggle"%>
+            </li>
+            <%end%>
+            <%end%>
             <li class="dropdown"><!-- HOME -->
               <a class="dropdown-toggle" href="#">
-                HOME
+                PRODUITS
               </a>
               <ul class="dropdown-menu">
                 <li class="dropdown">
-                  <a class="" href="#">
-                    HOME CORPORATE
+                  <a class="" href="/viagers">
+                    NOTRE SELECTION
                   </a>
                 </li>
                 <li class="dropdown">
                   <a class="" href="#">
-                    HOME PORTFOLIO
-                  </a>
-                </li>
-                <li class="dropdown">
-                  <a class="" href="#">
-                    HOME BLOG
+                    FAQ
                   </a>
                 </li>
               </ul>
@@ -148,7 +150,7 @@
                 </a>
               <ul class="dropdown-menu pull-right">
                 <li><a href="/pages/profil">MON PROFIL</a></li>
-                <li><a href="shop-cart.html">MES INVESTISSEMENTS </a></li>
+                <li><%=link_to "MON EPARGNE", pages_epargne_path(current_user)%></li>
                 <li>
                 <%= link_to "DECONNEXION", destroy_user_session_path, method: :delete %></li>
               </ul>

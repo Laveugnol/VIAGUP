@@ -78,7 +78,7 @@
           </div>
           <div class ="col-xs-6">
 
-          <input type="text" class="form-control datepicker" data-format="yyyy-mm-dd" data-lang="en" data-RTL="false" name="investment_profile[birth_place]" required>
+          <input type="datetime" class="form-control datepicker" data-format="dd-mm-yyyy" data-lang="en" data-RTL="false" name="investment_profile[birth_date]" required>
 
           </div>
           <div class ="col-xs-6">
@@ -112,7 +112,7 @@
             <p>Complément d'adresse</p>
           </div>
           <div class ="col-xs-6">
-            <%= f.input :complementadresse, required: true, autofocus: true, label: false %>
+            <%= f.input :complementadresse, autofocus: true, label: false %>
           </div>
           <div class ="col-xs-6">
             <p>Code postal</p>
@@ -321,9 +321,9 @@
           </div>
 
 
-      <div class = "col-xs-12">
-        <%= f.button :submit, "Confirmer", class: "btn btn-primary noradius pull-right" %>
-        <%= link_to "Retour", :back, class: "btn btn-primary noradius pull-left" %>
+      <div class = "col-xs-offset-5 col-xs-7">
+        <%= link_to "Retour", :back, class: "btn-treehouse-small" %>
+        <%= f.button :submit, "Confirmer", class: "btn-yours-small" %>
       </div>
   <%end%>
 </div>

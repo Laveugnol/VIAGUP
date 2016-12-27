@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221161818) do
+ActiveRecord::Schema.define(version: 20161226193251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,8 +48,10 @@ ActiveRecord::Schema.define(version: 20161221161818) do
     t.integer  "user_id"
     t.integer  "bouquet_id"
     t.integer  "viager_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "assign",     default: false
+    t.integer  "valeur"
     t.index ["bouquet_id"], name: "index_bouquet_shares_on_bouquet_id", using: :btree
     t.index ["user_id"], name: "index_bouquet_shares_on_user_id", using: :btree
     t.index ["viager_id"], name: "index_bouquet_shares_on_viager_id", using: :btree
@@ -110,6 +112,8 @@ ActiveRecord::Schema.define(version: 20161221161818) do
     t.datetime "updated_at",        null: false
     t.string   "justificatif"
     t.string   "idcard"
+    t.string   "essai"
+    t.integer  "product"
     t.index ["user_id"], name: "index_investment_profiles_on_user_id", using: :btree
   end
 
@@ -129,8 +133,10 @@ ActiveRecord::Schema.define(version: 20161221161818) do
     t.integer  "user_id"
     t.integer  "rente_id"
     t.integer  "viager_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "assign",     default: false
+    t.integer  "valeur"
     t.index ["rente_id"], name: "index_rente_shares_on_rente_id", using: :btree
     t.index ["user_id"], name: "index_rente_shares_on_user_id", using: :btree
     t.index ["viager_id"], name: "index_rente_shares_on_viager_id", using: :btree
