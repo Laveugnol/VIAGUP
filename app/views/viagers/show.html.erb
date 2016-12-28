@@ -5,7 +5,7 @@
 
 
 <section  id="carousel_section">
-        <div class="container">
+  <div class="container">
       <!-- /PAGE HEADER -->
 
 
@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-6">
+          <div class="col-xs-12 col-sm-6">
             <div class="owl-carousel buttons-autohide controlls-over" data-plugin-options='{"singleItem": true, "autoPlay": true, "navigation": true, "pagination": true, "transitionStyle":"fade"}'>
               <div>
                 <%= cl_image_tag @viager.photo ,:height=> 800, :width=> 1200, :crop=>"fill", class: "img-responsive" %>
@@ -45,7 +45,7 @@
               </div>
             </div>
           </div>
-          <div class="col-xs-6">
+          <div class="col-xs-12 col-sm-6">
             <div class="panel panel-default">
               <div class="panel-body" id="icones">
                 <div class="row">
@@ -54,7 +54,11 @@
                     <h3><%=@viager.city.capitalize%></h3>
                   </div>
                   <div class="col-xs-6">
+                    <%if @viager.maison == "maison"%>
                     <%= image_tag "77_Essential_Icons_Home.svg"%>
+                    <%else%>
+                    <%= image_tag "03.Office.svg"%>
+                    <%end%>
                     <h3><%=@viager.maison.capitalize%></h3>
                   </div>
                   <div class="col-xs-6">
@@ -69,7 +73,7 @@
               </div>
               <div class="panel-footer">
                 <div class="row">
-                  <div class=' col-xs-push-3 col-xs-9'>
+                  <div class=' col-xs-12 text-center'>
                     <% if part_available_count(@viager) != 0%>
                     <h3 id="card_footer"><span class="label " id="progression"> En cours de financement</span></h3>
                     <% else %>
@@ -91,7 +95,7 @@
         <div class="container">
 
           <div class="text-center">
-            <h3 class="size-30">Le viager </h3>
+            <h3 class="size-30"><%= image_tag "77_Essential_Icons_Search.svg"%>Le viager </h3>
             <p>Votre future épargne en quelques chiffres </p>
           </div>
 
@@ -101,117 +105,80 @@
       <!-- -->
       <section id="offre">
         <div class="container">
-
           <div class="row nomargin">
+            <div class="col-xs-12 col-sm-3">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h2 class="panel-title"><%= image_tag "77_Essential_Icons_Book.svg"%> Descriptif du bien </h2>
 
-            <div class="col-md-9 col-sm-9">
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-xs-12">
+                    SURFACE HABITABLE : <strong><%=@viager.habitable%> m²</strong>
+                    </div>
+                    <div class="col-xs-12">
+                    NOMBRE DE PIÈCE(S) : <strong><%=@viager.piece%></strong>
+                    </div>
+                    <div class="col-xs-12">
+                    SURFACE DU TERRAIN : <strong><%=@viager.terrain%> m²</strong>
+                    </div>
+                    <div class="col-xs-12">
+                    DATE DE CONSTRUCTION : <strong><%=@viager.annee%></strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel-heading">
+                  <h2 class="panel-title"><%= image_tag "77_Essential_Icons_Profile.svg"%> Le créditrentier </h2>
 
+                </div>
+                <div class="panel-body">
+                  <li><strong><%=@viager.old.first_name.capitalize%></strong></li>
+                      <li><strong><%=@viager.old.sexe.capitalize%></strong></li>
+                      <li><strong><%=@viager.old.age%> ans</strong></li>
+                </div>
+                <div class="panel-footer text-center">
+                  <%=link_to "Télécharger le rapport d'expertise", class: "btn-medium"%>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
               <!-- Subtitle -->
-              <div class="heading-title heading-border">
+              <div class="heading-title heading-dotted text-center">
                 <h2>L'offre de <span><%=@viager.old.first_name%></span></h2>
-
                 <ul class="list-inline categories nomargin">
                   <li><%=@viager.city%></li>
                   <li>France</li>
                 </ul>
-
               </div>
               <!-- /Subtitle -->
-
               <p><%=@viager.old.descriptif%></p>
-              <div class="heading-title heading-border">
+              <div class="heading-title heading-dotted text-center">
                 <h3>Ses projets</h3>
               </div>
               <p class="font-lato size-18"><%=@viager.old.projet%></p>
-
+              <div class="row" id="cta">
                 <% if current_user != nil%>
                   <% if current_user.profil_completed == true%>
-                <div class="row" id="cta">
-                  <div class="offset-xs-5 col-xs-5"></div>
-
-                    <button type="button" class="btn-yours-big tof" data-toggle="modal" data-target="#myModal">
-                      Souscrire
-                    </button>
-
-                </div>
-
-                <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-
-                      <!-- Modal Header -->
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Espace de réservation de vos parts</h4>
-                      </div>
-
-
-                      <!-- Modal Body -->
-                      <div class="modal-body">
-                        <h4><%=@viager.city.capitalize%>,  <%=@viager.horizon.to_s%> ans.</h4>
-                        <%= cl_image_tag @viager.photo ,:crop=>"fill", class: "avatar-square" %>
-                        <h4>Conditions</h4>
-                          <ul>
-                            <li>Vous vous apprétez à reserver des parts d'une société civile immobilière.</li>
-                             <li>Cette société sera constituée si <a href="#" data-toggle="popover" class="btn" title="A quoi correspond ce montant?" data-content="Il correspond aux frais de notaires, aux frais d'agence immobilière ainsi qu'aux frais de constitution de la SCI." id="popinfo"><%=separateur(@viager.bouquet)%>€</a> sont financés par la communauté d'investisseurs avant le METTRE UNE DATE DE FIN.</li>
-                             <li>Cet investissement représente un risque d'illiquidité (difficultés à revendre vos parts avant le terme) ainsi qu'un risque de perte en capital important. Pour plus de détails, veuillez vous reporter à l'onglet concernant les risques de  l'investissement participatif.</li>
-
-                          </ul>
-
-                        <h4>Nombre de parts souhaitées</h4>
-                        <input type="text" min="0" max="<%=part_available_count(@viager)%>" class="form-control stepper" id="nombre_de_parts">
-
-                        <h4>Montant de votre investissement</h4>
-                        <button type="button" class="btn-treehouse clickable" >Simulation</button>
-                        <ul id="insertion">
-
-                        </ul>
-                      </div>
-
-                      <!-- Modal Footer -->
-                      <div class="modal-footer">
-
-                        <button type="button" class="btn-treehouse" data-dismiss="modal">Revenir à l'offre</button>
-                        <button class="confirmation">
-                        <%= form_tag (signatures_reservation_path(@viager)), method: :post do %>
-
-                        <%= hidden_field_tag :name, current_user.investment_profile.prenom %>
-                        <%= hidden_field_tag :id, @viager.id %>
-                        <div id="part">
-
-                        </div>
-                        <%= hidden_field_tag :email, current_user.email %>
-                        <%= submit_tag 'Réserver', class: "btn-yours-small" %>
-                        <%end%>
-                        </button>
-
-
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-
-                    <%else%>
-                  <div class="row" id="cta">
-                  <div class="offset-xs-5 col-xs-5"></div>
-                    <%= link_to "Compléter votre profil", pages_profil_path(current_user), class: "btn-yours-big tof"%>
-                    <%end%>
-                  </div>
-                    <%else%>
-                    <div class="row" id="cta">
-                  <div class="offset-xs-5 col-xs-5"></div>
+                    <div class="col-xs-12 text-center">
+                      <button type="button" class="btn-yours-big tof" data-toggle="modal" data-target="#myModal">
+                            Souscrire
+                      </button>
+                  <%else%>
+                    <div class="col-xs-12 text-center">
+                      <%= link_to "Compléter votre profil", pages_profil_path(current_user), class: "btn-yours-big tof"%>
+                  <%end%>
+                <%else%>
+                  <div class="col-xs-12 text-center">
                     <%= link_to "Se connecter", new_user_registration_path, class: "btn-yours-big tof"%>
-                    </div>
-                    <%end%>
-
+                <%end%>
+              </div>
             </div>
-
-            <div class="col-md-3 col-sm-3">
-
+          </div>
+            <div class="col-xs-12 col-sm-3">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h2 class="panel-title"><%=part_available_count(@viager)%> part(s) disponible(s)</h2>
+                  <h2 class="panel-title"><%= image_tag "77_Essential_Icons_Pie Chart.svg"%>  <%=part_available_count(@viager)%> part(s) disponible(s)</h2>
                   <div class="progress">
                     <div id="progression" class="progress-bar" role="progressbar" aria-valuenow="<%=share_assigned_percentage(@viager)%>" aria-valuemin="0" aria-valuemax="100" style="width: <%=share_assigned_percentage(@viager)%>%; min-width: 1em;">
                       <%=share_assigned_percentage(@viager)%>%
@@ -220,9 +187,9 @@
                 </div>
                 <div class="panel-body">
                   Valeur vénale
-                  <p class="card"><%= @viager.venale %>€</p>
+                  <p class="card"><%= separateur(@viager.venale) %>€</p>
                   Valeur décôtée
-                  <p class="card"><%= @viager.decote %>€</p>
+                  <p class="card"><%= separateur(@viager.decote) %>€</p>
                   Rendement estimé
                   <p class="card"><%= @viager.tri %>%</p>
                   Ticket d'entrée/part
@@ -231,67 +198,94 @@
                   <p class="card"><%= @viager.rente/@viager.number_share %>€</p>
                   Détention estimée
                   <p class="card"><%= @viager.horizon %> ans</p>
-
                 </div>
-              <!--   <div class="panel-body">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  <ul class="portfolio-detail-list list-unstyled nomargin">
-                    <li><span><i class="fa fa-user"></i>Author:</span> Smarty Inc.</li>
-                    <li><span><i class="fa fa-calendar"></i>Released:</span> 29th June 2015</li>
-                    <li><span><i class="fa fa-lightbulb-o"></i>Technologies:</span> HTML / CSS / JAVASCRIPT</li>
-                    <li><span><i class="fa fa-link"></i>Website:</span> <a href="#">www.stepofweb.com</a></li>
-                  </ul>
-                </div> -->
-
+              </div>
             </div>
-
           </div>
+        </div>
 
+      <% if current_user != nil && current_user.profil_completed == true %>
+        <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title" id="myModalLabel">Espace de réservation de vos parts</h4>
+                            </div>
+                            <!-- Modal Body -->
+                            <div class="modal-body">
+                              <h4><%=@viager.city.capitalize%>,  <%=@viager.horizon.to_s%> ans.</h4>
+                              <%= cl_image_tag @viager.photo ,:crop=>"fill", class: "avatar-square" %>
+                              <h4>Conditions</h4>
+                                <ul>
+                                  <li>Vous vous apprétez à reserver des parts d'une société civile immobilière.</li>
+                                   <li>Cette société sera constituée si <a href="#" data-toggle="popover" class="btn" title="A quoi correspond ce montant?" data-content="Il correspond aux frais de notaires, aux frais d'agence immobilière ainsi qu'aux frais de constitution de la SCI." id="popinfo"><%=separateur(@viager.bouquet)%>€</a> sont financés par la communauté d'investisseurs avant le METTRE UNE DATE DE FIN.</li>
+                                   <li>Cet investissement représente un risque d'illiquidité (difficultés à revendre vos parts avant le terme) ainsi qu'un risque de perte en capital important. Pour plus de détails, veuillez vous reporter à l'onglet concernant les risques de  l'investissement participatif.</li>
+
+                                </ul>
+
+                              <h4>Nombre de parts souhaitées</h4>
+                              <input type="text" min="0" max="<%=part_available_count(@viager)%>" class="form-control stepper" id="nombre_de_parts">
+
+                              <h4>Montant de votre investissement</h4>
+                              <button type="button" class="btn-treehouse clickable" >Simulation</button>
+                              <ul id="insertion">
+
+                              </ul>
+                            </div>
+
+                            <!-- Modal Footer -->
+                            <div class="modal-footer">
+
+                              <button type="button" class="btn-treehouse" data-dismiss="modal">Revenir à l'offre</button>
+                              <button class="confirmation">
+                              <%= form_tag (signatures_reservation_path(@viager)), method: :post do %>
+
+                              <%= hidden_field_tag :name, current_user.investment_profile.prenom %>
+                              <%= hidden_field_tag :id, @viager.id %>
+                              <div id="part">
+
+                              </div>
+                              <%= hidden_field_tag :email, current_user.email %>
+                              <%= submit_tag 'Réserver', class: "btn-yours-small" %>
+                              <%end%>
+                              </button>
+
+
+                            </div>
+
+                          </div>
+                        </div>
         </div>
-        </div>
+      <%end%>
       </section>
       <!-- -->
-
       <!-- CALLOUT -->
       <section class="callout-dark heading-title heading-arrow-bottom">
         <div class="container">
-
           <div class="text-center">
             <h3 class="size-30"><%= image_tag "location_marker_white.svg"%>Localisation du bien </h3>
             <p>Vous ne connaissez pas le secteur? Aucune inquiétude, nous nous en sommes chargés. </p>
           </div>
-
         </div>
       </section>
       <!-- /CALLOUT -->
-
-
-
       <!-- -->
       <section class="nopadding">
 
         <div class="row nomargin">
-
           <!-- LEFT -->
           <div class="col-md-6 col-sm-6 nopadding nomargin">
-
-
             <div id="map" style="width: 100%; height: 800px;"></div>
-
           </div>
-
           <!-- RIGHT -->
           <div class="col-md-6 col-sm-6 nopadding nomargin">
-
             <div class="padding-40">
-
               <h2><%= image_tag "77_Essential_Icons_List.svg"%>Le dynamisme du secteur</h2>
               <p>Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum.</p>
               <p class="font-lato size-18">Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-
               <div class="row margin-top-60">
-
                 <div class="col-md-8">
                   <div class="heading-title heading-border-bottom heading-color" id="descriptif">
                     <h3>Descriptif du bien</h3>
@@ -307,7 +301,6 @@
                     <li>SURFACE DU TERRAIN : <strong><%=@viager.terrain%> m²</strong></li>
                     <li>ANNEXE(S)/SURFACE(S) SUPPLÉMENTAIRE(S) : <strong><%=@viager.annexe%></strong></li>
                   </ul>
-
                   <a href="#">
                     Read
                     <!-- /word rotator -->
@@ -319,9 +312,7 @@
                     </span><!-- /word rotator -->
                     <i class="glyphicon glyphicon-menu-right size-12"></i>
                   </a>
-
                 </div>
-
                 <div class="col-md-4">
                   <div class="heading-title heading-border-bottom heading-color">
                     <h3>Créditrentier</h3>
@@ -332,13 +323,9 @@
                       <li><strong><%=@viager.old.age%> ans</strong></li>
                     </ul>
                 </div>
-
               </div>
-
-
             </div>
           </div>
-
         </div>
 
       </section>
@@ -348,305 +335,43 @@
 
 
       <!-- -->
+      <section class="callout-dark heading-title heading-arrow-bottom">
+        <div class="container">
+          <div class="text-center">
+            <h3 class="size-30"><%= image_tag "calculatrice.svg"%>Simulation financière</h3>
+            <p>Calculez en un instant ce que rapportera votre épargne</p>
+          </div>
+        </div>
+      </section>
       <section>
         <div class="container">
-
-          <div class="heading-title heading-border">
-            <h3>Related <span>Projects</span></h3>
-            <p class="font-lato size-14">Lorem ipsum dolor sit amet.</p>
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th><i class="fa fa-building pull-right hidden-xs"></i> Nombre de parts</th>
+                  <th><i class="fa fa-clock-o pull-right hidden-xs"></i> Horizon d'investissement</th>
+                  <th><i class="fa fa-ticket pull-right hidden-xs"></i> Ticket(s) (€)</th>
+                  <th><i class="fa fa-calendar pull-right hidden-xs"></i> Mensualités sur la période (€) </th>
+                  <th><i class="fa fa-circle-o pull-right hidden-xs"></i> Total (€) </th>
+                  <th><i class="fa fa-money pull-right hidden-xs"></i>Gain potentiel (€)</th>
+                </tr>
+              </thead>
+              <tbody class="boldy text-center">
+                <tr>
+                  <td><input type="text" min="0" max="<%=part_available_count(@viager)%>" class="form-control stepper" id="nombre_de_parts2"></td>
+                  <td><%=@viager.horizon%> ans</td>
+                  <td id="col3"></td>
+                  <td id="col4"></td>
+                  <td id="col5"></td>
+                  <td id="col6"><a href="#" data-toggle="popover" class="btn boldy" title="A quoi correspond ce montant?" data-content="C'est la différence entre la valeur de vos parts lors de la revente du bien et de vos investissements cumulés. Cette somme est nette d'impôts, 33,33% ont été retiré au titre de l'impôt sur les sociétés applicable à la SCI." id="popinfo"><i class="fa fa-question-circle" aria-hidden="true"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-
-          <!--
-            RELATED CAROUSEL
-
-            controlls-over    = navigation buttons over the image
-            buttons-autohide  = navigation buttons visible on mouse hover only
-
-            owl-carousel item paddings
-              .owl-padding-0
-              .owl-padding-1
-              .owl-padding-2
-              .owl-padding-3
-              .owl-padding-6
-              .owl-padding-10
-              .owl-padding-15
-              .owl-padding-20
-          -->
-          <div class="text-center">
-            <div class="owl-carousel owl-padding-1 nomargin buttons-autohide controlls-over" data-plugin-options='{"singleItem": false, "items": "4", "autoPlay": 3500, "navigation": true, "pagination": false}'>
-
-              <!-- item -->
-              <div class="item-box">
-                <figure>
-                  <span class="item-hover">
-                    <span class="overlay dark-5"></span>
-                    <span class="inner">
-
-                      <!-- lightbox -->
-                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/16-min.jpg" data-plugin-options='{"type":"image"}'>
-                        <span class="fa fa-plus size-20"></span>
-                      </a>
-
-                      <!-- details -->
-                      <a class="ico-rounded" href="portfolio-single-slider.html">
-                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
-                      </a>
-
-                    </span>
-                  </span>
-
-                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/16-min.jpg" width="600" height="399" alt="">
-                </figure>
-
-                <div class="item-box-desc">
-                  <h3>Architect Project</h3>
-                  <ul class="list-inline categories nomargin">
-                    <li><a href="#">Architecture</a></li>
-                    <li><a href="#">Design</a></li>
-                  </ul>
-                </div>
-
-              </div>
-              <!-- /item -->
-
-              <!-- item -->
-              <div class="item-box">
-                <figure>
-                  <span class="item-hover">
-                    <span class="overlay dark-5"></span>
-                    <span class="inner">
-
-                      <!-- lightbox -->
-                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/4-min.jpg" data-plugin-options='{"type":"image"}'>
-                        <span class="fa fa-plus size-20"></span>
-                      </a>
-
-                      <!-- details -->
-                      <a class="ico-rounded" href="portfolio-single-slider.html">
-                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
-                      </a>
-
-                    </span>
-                  </span>
-
-                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/4-min.jpg" width="600" height="399" alt="">
-                </figure>
-
-                <div class="item-box-desc">
-                  <h3>Architect Project</h3>
-                  <ul class="list-inline categories nomargin">
-                    <li><a href="#">Architecture</a></li>
-                    <li><a href="#">Design</a></li>
-                  </ul>
-                </div>
-
-              </div>
-              <!-- /item -->
-
-              <!-- item -->
-              <div class="item-box">
-                <figure>
-                  <span class="item-hover">
-                    <span class="overlay dark-5"></span>
-                    <span class="inner">
-
-                      <!-- lightbox -->
-                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/5-min.jpg" data-plugin-options='{"type":"image"}'>
-                        <span class="fa fa-plus size-20"></span>
-                      </a>
-
-                      <!-- details -->
-                      <a class="ico-rounded" href="portfolio-single-slider.html">
-                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
-                      </a>
-
-                    </span>
-                  </span>
-
-                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/5-min.jpg" width="600" height="399" alt="">
-                </figure>
-
-                <div class="item-box-desc">
-                  <h3>Architect Project</h3>
-                  <ul class="list-inline categories nomargin">
-                    <li><a href="#">Architecture</a></li>
-                    <li><a href="#">Design</a></li>
-                  </ul>
-                </div>
-
-              </div>
-              <!-- /item -->
-
-              <!-- item -->
-              <div class="item-box">
-                <figure>
-                  <span class="item-hover">
-                    <span class="overlay dark-5"></span>
-                    <span class="inner">
-
-                      <!-- lightbox -->
-                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/6-min.jpg" data-plugin-options='{"type":"image"}'>
-                        <span class="fa fa-plus size-20"></span>
-                      </a>
-
-                      <!-- details -->
-                      <a class="ico-rounded" href="portfolio-single-slider.html">
-                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
-                      </a>
-
-                    </span>
-                  </span>
-
-                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/6-min.jpg" width="600" height="399" alt="">
-                </figure>
-
-                <div class="item-box-desc">
-                  <h3>Architect Project</h3>
-                  <ul class="list-inline categories nomargin">
-                    <li><a href="#">Architecture</a></li>
-                    <li><a href="#">Design</a></li>
-                  </ul>
-                </div>
-
-              </div>
-              <!-- /item -->
-
-              <!-- item -->
-              <div class="item-box">
-                <figure>
-                  <span class="item-hover">
-                    <span class="overlay dark-5"></span>
-                    <span class="inner">
-
-                      <!-- lightbox -->
-                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/7-min.jpg" data-plugin-options='{"type":"image"}'>
-                        <span class="fa fa-plus size-20"></span>
-                      </a>
-
-                      <!-- details -->
-                      <a class="ico-rounded" href="portfolio-single-slider.html">
-                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
-                      </a>
-
-                    </span>
-                  </span>
-
-                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/7-min.jpg" width="600" height="399" alt="">
-                </figure>
-
-                <div class="item-box-desc">
-                  <h3>Architect Project</h3>
-                  <ul class="list-inline categories nomargin">
-                    <li><a href="#">Architecture</a></li>
-                    <li><a href="#">Design</a></li>
-                  </ul>
-                </div>
-
-              </div>
-              <!-- /item -->
-
-              <!-- item -->
-              <div class="item-box">
-                <figure>
-                  <span class="item-hover">
-                    <span class="overlay dark-5"></span>
-                    <span class="inner">
-
-                      <!-- lightbox -->
-                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/8-min.jpg" data-plugin-options='{"type":"image"}'>
-                        <span class="fa fa-plus size-20"></span>
-                      </a>
-
-                      <!-- details -->
-                      <a class="ico-rounded" href="portfolio-single-slider.html">
-                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
-                      </a>
-
-                    </span>
-                  </span>
-
-                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/8-min.jpg" width="600" height="399" alt="">
-                </figure>
-
-                <div class="item-box-desc">
-                  <h3>Architect Project</h3>
-                  <ul class="list-inline categories nomargin">
-                    <li><a href="#">Architecture</a></li>
-                    <li><a href="#">Design</a></li>
-                  </ul>
-                </div>
-
-              </div>
-              <!-- /item -->
-
-              <!-- item -->
-              <div class="item-box">
-                <figure>
-                  <span class="item-hover">
-                    <span class="overlay dark-5"></span>
-                    <span class="inner">
-
-                      <!-- lightbox -->
-                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/9-min.jpg" data-plugin-options='{"type":"image"}'>
-                        <span class="fa fa-plus size-20"></span>
-                      </a>
-
-                      <!-- details -->
-                      <a class="ico-rounded" href="portfolio-single-slider.html">
-                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
-                      </a>
-
-                    </span>
-                  </span>
-
-                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/9-min.jpg" width="600" height="399" alt="">
-                </figure>
-
-                <div class="item-box-desc">
-                  <h3>Architect Project</h3>
-                  <ul class="list-inline categories nomargin">
-                    <li><a href="#">Architecture</a></li>
-                    <li><a href="#">Design</a></li>
-                  </ul>
-                </div>
-
-              </div>
-              <!-- /item -->
-
-              <!-- item -->
-              <div class="item-box">
-                <figure>
-                  <span class="item-hover">
-                    <span class="overlay dark-5"></span>
-                    <span class="inner">
-
-                      <!-- lightbox -->
-                      <a class="ico-rounded lightbox" href="assets/images/demo/mockups/1200x800/10-min.jpg" data-plugin-options='{"type":"image"}'>
-                        <span class="fa fa-plus size-20"></span>
-                      </a>
-
-                      <!-- details -->
-                      <a class="ico-rounded" href="portfolio-single-slider.html">
-                        <span class="glyphicon glyphicon-option-horizontal size-20"></span>
-                      </a>
-
-                    </span>
-                  </span>
-
-                  <img class="img-responsive" src="assets/images/demo/mockups/600x399/10-min.jpg" width="600" height="399" alt="">
-                </figure>
-
-                <div class="item-box-desc">
-                  <h3>Architect Project</h3>
-                  <ul class="list-inline categories nomargin">
-                    <li><a href="#">Architecture</a></li>
-                    <li><a href="#">Design</a></li>
-                  </ul>
-                </div>
-
-              </div>
-              <!-- /item -->
-
+          <div class="row">
+            <div class="col-xs-12 text-center">
+              <button type="button" class="btn-treehouse clickable2" >Simulation</button>
             </div>
           </div>
 
@@ -690,6 +415,27 @@
       $(".confirmation").hover(function(event) {
       var part = $('#nombre_de_parts').val();
       $('#part').html('<input type="hidden" name="part" value="'+part+'" />');
+
+          });
+
+
+      $(".clickable2").click(function(event) {
+      var part = $('#nombre_de_parts2').val();
+      var année = "<%=@viager.horizon.to_i * 12%>";
+      var bouquet = "<%=@viager.bouquet/@viager.number_share%>";
+      var rente = "<%=@viager.rente/@viager.number_share%>";
+      var vénale = "<%=@viager.venale.to_i.to_f/@viager.number_share%>"
+      var mensuel =rente * part * année;
+      var invest = bouquet * part ;
+      var total = mensuel + invest;
+      var gain = Math.round(((vénale * part) - total)*0.6667*100)/100;
+      $('#col3').html(invest);
+
+      $('#col4').html(mensuel);
+
+      $('#col5').html(total);
+
+      $('#col6').html(gain);
 
           });
 
