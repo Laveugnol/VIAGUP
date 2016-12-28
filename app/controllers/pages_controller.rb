@@ -33,7 +33,6 @@ class PagesController < ApplicationController
   end
 
   def finalize
-
     current_user.certificat = true
     current_user.save
   end
