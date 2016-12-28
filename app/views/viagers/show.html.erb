@@ -396,6 +396,7 @@
           handler.getMap().setZoom(14);
         }
       });
+      handler.getMap().setOptions({ scrollwheel: false });
     });
 
 
@@ -403,41 +404,35 @@
     $(document).ready(function() {
 
       $(".clickable").click(function(event) {
-      var part = $('#nombre_de_parts').val();
-      var bouquet = "<%=@viager.bouquet/@viager.number_share%>";
-      var rente = "<%=@viager.rente/@viager.number_share%>";
-      var mensuel =rente * part;
-      var invest = bouquet * part;
-      $('#insertion').html('<li>Vous contribuerez à hauteur de <strong>'+invest+'€</strong> dès la constitution de la SCI.</li><li>Vous serez prélevé à hauteur de <strong>'+mensuel+'€/mois</strong> au titre de la rente.</li>');
-
-          });
+        var part = $('#nombre_de_parts').val();
+        var bouquet = "<%=@viager.bouquet/@viager.number_share%>";
+        var rente = "<%=@viager.rente/@viager.number_share%>";
+        var mensuel =rente * part;
+        var invest = bouquet * part;
+        $('#insertion').html('<li>Vous contribuerez à hauteur de <strong>'+invest+'€</strong> dès la constitution de la SCI.</li><li>Vous serez prélevé à hauteur de <strong>'+mensuel+'€/mois</strong> au titre de la rente.</li>');
+      });
 
       $(".confirmation").hover(function(event) {
-      var part = $('#nombre_de_parts').val();
-      $('#part').html('<input type="hidden" name="part" value="'+part+'" />');
-
-          });
+        var part = $('#nombre_de_parts').val();
+        $('#part').html('<input type="hidden" name="part" value="'+part+'" />');
+      });
 
 
       $(".clickable2").click(function(event) {
-      var part = $('#nombre_de_parts2').val();
-      var année = "<%=@viager.horizon.to_i * 12%>";
-      var bouquet = "<%=@viager.bouquet/@viager.number_share%>";
-      var rente = "<%=@viager.rente/@viager.number_share%>";
-      var vénale = "<%=@viager.venale.to_i.to_f/@viager.number_share%>"
-      var mensuel =rente * part * année;
-      var invest = bouquet * part ;
-      var total = mensuel + invest;
-      var gain = Math.round(((vénale * part) - total)*0.6667*100)/100;
-      $('#col3').html(invest);
-
-      $('#col4').html(mensuel);
-
-      $('#col5').html(total);
-
-      $('#col6').html(gain);
-
-          });
+        var part = $('#nombre_de_parts2').val();
+        var année = "<%=@viager.horizon.to_i * 12%>";
+        var bouquet = "<%=@viager.bouquet/@viager.number_share%>";
+        var rente = "<%=@viager.rente/@viager.number_share%>";
+        var vénale = "<%=@viager.venale.to_i.to_f/@viager.number_share%>"
+        var mensuel =rente * part * année;
+        var invest = bouquet * part ;
+        var total = mensuel + invest;
+        var gain = Math.round(((vénale * part) - total)*0.6667*100)/100;
+        $('#col3').html(invest);
+        $('#col4').html(mensuel);
+        $('#col5').html(total);
+        $('#col6').html(gain);
+      });
 
 
 
