@@ -48,11 +48,15 @@
             </div>
             <div class="col-xs-8">
               <% if @user.profil_valid %>
-                  <p>Votre profil a été validé. Vous pouvez désormais consulter les pièces relatives à nos produits.</p>
-              <% elsif @user.profil_completed && @user.profil_valid == false%>
+                <p>Votre profil a été validé. Vous pouvez désormais consulter les pièces relatives à nos produits.</p>
+              <% elsif @user.certificat == true && @user.profil_valid == false%>
                  <p>Votre profil est en cours de validation par nos équipes. Vous pourrez bientôt consulter les pièces relatives à nos produits.</p>
-              <%else%>
-                  <p>Votre profil n'est pas complet. Vous ne pouvez pas consulter les pièces relatives à nos produits. Veuillez remplir les informations manquantes en cliquant ci-dessous.</p>
+                 <% elsif @user.doc_sent == true && @user.certificat == false%>
+                 <p>Vous n'avez plus qu'à signer votre fiche d'information investisseur afin que nous validions votre profil.</p>
+              <%elsif @user.profil_completed ==true && @user.doc_sent == false %>
+                  <p>Veuillez nous transmettre les documents requis.</p>
+              <%else %>
+                  <p>Vous pouvez à présent remplir le formulaire d'information investisseur.</p>
               <%end%>
             </div>
           </div>

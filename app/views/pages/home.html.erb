@@ -29,10 +29,10 @@
             data-height="800"
         -->
         <div class="fullscreenbanner" data-navigationStyle="" data-height="600">
-          <div class="banner" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%), url('<%= image_path "bannervieux.jpg" %>');">
+          <div class="banner" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%), url('<%= image_path "bannervieux.jpg" %>');">
             <div class="banner-content">
             <h1>VIAG'UP</h1>
-            <p>L'épargne collaborative &amp; solidaire </p>
+            <p>Investissez dans l'ancien... &amp; dans le vieux </p>
             <%= link_to  viagers_path, class: "btn-yours tof" do%>
 
               <span>Découvrir nos projets</span>
@@ -142,8 +142,8 @@
         <div class="container">
 
           <header class="margin-bottom-60 text-center">
-            <h2>Nos derniers produits</h2>
-            <p class="lead font-lato">Selectionnés avec soin  &amp; rigueur</p>
+            <h2 class="size-30"><%= image_tag "77_Essential_Icons_Medal.svg"%>Notre sélection</h2>
+            <p class="lead font-lato">Faites-vous plaisir!</p>
             <hr />
           </header>
 
@@ -164,7 +164,7 @@
 
                         <%end%>
                       <h4 class="enblanc">Ticket d'entrée: <strong><%=viager.bouquet/viager.number_share%>€</strong></h4>
-                      <h4 class="enblanc">Rente: <strong><%=viager.rente/viager.number_share%> €/mois</strong></h4>
+                      <h4 class="enblanc">Mensualité: <strong><%=viager.rente/viager.number_share%> €/mois</strong></h4>
                         <!-- lightbox -->
                         <!-- details -->
                       </span>
@@ -184,8 +184,9 @@
                       </div>
 
                       <li>Ticket d'entrée: <strong><%=viager.bouquet/viager.number_share%> €</strong></li>
-                      <li>Part: <strong><%=viager.rente/viager.number_share%> €/mois</strong></li>
-                      <li>Horizon d'investissment: <strong><%=viager.horizon%> ans </strong></li>
+                      <li>Mensualité: <strong><%=viager.rente/viager.number_share%> €/mois</strong></li>
+                      <li><a href="#" data-toggle="popover" class="btn" title="TRI?" data-content="Il correspond à l'estimation du taux de rendement interne annuel de votre épargne ." id="popinfo"><strong><i class="fa fa-info-circle" aria-hidden="true"></i> TRI cible: </strong></a><strong>  <%=viager.tri%> % </strong></li>
+                      <li>Horizon d'investissment: <strong><%=viager.horizon%> ans </strong></li><br>
                     </ul>
                   </div>
                 </div>
