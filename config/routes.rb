@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   get "pages/old"
   post "pages/attribution"
   get "pages/epargne"
+  get "pages/creation_viager"
+  get "pages/signature_viager_1"
+  get "pages/signature_viager_2"
+  post "pages/signature_viager_2"
+  patch "pages/assign_acquisition"
   get "signatures/embedded_subscription"
 
 

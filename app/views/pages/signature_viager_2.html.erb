@@ -1,0 +1,25 @@
+<section>
+  <div class = "container petit_fond">
+    <%= simple_form_for(@viager, url: pages_assign_acquisition_path(@viager), html: { method: :patch }) do |f| %>
+    <%= f.error_notification %>
+    <div class="toggle toggle-transparent toggle-bordered-full">
+      <div class="toggle active">
+        <label>Choix de la date de signature chez le notaire pour <%=@viager.city%></label>
+          <div class="toggle-content">
+            <div class= "row">
+              <div class = "col-xs-12 col-sm-6">
+                <div class ="col-xs-6">
+                  <p>Signature*</p>
+                </div>
+              <div class ="col-xs-6">
+                <input type="datetime" class="form-control datepicker" data-format="dd-mm-yyyy" data-lang="en" data-RTL="false" name="viager[acquisition]" required>
+              </div>
+              <%= f.submit%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%end%>
+  </div>
+</section>

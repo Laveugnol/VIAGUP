@@ -1,0 +1,23 @@
+.bleu{
+  background-color: #1074D1;
+  font-weight: bold;
+}
+.orange{
+  background-color: $orange;
+  font-weight: bold;
+}
+
+.vert{
+  background-color: $green;
+  font-weight: bold;
+}
+
+.blanc{
+  color: white;
+}
+
+#scrollable{
+
+  height:350pt;
+  overflow:auto;
+}
