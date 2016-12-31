@@ -7,7 +7,6 @@ class PagesController < ApplicationController
 
   def profil
     @user = current_user
-
   end
 
   def invest_step1
@@ -50,8 +49,30 @@ class PagesController < ApplicationController
       @bouquet_share.assign = true
       @bouquet_share.save
     end
+  end
+
+  def creation_viager
+    @viager = Viager.new()
+  end
+
+  def signature_viager_1
+    @viagers = Viager.where(acquisition: nil)
+  end
+
+  def signature_viager_2
+    @viager = Viager.find(params[:format].to_i)
+  end
+
+  def assign_acquisition
+
+    a = params.require(:viager).permit(:acquisition)
+    @viager = Viager.find(params[:format].to_i)
+    @viager.update_attributes(a)
+    @viager.save
+    redirect_to pages_admin_path
 
   end
+
 
   def admin
     @viager = Viager.new
@@ -64,6 +85,85 @@ class PagesController < ApplicationController
 
   def epargne
     @user = current_user
+    @viagers = find_viagers_launched(@user)
+    @viagers_not_ready = find_viagers_not_launched_yet(@user)
+    @montant_investi = montant_investi(@viagers, @user)
+    @prelevement_futur = prelevement_futur(@viagers, @user)
+    @gain_potentiel = gain(@viagers, @user) - @montant_investi - @prelevement_futur
+
+  end
+
+
+private
+
+  def find_viagers_launched(user)
+    id = user.id
+    viagers = []
+    viagers_launched_per_user = []
+    Viager.all.each do |viager|
+      if viager.acquisition != nil
+        viagers << viager
+      end
+    end
+    viagers.each do |viager|
+      if RenteShare.where(viager_id: viager.id, assign: true, user_id: id).count != 0
+        viagers_launched_per_user << viager
+      end
+    end
+    viagers_launched_per_user
+  end
+
+
+  def find_viagers_not_launched_yet(user)
+    id = user.id
+    viagers = []
+    viagers_launched_per_user = []
+    Viager.all.each do |viager|
+      if viager.acquisition == nil
+        viagers << viager
+      end
+
+    end
+    viagers.each do |viager|
+      if RenteShare.where(viager_id: viager.id, assign: true, user_id: id).count != 0
+        viagers_launched_per_user << viager
+      end
+    end
+    viagers_launched_per_user
+  end
+
+  def montant_investi(viagers, user)
+    sum = 0
+    viagers.each do |viager|
+      acquisition_date = viager.acquisition
+      today = Date.today
+      mensualites = today.month - acquisition_date.month
+      parts = RenteShare.where(viager_id: viager.id, assign: true, user_id: user.id).count
+      sum += (viager.bouquet/viager.number_share)* parts + ((viager.rente/viager.number_share) * parts * mensualites)
+    end
+    sum
+  end
+
+  def prelevement_futur(viagers, user)
+    sum = 0
+    viagers.each do |viager|
+      total_month = viager.horizon*12
+      acquisition_date = viager.acquisition
+      today = Date.today
+      mensualites = total_month -(today.month - acquisition_date.month)
+      parts = RenteShare.where(viager_id: viager.id, assign: true, user_id: user.id).count
+      sum += (viager.rente/viager.number_share) * parts * mensualites
+    end
+    sum
+  end
+
+  def gain(viagers, user)
+    gain = 0
+    viagers.each do |viager|
+      parts = RenteShare.where(viager_id: viager.id, assign: true, user_id: user.id).count
+      gain += (viager.venale.to_i/viager.number_share) * parts
+    end
+    gain
   end
 
 

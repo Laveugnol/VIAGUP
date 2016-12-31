@@ -12,42 +12,353 @@
         <%=link_to "Mon épargne", pages_epargne_path(@user), class: "list-group-item active" %>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-9">
+    <div class="col-xs-12 col-sm-9" id="scrollable">
       <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
         <div class="box-icon-title">
           <i class="fa fa-money"></i>
           <h2>Votre épargne</h2>
         </div>
       </div>
+      <div class="col-xs-12">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#en_cours" data-toggle="tab"><i class="fa fa-university" aria-hidden="true"></i>  Investissement en cours<span class="badge">42</span></a></li>
+          <li><a href="#a_venir" data-toggle="tab"><i class="fa fa-clock-o" aria-hidden="true"></i>  Investissement à venir</a></li>
+          <li><a href="#documents" data-toggle="tab"><i class="fa fa-lock" aria-hidden="true"></i>  Documents</a></li>
+        </ul>
+        <%if current_user.certificat == false%>
+          <div class="tab-content">
+            <div class="tab-pane fade in active" id="en_cours">
+              <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                  <h3>Montant investi</h3>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <h3>Prélévements futurs</h3>
+                      <div class="row">
+                        <div class="col-xs-12">
+                          <h3><button type="button" data-toggle="tooltip" data-placement="top" title="Il s'agit d'une estimation de la somme que vous percevriez si les projets s'achevaient à leur horizon d'investissement respectif. Ce gain peut donc s'établir à la hausse comme à la baisse.">Gain potentiel <i class="fa fa-exclamation-circle" aria-hidden="true"></i></h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                  <h3><span class="label bleu">0</span></h3>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <h3><span class="label orange">0</span></h3>
+                      <div class="row">
+                        <div class="col-xs-12">
+                          <h3><span class="label vert">0</span></h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                  <canvas class="chartjs height-300" id="doughnutChartCanvas" width="300" height="300"></canvas>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Viager</th>
+                          <th>Ville</th>
+                          <th ><button type="button" data-toggle="tooltip" data-placement="top" title="Date de signature chez le notaire.">Acquisition</button></th>
+                          <th><button type="button" data-toggle="tooltip" data-placement="top" title="Nombre de parts auxquelles que vous avez souscrites"># parts</button></th>
+                          <th class="bleu blanc"><button type="button" data-toggle="tooltip" data-placement="top" title="Somme des tickets associés à chaque projet ">Tickets</button></th>
+                          <th class="bleu blanc"><button type="button" data-toggle="tooltip" data-placement="top" title="Somme des mensualités dépensées à ce jour pour chaque projet.">Mensualités</button></th>
+                          <th class="bleu blanc"><button type="button"  data-toggle="tooltip" data-placement="top" title="Ticket + mensualités ">Total</button></th>
+                          <th class="text-center"><button type="button" data-toggle="tooltip" data-placement="top" title="Il s'agit d'une estimation la somme que vous percevriez si le projet s'achevait aujourd'hui.">Gain  <i class="fa fa-exclamation-circle" aria-hidden="true"></i></button></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>/</td>
+                          <td>/</td>
+                          <td>/</td>
+                          <td>/</td>
+                          <td>/</td>
+                          <td>/</td>
+                          <td>/</td>
+                          <td>/</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="a_venir">
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  Avant d'investir vous devez compléter votre profil.
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="documents">
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  Avant de consulter d'hypothétiques documents vous devez compléter votre profil et investir.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%else%>
+        <div class="tab-content">
+          <div class="tab-pane fade in active" id="en_cours">
+            <div class="row">
+              <div class="col-xs-12 col-sm-4">
+              <h3>Montant investi</h3>
+                <div class="row">
+                  <div class="col-xs-12">
+                  <h3>Prélévements futurs</h3>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <h3><button type="button" data-toggle="tooltip" data-placement="top" title="Il s'agit d'une estimation de la somme que vous percevriez si les projets s'achevaient à leur horizon d'investissement respectif. Ce gain peut donc s'établir à la hausse comme à la baisse.">Gain potentiel <i class="fa fa-exclamation-circle" aria-hidden="true"></i></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4">
+                <h3><span class="label bleu"><%=separateur(@montant_investi)%> €</span></h3>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h3><span class="label orange"><%=separateur(@prelevement_futur)%> €</span></h3>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <h3><span class="label vert"><%=separateur(@gain_potentiel)%> €</span></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4">
+                <canvas class="chartjs height-300" id="doughnutChartCanvas" width="300" height="300"></canvas>
+              </div>
+            </div>
+            <div class="row">
+              <%if @viagers !=[]%>
+                <div class="col-xs-12">
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Viager</th>
+                          <th>Ville</th>
+                          <th ><button type="button" data-toggle="tooltip" data-placement="top" title="Date de signature chez le notaire.">Acquisition</button></th>
+                          <th><button type="button" data-toggle="tooltip" data-placement="top" title="Nombre de parts auxquelles que vous avez souscrites"># parts</button></th>
+                          <th class="bleu blanc"><button type="button" data-toggle="tooltip" data-placement="top" title="Somme des tickets associés à chaque projet ">Tickets</button></th>
+                          <th class="bleu blanc"><button type="button" data-toggle="tooltip" data-placement="top" title="Somme des mensualités dépensées à ce jour pour chaque projet.">Mensualités</button></th>
+                          <th class="bleu blanc"><button type="button"  data-toggle="tooltip" data-placement="top" title="Ticket + mensualités ">Total</button></th>
+                          <th class="text-center"><button type="button" data-toggle="tooltip" data-placement="top" title="Il s'agit d'une estimation la somme que vous percevriez si le projet s'achevait aujourd'hui (hors IS sur SCI).">Gain  <i class="fa fa-exclamation-circle" aria-hidden="true"></i></button></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <%@viagers.each do |viager|%>
+                          <tr>
+                            <td>
+                            <%=link_to viager_path(viager) do%>
+                            <%= cl_image_tag(viager.photo,
+                            width: 50, height: 40, crop: :thumb, gravity: :face) %>
+                            <%end%>
+                          </td>
+                            <td><%= viager.city%></td>
+                            <td><%= viager.acquisition.strftime("%d/%m/%Y")%></td>
+                            <td><%= number_of_share(@user, viager)%></td>
+                            <td><%= separateur(number_of_share(@user, viager) * (viager.bouquet/viager.number_share))%> €</td>
+                            <td><%=number_of_share(@user, viager) * (viager.rente/viager.number_share)* number_of_mensuality(viager)%> €</td>
+                            <td><%= separateur(number_of_share(@user, viager) * (viager.bouquet/viager.number_share) + number_of_share(@user, viager) * (viager.rente/viager.number_share)* number_of_mensuality(viager))%> €</td>
+                            <td><%=separateur(((viager.venale.to_i/viager.number_share) * number_of_share(@user, viager)) - (number_of_share(@user, viager) * (viager.bouquet/viager.number_share) + number_of_share(@user, viager) * (viager.rente/viager.number_share)* number_of_mensuality(viager)))%> €</td>
+                          </tr>
+                        <%end%>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              <%else%>
+                <div class="col-xs-12">
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Viager</th>
+                          <th>Ville</th>
+                          <th ><button type="button" data-toggle="tooltip" data-placement="top" title="Date de signature chez le notaire.">Acquisition</button></th>
+                          <th><button type="button" data-toggle="tooltip" data-placement="top" title="Nombre de parts auxquelles que vous avez souscrites"># parts</button></th>
+                          <th class="bleu blanc"><button type="button" data-toggle="tooltip" data-placement="top" title="Somme des tickets associés à chaque projet ">Tickets</button></th>
+                          <th class="bleu blanc"><button type="button" data-toggle="tooltip" data-placement="top" title="Somme des mensualités dépensées à ce jour pour chaque projet.">Mensualités</button></th>
+                          <th class="bleu blanc"><button type="button"  data-toggle="tooltip" data-placement="top" title="Ticket + mensualités ">Total</button></th>
+                          <th class="text-center"><button type="button" data-toggle="tooltip" data-placement="top" title="Il s'agit d'une estimation la somme que vous percevriez si le projet s'achevait aujourd'hui.">Gain  <i class="fa fa-exclamation-circle" aria-hidden="true"></i></button></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>/</td>
+                          <td>/</td>
+                          <td>/</td>
+                          <td>/</td>
+                          <td>/</td>
+                          <td>/</td>
+                          <td>/</td>
+                          <td>/</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              <%end%>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="a_venir">
+            <div class="row">
+              <%if @viagers_not_ready != []%>
+                <div class="col-xs-12">
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Viager</th>
+                          <th>Ville</th>
+                          <th><button type="button" data-toggle="tooltip" data-placement="top" title="Nombre de parts auxquelles que vous avez souscrites"># parts</button></th>
+                          <th><button type="button" data-toggle="tooltip" data-placement="top" title="Somme des tickets associés à chaque projet ">Tickets</button></th>
+                          <th><button type="button" data-toggle="tooltip" data-placement="top" title="Somme des mensualités à venir pour chaque projet.">Mensualités</button></th>
+                          <th>Statut</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <% @viagers_not_ready.each do |viager|%>
+                        <tr>
+                          <td><%=link_to viager_path(viager) do%>
+                            <%= cl_image_tag(viager.photo,
+                            width: 50, height: 40, crop: :thumb, gravity: :face) %>
+                            <%end%></td>
+                          <td><%=viager.city%></td>
+                          <td><%= number_of_share(@user, viager)%></td>
+                          <td><%= separateur(number_of_share(@user, viager) * (viager.bouquet/viager.number_share))%> €</td>
+                          <td><%=number_of_share(@user, viager) * (viager.rente/viager.number_share)%> €</td>
+                          <% if RenteShare.where(viager_id: viager.id, assign: false).count != 0 %>
+                          <td class="text-center"><span class="label orange">Financement incomplet</span></td>
+                          <% else %>
+                          <td class="text-center"><span class="label vert">Signature chez le notaire imminente</span></td>
+                          <% end %>
+                        </tr>
+                      <%end%>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              <%else%>
+                <div class="col-xs-12">
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Viager</th>
+                          <th>Ville</th>
+                          <th><button type="button" data-toggle="tooltip" data-placement="top" title="Nombre de parts auxquelles que vous avez souscrites"># parts</button></th>
+                          <th><button type="button" data-toggle="tooltip" data-placement="top" title="Somme des tickets associés à chaque projet ">Tickets</button></th>
+                          <th><button type="button" data-toggle="tooltip" data-placement="top" title="Somme des mensualités à venir pour chaque projet.">Mensualités</button></th>
+                          <th>Statut</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>/</td>
+                          <td>/</td>
+                          <td>/</td>
+                          <td>/</td>
+                          <td>/</td>
+                          <td class="text-center"><span class="label vert">Il est grand temps de diversifier votre portefeuille</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              <%end%>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="documents">
+            <%if @viagers == []%>
+              <p> Aucun document disponible.</p>
+            <%else%>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Viager</th>
+                          <th>Ville</th>
+                          <th>Statuts SCI</th>
+                          <th>Pacte d'associés</th>
+                          <th>Comptes SCI</th>
+                          <th>Acte de propriété</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <% @viagers.each do |viager|%>
+                        <tr>
+                          <td><%=link_to viager_path(viager) do%>
+                            <%= cl_image_tag(viager.photo,
+                            width: 50, height: 40, crop: :thumb, gravity: :face) %>
+                            <%end%></td>
+                          <td> <%=viager.city%></td>
+                          <td class="text-center"><a class="label bleu" href="<%= cl_image_path(viager.photo,
+                            :flags => :attachment) %>">Télécharger</a></td>
+                          <td class="text-center"><a class="label bleu" href="<%= cl_image_path(viager.photo,
+                            :flags => :attachment) %>">Télécharger</a></td>
+                          <td class="text-center"><a class="label bleu" href="<%= cl_image_path(viager.photo,
+                            :flags => :attachment) %>">Télécharger</a></td>
+                          <td class="text-center"><a class="label bleu" href="<%= cl_image_path(viager.photo,
+                            :flags => :attachment) %>">Télécharger</a></td>
 
-    <div class="col-xs-12">
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-        <li><a href="#profile" data-toggle="tab">Profile</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#dropdown1" tabindex="-1" data-toggle="tab">@fat</a></li>
-            <li><a href="#dropdown2" tabindex="-1" data-toggle="tab">@mdo</a></li>
-          </ul>
-        </li>
-      </ul>
-
-      <div class="tab-content">
-        <div class="tab-pane fade in active" id="home">
-          <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
-        </div>
-        <div class="tab-pane fade" id="profile">
-          <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
-        </div>
-        <div class="tab-pane fade" id="dropdown1">
-          <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold.</p>
-        </div>
-        <div class="tab-pane fade" id="dropdown2">
-          <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party.</p>
-        </div>
+                        </tr>
+                      <%end%>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            <%end%>
+          </div>
+        <%end%>
       </div>
-    </div>
     </div>
   </div>
 </div>
+</div>
+
+
+
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    loadScript(plugin_path + 'chart.chartjs/Chart.min.js', function() {
+      var doughnutChartCanvas = [
+        {
+          value : "<%=@gain_potentiel%>",
+          color : "#15CD72"
+        },
+        {
+          value : "<%=@prelevement_futur%>",
+          color : "#FF796A"
+        },
+
+        {
+          value : "<%=@montant_investi%>",
+          color : "#1074D1"
+        }
+      ];
+
+      var ctx = document.getElementById("doughnutChartCanvas").getContext("2d");
+      new Chart(ctx).Doughnut(doughnutChartCanvas);
+    });
+  <%end%>
+<%end%>

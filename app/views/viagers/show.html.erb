@@ -63,11 +63,11 @@
                   </div>
                   <div class="col-xs-6">
                     <%= image_tag "77_Essential_Icons_Bar Graph.svg"%>
-                    <h3><%=@viager.tri%> %</h3>
+                    <h3><%=@viager.tri%> % <a href="#" data-toggle="popover" class="btn boldy" title="A quoi correspond ce taux de rendement interne?" data-content="Ce taux de rendement interne prend en compte l'espérance de vie du créditrentier (basée sur la table de mortalité établie par CNP Assurances) et sur la valeur de revente du bien à terme (égale à la valeur vénale considérée non évolutive et indiquée sur cette page). Ce taux peut donc évoluer à la hausse comme à la baisse." id="popinfo"><i class="fa fa-question-circle" aria-hidden="true" ></i></a></h3>
                   </div>
                   <div class="col-xs-6">
                     <%= image_tag "77_Essential_Icons_Clock.svg"%>
-                    <h3><%=@viager.horizon%> ans</h3>
+                    <h3><%=@viager.horizon%> ans <a href="#" data-toggle="popover" class="btn boldy" title="A quoi correspond l'horizon d'investissment? " data-content="L'horizon d'investissement est égal à l'espérance de vie du créditrentier, calculée d'aprés la table de mortalité établie par CNP Assurances. Le respect de cet horizon est également subordonné à la revente du bien. Cet horizon peut donc évoluer à la hausse comme à la baisse. " id="popinfo"><i class="fa fa-question-circle" aria-hidden="true"></i></a></h3>
                   </div>
                 </div>
               </div>
@@ -283,44 +283,29 @@
           <div class="col-md-6 col-sm-6 nopadding nomargin">
             <div class="padding-40">
               <h2><%= image_tag "77_Essential_Icons_List.svg"%>Le dynamisme du secteur</h2>
-              <p>Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum.</p>
-              <p class="font-lato size-18">Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>Quelques données ci-dessous pour que vous puissiez y voir plus clair.</p>
+
               <div class="row margin-top-60">
-                <div class="col-md-8">
+                <div class="col-md-12 col col-xs-12">
                   <div class="heading-title heading-border-bottom heading-color" id="descriptif">
-                    <h3>Descriptif du bien</h3>
+                    <h3>Démographie</h3>
                   </div>
                   <ul>
-                    <li>TYPE DE BIEN : <strong><%=@viager.maison.capitalize%></strong></li>
-                    <li>SURFACE HABITABLE : <strong><%=@viager.habitable%> m²</strong></li>
-                    <li>NOMBRE DE PIÈCE(S) : <strong><%=@viager.piece%></strong></li>
-                    <li>NOMBRE DE NIVEAU(X) : <strong><%=@viager.niveaux%></strong></li>
-                    <li>ACCÈS PAR ASCENSEUR : <strong><%=@viager.ascenceur%></strong></li>
-                    <li>BALCON/TERRASSE : <strong><%=@viager.balcon%></strong></li>
-                    <li>ÉPOQUE DE CONSTRUCTION : <strong><%=@viager.annee%></strong></li>
-                    <li>SURFACE DU TERRAIN : <strong><%=@viager.terrain%> m²</strong></li>
-                    <li>ANNEXE(S)/SURFACE(S) SUPPLÉMENTAIRE(S) : <strong><%=@viager.annexe%></strong></li>
+                    <li>Population : <strong><%=@population%></strong></li>
+                    <li>Croissance démographique : <strong><%=@croissance%></strong></li>
+                    <li>Nombre total de logements : <strong><%=@nbre_logement%></strong></li>
+                    <li>densité de la population : <strong><%=@densité%></strong></li>
                   </ul>
-                  <a href="#">
-                    Read
-                    <!-- /word rotator -->
-                    <span class="word-rotator" data-delay="2000">
-                      <span class="items">
-                        <span>more</span>
-                        <span>now</span>
-                      </span>
-                    </span><!-- /word rotator -->
-                    <i class="glyphicon glyphicon-menu-right size-12"></i>
-                  </a>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-12 col-xs-12">
                   <div class="heading-title heading-border-bottom heading-color">
-                    <h3>Créditrentier</h3>
+                    <h3>Prix moyens</h3>
                   </div>
                     <ul>
-                      <li><strong><%=@viager.old.first_name.capitalize%></strong></li>
-                      <li><strong><%=@viager.old.sexe.capitalize%></strong></li>
-                      <li><strong><%=@viager.old.age%> ans</strong></li>
+                      <li>Prix m2 appartement <strong><%=@prix_m2_moyen_appartement%>€</strong></li>
+                      <li>Prix m2 maison <strong><%=@prix_m2_moyen_maison%>€</strong></li>
+                      <li>Evolution des prix depuis 1 an <strong><%=@evolution_des_prix_sur_annee%></strong></li>
+                      <li>Délai de vente moyen <strong><%=@delai_vente_moyen%></strong></li>
                     </ul>
                 </div>
               </div>
@@ -380,6 +365,9 @@
 
 
 
+
+
+
 <% content_for(:after_js) do %>
 
   <%= javascript_tag do %>
@@ -417,6 +405,15 @@
         $('#part').html('<input type="hidden" name="part" value="'+part+'" />');
       });
 
+      function formatMillier(nombre){
+        nombre += '';
+        var sep = ' ';
+        var reg = /(\d+)(\d{3})/;
+        while( reg.test( nombre)) {
+          nombre = nombre.replace( reg, '$1' +sep +'$2');
+        }
+        return nombre;
+      };
 
       $(".clickable2").click(function(event) {
         var part = $('#nombre_de_parts2').val();
@@ -428,10 +425,10 @@
         var invest = bouquet * part ;
         var total = mensuel + invest;
         var gain = Math.round(((vénale * part) - total)*0.6667*100)/100;
-        $('#col3').html(invest);
-        $('#col4').html(mensuel);
-        $('#col5').html(total);
-        $('#col6').html(gain);
+        $('#col3').html(formatMillier(invest));
+        $('#col4').html(formatMillier(mensuel));
+        $('#col5').html(formatMillier(total));
+        $('#col6').html(formatMillier(gain));
       });
 
 
