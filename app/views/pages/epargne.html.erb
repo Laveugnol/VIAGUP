@@ -172,9 +172,9 @@
                             <td><%= viager.acquisition.strftime("%d/%m/%Y")%></td>
                             <td><%= number_of_share(@user, viager)%></td>
                             <td><%= separateur(number_of_share(@user, viager) * (viager.bouquet/viager.number_share))%> €</td>
-                            <td><%=number_of_share(@user, viager) * (viager.rente/viager.number_share)* number_of_mensuality(viager)%> €</td>
-                            <td><%= separateur(number_of_share(@user, viager) * (viager.bouquet/viager.number_share) + number_of_share(@user, viager) * (viager.rente/viager.number_share)* number_of_mensuality(viager))%> €</td>
-                            <td><%=separateur(((viager.venale.to_i/viager.number_share) * number_of_share(@user, viager)) - (number_of_share(@user, viager) * (viager.bouquet/viager.number_share) + number_of_share(@user, viager) * (viager.rente/viager.number_share)* number_of_mensuality(viager)))%> €</td>
+                            <td><%=separateur((number_of_share(@user, viager) * (viager.rente/viager.number_share)* number_of_mensuality(viager)).round(0))%> €</td>
+                            <td><%= separateur((number_of_share(@user, viager) * (viager.bouquet/viager.number_share) + number_of_share(@user, viager) * (viager.rente/viager.number_share)* number_of_mensuality(viager)).round(0))%> €</td>
+                            <td><%=separateur((((viager.venale.to_i/viager.number_share) * number_of_share(@user, viager)) - (number_of_share(@user, viager) * (viager.bouquet/viager.number_share) + number_of_share(@user, viager) * (viager.rente/viager.number_share)* number_of_mensuality(viager))).round(0))%> €</td>
                           </tr>
                         <%end%>
                       </tbody>
@@ -297,6 +297,7 @@
                           <th>Ville</th>
                           <th>Statuts SCI</th>
                           <th>Pacte d'associés</th>
+                          <th>Date d'acquisition</th>
                           <th>Comptes SCI</th>
                           <th>Acte de propriété</th>
                         </tr>
@@ -309,15 +310,35 @@
                             width: 50, height: 40, crop: :thumb, gravity: :face) %>
                             <%end%></td>
                           <td> <%=viager.city%></td>
-                          <td class="text-center"><a class="label bleu" href="<%= cl_image_path(viager.photo,
-                            :flags => :attachment) %>">Télécharger</a></td>
-                          <td class="text-center"><a class="label bleu" href="<%= cl_image_path(viager.photo,
-                            :flags => :attachment) %>">Télécharger</a></td>
-                          <td class="text-center"><a class="label bleu" href="<%= cl_image_path(viager.photo,
-                            :flags => :attachment) %>">Télécharger</a></td>
-                          <td class="text-center"><a class="label bleu" href="<%= cl_image_path(viager.photo,
-                            :flags => :attachment) %>">Télécharger</a></td>
-
+                          <% if viager.statuts_sci.file != nil %>
+                            <td class="text-center"><a class="label bleu" href="<%= cl_image_path(viager.statuts_sci,
+                            :flags => :attachment) %>">Télécharger les Statuts</a></td>
+                          <% else %>
+                            <td class="text-center"><span class="label orange"> Pièce non disponible</span></td>
+                          <% end %>
+                          <% if viager.pacte.file != nil %>
+                            <td class="text-center"><a class="label bleu" href="<%= cl_image_path(viager.pacte,
+                            :flags => :attachment) %>">Télécharger le pacte</a></td>
+                          <% else %>
+                            <td class="text-center"><span class="label orange"> Pièce non disponible</span></td>
+                          <% end %>
+                          <% if viager.acquisition != nil %>
+                            <td class="text-center"><span><%=viager.acquisition.strftime("%d/%m/%Y")%></span></td>
+                            <% else %>
+                            <td class="text-center"><span class="label orange"> Donnée non disponible</span></td>
+                          <% end %>
+                          <% if viager.compte_courant.file != nil %>
+                            <td class="text-center"><a class="label bleu" href="<%= cl_image_path(viager.compte_courant,
+                            :flags => :attachment) %>">Télécharger les derniers comptes</a></td>
+                          <% else %>
+                            <td class="text-center"><span class="label orange"> Pièce non disponible</span></td>
+                          <% end %>
+                          <% if viager.acte_propriete.file != nil %>
+                            <td class="text-center"><a class="label bleu" href="<%= cl_image_path(viager.acte_propriete,
+                            :flags => :attachment) %>">Télécharger l'acte de propriété</a></td>
+                          <% else %>
+                            <td class="text-center"><span class="label orange"> Pièce non disponible</span></td>
+                          <% end %>
                         </tr>
                       <%end%>
                       </tbody>

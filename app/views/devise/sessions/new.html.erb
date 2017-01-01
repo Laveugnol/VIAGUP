@@ -12,101 +12,66 @@
       <!-- -->
       <section>
         <div class="container">
-
           <div class="row">
-
             <!-- LOGIN -->
             <div class="col-md-6 col-sm-6">
-
               <!-- login form -->
-
-
               <form action="#" method="post" class="sky-form boxed">
               <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-               <header class="size-18 margin-bottom-20">
-                  I'm a returning customer
+                <header class="size-18 margin-bottom-20">
+                  J'ai déjà un compte
                 </header>
                 <fieldset class="nomargin form-inputs">
 
                   <%= f.input :email, required: false, autofocus: true, placeholder: "Email" %>
-
-
                   <%= f.input :password, required: false, placeholder: "Password" %>
-
-
-                   <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-
-
-
-                   <div class="clearfix note margin-bottom-30">
+                  <% if devise_mapping.rememberable?%>
+                    <label class="checkbox">
+                      <input type='hidden' value="0" name="user[remember_me]">
+                      <input type="checkbox" value="1" name="user[remember_me]" >
+                      <i></i> Se souvenir de moi
+                    </label>
+                  <%end%>
+                  <div class="clearfix note margin-bottom-30">
                     <a class="pull-right" href="../users/password/new">Mot de passe oublié?</a>
                   </div>
-
-
-                   <label class="checkbox weight-300">
-                    <input type="checkbox" name="checkbox-inline">
-                    <i></i> Keep me logged in
-                  </label>
-
-
-
-
                   <footer class="form-actions">
-                 <%= f.button :submit, "Log in", class: "btn btn-primary noradius pull-right" %>
-                </footer>
+                    <%= f.button :submit, "GO", class: "btn-yours2 pull-right" %>
+                  </footer>
                 </fieldset>
               <% end %>
-              </form>
-              <!-- /login form -->
-
-
-            </div>
-            <!-- /LOGIN -->
-
-            <!-- SOCIAL LOGIN -->
-            <div class="col-md-6 col-sm-6">
-              <form action="#" method="post" class="sky-form boxed">
-
-                <header class="size-18 margin-bottom-20">
-                  Sign In via un réseau social
-                </header>
-
+            </form>
+            <!-- /login form -->
+          </div>
+          <!-- /LOGIN -->
+          <!-- SOCIAL LOGIN -->
+          <div class="col-md-6 col-sm-6">
+            <form action="#" method="post" class="sky-form boxed">
+              <header class="size-18 margin-bottom-20">
+                Connexion via un réseau social
+               </header>
                 <fieldset class="nomargin">
-
                   <div class="row">
-
                     <div class="col-md-8 col-md-offset-2">
-
                       <a class="btn btn-block btn-social btn-facebook margin-bottom-10" href="../users/auth/facebook">
                         <i class="fa fa-facebook"></i> Sign in with Facebook
                       </a>
-
                       <a class="btn btn-block btn-social btn-twitter margin-bottom-10" href="../users/auth/twitter">
                         <i class="fa fa-twitter"></i> Sign in with Twitter
                       </a>
-
                       <a class="btn btn-block btn-social btn-google margin-bottom-10"  href="../users/auth/google_oauth2">
                         <i class="fa fa-google-plus"></i> Sign in with Google
                       </a>
-
                     </div>
                   </div>
-
                 </fieldset>
-
                 <footer>
                   Pas encore inscrit? <a href="../users/sign_up"><strong>S'inscire ici!</strong></a>
                 </footer>
-
               </form>
-
             </div>
             <!-- /SOCIAL LOGIN -->
-
           </div>
-
-
         </div>
       </section>
-
       <!-- / -->

@@ -31,8 +31,7 @@ module ApplicationHelper
 
   def number_of_mensuality(viager)
     acquisition_date = viager.acquisition
-    today = Date.today
-    today.month - acquisition_date.month
+    ((Time.now-viager.acquisition)/(60*60*24))/30.4375
   end
 
   def number_of_share(user, viager)

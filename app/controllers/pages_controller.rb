@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
+  before_action :set_viager_in_admin, only: [:signature_viager_2, :acte_propriete2,
+                                             :statuts_sci2, :pacte_associes2, :compte_courant2]
 
   def home
     @user = current_user
@@ -55,27 +57,63 @@ class PagesController < ApplicationController
     @viager = Viager.new()
   end
 
-  def signature_viager_1
-    @viagers = Viager.where(acquisition: nil)
-  end
-
   def signature_viager_2
-    @viager = Viager.find(params[:format].to_i)
   end
 
   def assign_acquisition
-
     a = params.require(:viager).permit(:acquisition)
     @viager = Viager.find(params[:format].to_i)
     @viager.update_attributes(a)
     @viager.save
     redirect_to pages_admin_path
-
   end
 
+  def acte_propriete2
+  end
+
+  def assign_acte
+    a = params.require(:viager).permit(:acte_propriete)
+    @viager = Viager.find(params[:format].to_i)
+    @viager.update_attributes(a)
+    @viager.save
+    redirect_to pages_admin_path
+  end
+
+  def statuts_sci2
+  end
+
+  def assign_statuts
+    a = params.require(:viager).permit(:statuts_sci)
+    @viager = Viager.find(params[:format].to_i)
+    @viager.update_attributes(a)
+    @viager.save
+    redirect_to pages_admin_path
+  end
+
+  def pacte_associes2
+  end
+
+  def assign_pacte
+    a = params.require(:viager).permit(:pacte)
+    @viager = Viager.find(params[:format].to_i)
+    @viager.update_attributes(a)
+    @viager.save
+    redirect_to pages_admin_path
+  end
+
+  def compte_courant2
+  end
+
+  def assign_compte
+    a = params.require(:viager).permit(:compte_courant)
+    @viager = Viager.find(params[:format].to_i)
+    @viager.update_attributes(a)
+    @viager.save
+    redirect_to pages_admin_path
+  end
 
   def admin
-    @viager = Viager.new
+    @viagers = Viager.all
   end
 
   def old
@@ -136,25 +174,26 @@ private
     sum = 0
     viagers.each do |viager|
       acquisition_date = viager.acquisition
-      today = Date.today
-      mensualites = today.month - acquisition_date.month
+
+      mensualites = ((Time.now-viager.acquisition)/(60*60*24))/30.4375
       parts = RenteShare.where(viager_id: viager.id, assign: true, user_id: user.id).count
       sum += (viager.bouquet/viager.number_share)* parts + ((viager.rente/viager.number_share) * parts * mensualites)
+
     end
-    sum
+    sum.round(0)
+
   end
 
   def prelevement_futur(viagers, user)
     sum = 0
     viagers.each do |viager|
       total_month = viager.horizon*12
-      acquisition_date = viager.acquisition
-      today = Date.today
-      mensualites = total_month -(today.month - acquisition_date.month)
+
+      mensualites = total_month -(((Time.now-viager.acquisition)/(60*60*24))/30.4375)
       parts = RenteShare.where(viager_id: viager.id, assign: true, user_id: user.id).count
       sum += (viager.rente/viager.number_share) * parts * mensualites
     end
-    sum
+    sum.round(0)
   end
 
   def gain(viagers, user)
@@ -163,9 +202,12 @@ private
       parts = RenteShare.where(viager_id: viager.id, assign: true, user_id: user.id).count
       gain += (viager.venale.to_i/viager.number_share) * parts
     end
-    gain
+    gain.round(0)
   end
 
+  def set_viager_in_admin
+    @viager = Viager.find(params[:format].to_i)
+  end
 
 
 end

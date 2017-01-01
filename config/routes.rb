@@ -17,11 +17,18 @@ Rails.application.routes.draw do
   post "pages/attribution"
   get "pages/epargne"
   get "pages/creation_viager"
-  get "pages/signature_viager_1"
   get "pages/signature_viager_2"
   post "pages/signature_viager_2"
   patch "pages/assign_acquisition"
   get "signatures/embedded_subscription"
+  get "pages/statuts_sci2"
+  post "pages/assign_statuts"
+  get "pages/pacte_associes2"
+  post "pages/assign_pacte"
+  get "pages/acte_propriete2"
+  post "pages/assign_acte"
+  get "pages/compte_courant2"
+  patch "pages/assign_compte"
 
 
 

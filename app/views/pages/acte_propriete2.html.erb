@@ -1,0 +1,26 @@
+<section>
+  <div class = "container petit_fond">
+    <%= simple_form_for(@viager, url: pages_assign_acte_path(@viager), html: { method: :post }) do |f| %>
+    <%= f.error_notification %>
+    <div class="toggle toggle-transparent toggle-bordered-full">
+      <div class="toggle active">
+        <label>Liaison d'un acte de propriété pour <%=@viager.city%></label>
+          <div class="toggle-content">
+            <div class= "row">
+              <div class = "col-xs-12 col-sm-6">
+                <div class ="col-xs-6">
+                  <p>acte*</p>
+                </div>
+              <div class ="col-xs-6">
+                <%= f.input :acte_propriete , required: true, autofocus: true, label: false %>
+                <%= f.input :acte_propriete_cache, as: :hidden %>
+              </div>
+              <%= f.submit%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%end%>
+  </div>
+</section>

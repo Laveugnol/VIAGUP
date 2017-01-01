@@ -16,7 +16,9 @@ ActiveAdmin.register Viager do
 permit_params :address, :city, :zip_code, :country, :old_id, :photo,
               :rente, :bouquet, :horizon, :tri, :habitable, :piece,
               :niveaux, :ascenceur, :balcon, :annee, :terrain, :annexe, :maison,
-              :venale, :decote, :number_share, :salon , :chambre, :exterieur
+              :venale, :decote, :number_share, :salon , :chambre, :exterieur, :acquisition,
+              :statuts_sci, :pacte , :compte_courant, :acte_propriete
+
 
 
  index do

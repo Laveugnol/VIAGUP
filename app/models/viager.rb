@@ -7,6 +7,10 @@ class Viager < ApplicationRecord
   mount_uploader :salon, SalonUploader
   mount_uploader :chambre, ChambreUploader
   mount_uploader :exterieur, ExterieurUploader
+  mount_uploader :statuts_sci, StatutsSciUploader
+  mount_uploader :pacte, PacteUploader
+  mount_uploader :compte_courant, CompteCourantUploader
+  mount_uploader :acte_propriete, ActeProprieteUploader
 
   geocoded_by :full_address
   after_validation :geocode, if: :address_changed?
