@@ -140,7 +140,17 @@ class PagesController < ApplicationController
     @montant_investi = montant_investi(@viagers, @user)
     @prelevement_futur = prelevement_futur(@viagers, @user)
     @gain_potentiel = gain(@viagers, @user) - @montant_investi - @prelevement_futur
+  end
 
+  def validation_profil
+    @user = User.find(params[:format].to_i)
+  end
+
+  def validate_profil
+    @user = User.find(params[:format].to_i)
+    @user.profil_valid = true
+    @user.save
+    redirect_to pages_admin_path
   end
 
 

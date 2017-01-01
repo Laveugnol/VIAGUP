@@ -48,7 +48,7 @@
             </div>
             <div class="col-xs-8">
               <% if @user.profil_valid %>
-                <p>Votre profil a été validé. Vous pouvez désormais consulter les pièces relatives à nos produits.</p>
+                <p><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Votre profil a été validé. Vous pouvez désormais consulter les pièces relatives à nos produits.</p>
               <% elsif @user.certificat == true && @user.profil_valid == false%>
                  <p>Votre profil est en cours de validation par nos équipes. Vous pourrez bientôt consulter les pièces relatives à nos produits.</p>
                  <% elsif @user.doc_sent == true && @user.certificat == false%>
@@ -89,7 +89,7 @@
                          <h2 class="panel-title">Vos informations personnelles</h2>
                       </div>
                       <div class="panel-body">
-                         Vos informations sont à jour.
+                         <i class="fa fa-check-circle-o" aria-hidden="true"></i>  Vos informations sont à jour.
                       </div>
                     <%end%>
                   </div>
@@ -130,7 +130,7 @@
                         <h2 class="panel-title">Documents justificatifs</h2>
                       </div>
                       <div class="panel-body">
-                         Vos pièces ont bien été transmises.
+                         <i class="fa fa-check-circle-o" aria-hidden="true"></i>  Vos pièces ont bien été transmises.
                       </div>
                   <%end%>
                 </div>
@@ -174,7 +174,7 @@
                       <h2 class="panel-title">Vos informations investisseur</h2>
                     </div>
                     <div class="panel-body">
-                      Vous informations sont à jour.
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>  Vous informations sont à jour.
                     </div>
                   <%end%>
                 </div>
@@ -186,7 +186,7 @@
                   </div>
                   <div class="panel-body">
                     <% if @user.profil_valid %>
-                      Votre profil a été validé.
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>  Votre profil a été validé.
                     <%else%>
                       Votre profil n'est pas  encore validé.
                     <%end%>
