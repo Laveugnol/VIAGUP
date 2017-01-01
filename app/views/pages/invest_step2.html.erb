@@ -27,10 +27,22 @@
   </div>
 </div>
 
-<br>
-<br>
+
+
 <section>
   <div class = "container petit_fond">
+    <div class="row">
+      <div class="col-xs-12">
+        <strong><p><i class="fa fa-clock-o" aria-hidden="true"></i>
+          Il ne vous faut que 3 minutes pour remplir ce formulaire.
+        </p></strong>
+      </div>
+      <div class="col-xs-12">
+        <strong><p><i class="fa fa-lock" aria-hidden="true"></i>
+          Vos informations sont stockées dans un espace sécurisé et restent confidentielles.
+        </p></strong>
+      </div>
+    </div>
     <%= simple_form_for(@investment_profile, url: investment_profile_path(@investment_profile), html: { method: :patch }) do |f| %>
     <%= f.error_notification %>
     <div class="toggle toggle-transparent toggle-bordered-full">

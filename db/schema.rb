@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161230105818) do
+ActiveRecord::Schema.define(version: 20170101125918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -203,8 +203,8 @@ ActiveRecord::Schema.define(version: 20161230105818) do
     t.string   "zip_code"
     t.string   "country"
     t.integer  "old_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "photo"
     t.integer  "bouquet"
     t.integer  "rente"
@@ -229,6 +229,10 @@ ActiveRecord::Schema.define(version: 20161230105818) do
     t.string   "chambre"
     t.string   "exterieur"
     t.datetime "acquisition"
+    t.string   "statuts_sci"
+    t.string   "pacte"
+    t.string   "compte_courant"
+    t.string   "acte_propriete"
     t.index ["old_id"], name: "index_viagers_on_old_id", using: :btree
   end
 

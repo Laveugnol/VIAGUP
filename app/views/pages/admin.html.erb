@@ -1,8 +1,90 @@
-<section>
-<%=link_to "créer un viager", pages_creation_viager_path, class: "btn-yours2"%>
-<%=link_to "établir une date de signature chez le notaire", pages_signature_viager_1_path, class: "btn-yours2"%>
+<section class="callout-dark heading-title heading-arrow-bottom">
+        <div class="container">
 
+          <div class="text-center">
+            <h3 class="size-30"><%= image_tag "77_Essential_Icons_Search.svg"%>Espace Admin </h3>
+            <p>#data </p>
+          </div>
+
+        </div>
+      </section>
+
+<section class="text-center">
+<%=link_to "créer un viager", pages_creation_viager_path, class: "btn-yours2"%>
 
 </section>
+
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+                <div class="col-xs-12">
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Viager</th>
+                          <th>Ville</th>
+                          <th>Statuts SCI</th>
+                          <th>Date de signature chez le notaire</th>
+                          <th>Pacte d'associés</th>
+                          <th>Comptes SCI</th>
+                          <th>Acte de propriété</th>
+                          <th>Financement</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <% @viagers.each do |viager| %>
+                        <tr>
+                          <td><%=link_to viager_path(viager) do %>
+                            <%= cl_image_tag(viager.photo,
+                            width: 50, height: 40, crop: :thumb, gravity: :face) %>
+                            <% end %></td>
+                          <td> <%=viager.city%></td>
+                          <% if viager.statuts_sci.file != nil %>
+                            <td class="text-center"><span class="label vert">Statuts OK</span></td>
+                          <% else %>
+                            <td class="text-center"><%=link_to "Uploader des statuts", pages_statuts_sci2_path(viager), class: "label orange"%></td>
+                          <% end %>
+                          <% if viager.pacte.file != nil %>
+                            <td class="text-center"><span class="label vert">Pacte OK</span></td>
+                          <% else %>
+                            <td class="text-center"><%=link_to "Uploader le pacte", pages_pacte_associes2_path(viager), class: "label orange"%></td>
+                          <% end %>
+                          <% if viager.acquisition != nil %>
+                            <td class="text-center"><span><%=viager.acquisition.strftime("%d/%m/%Y")%></span></td>
+                            <% else %>
+                              <td class="text-center"><%=link_to "Definir une date", pages_signature_viager_2_path(viager), class: "label orange"%></td>
+                          <% end %>
+                          <% if viager.compte_courant.file != nil %>
+                            <td class="text-center"><%=link_to "Uploader les premiers comptes", pages_compte_courant2_path(viager), class: "label vert"%></td>
+                          <% else %>
+                            <td class="text-center"><%=link_to "Mettre à jour les comptes", pages_compte_courant2_path(viager), class: "label orange"%></td>
+                          <% end %>
+                          <% if viager.acte_propriete.file != nil %>
+                            <td class="text-center"><span class="label vert">Acte OK</span></td>
+                          <% else %>
+                            <td class="text-center"><%=link_to "Uploader l'acte", pages_acte_propriete2_path(viager), class: "label orange"%></td>
+                          <% end %>
+                          <td>
+                            <div class="progress">
+                              <div id="progression" class="progress-bar" role="progressbar" aria-valuenow="<%=share_assigned_percentage(viager)%>" aria-valuemin="0" aria-valuemax="100" style="width: <%=share_assigned_percentage(viager)%>%; min-width: 1em;">
+                              <%=share_assigned_percentage(viager)%>%
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+  </div>
+</section>
+
+
 
 
