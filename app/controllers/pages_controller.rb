@@ -16,21 +16,33 @@ class PagesController < ApplicationController
   end
 
   def invest_step2
+    if current_user.investment_profile == nil
     @investment_profile = current_user.investment_profile
-    @civilite = ["Monsieur", "Madame"]
-    @categorie = ["Agriculteur", "Artisan", "Chef d'entreprise", "Cadre", "Professeur", "Profession libérale", "Profession scientfique ou artistique", "Profession intermédiare", "Employé", "Ouvrier", "Retraité", "Sans activité professionnelle"]
-    @expertise = ["Architecture", "Autre", "BTP et second oeuvre", "Commerciale", "Comptabilité & finance", "Edition/Ecriture", "Formation/Education", "Gestion de projet", "Hotellerie", "Informatique", "Ingénierie", "Maintenance & réparation", "Immobilier", "Juridique", "Logistique", "Marketing", "Production", "Qualité", "Recherche", "Ressources humaines", "Santé", "Sécurité", "Services administratifs", "Service clientèle", "Stratégie & management"]
-    @invest4 = ["Réduction fiscale", "Recherche d'un profit important à long terme", "Diversification du portefeuille"]
-    @patrimoine2 = ["Inférieur à 200 000€", "Supérieur à 200 000€", "Inférieur à 500 000€", "Supérieur à 500 000€"]
-    @blanchiement1 = ["Salaires", "Revenus fonciers", "Pensions, retraites"]
+      @civilite = ["Monsieur", "Madame"]
+      @categorie = ["Agriculteur", "Artisan", "Chef d'entreprise", "Cadre", "Professeur", "Profession libérale", "Profession scientfique ou artistique", "Profession intermédiare", "Employé", "Ouvrier", "Retraité", "Sans activité professionnelle"]
+      @expertise = ["Architecture", "Autre", "BTP et second oeuvre", "Commerciale", "Comptabilité & finance", "Edition/Ecriture", "Formation/Education", "Gestion de projet", "Hotellerie", "Informatique", "Ingénierie", "Maintenance & réparation", "Immobilier", "Juridique", "Logistique", "Marketing", "Production", "Qualité", "Recherche", "Ressources humaines", "Santé", "Sécurité", "Services administratifs", "Service clientèle", "Stratégie & management"]
+      @invest4 = ["Réduction fiscale", "Recherche d'un profit important à long terme", "Diversification du portefeuille"]
+      @patrimoine2 = ["Inférieur à 200 000€", "Supérieur à 200 000€", "Inférieur à 500 000€", "Supérieur à 500 000€"]
+      @blanchiement1 = ["Salaires", "Revenus fonciers", "Pensions, retraites"]
+    else
+      redirect_to pages_profil_path(current_user)
+    end
   end
 
   def invest_step3
-    @investment_profile = current_user.investment_profile
+    if current_user.doc_sent = false
+      @investment_profile = current_user.investment_profile
+    else
+      redirect_to pages_profil_path(current_user)
+    end
   end
 
   def invest_step4
-    @investment_profile = current_user.investment_profile
+    if current_user.certificat = false
+      @investment_profile = current_user.investment_profile
+    else
+      redirect_to pages_profil_path(current_user)
+    end
   end
 
   def finalize
@@ -54,14 +66,14 @@ class PagesController < ApplicationController
   end
 
   def creation_viager
-    @viager = Viager.new()
+    @viager = Viager.new() if current_user.admin
   end
 
   def signature_viager_2
   end
 
   def assign_acquisition
-    a = params.require(:viager).permit(:acquisition)
+    a = params.require(:viager).permit(:acquisition) if current_user.admin
     @viager = Viager.find(params[:format].to_i)
     @viager.update_attributes(a)
     @viager.save
@@ -72,7 +84,7 @@ class PagesController < ApplicationController
   end
 
   def assign_acte
-    a = params.require(:viager).permit(:acte_propriete)
+    a = params.require(:viager).permit(:acte_propriete) if current_user.admin
     @viager = Viager.find(params[:format].to_i)
     @viager.update_attributes(a)
     @viager.save
@@ -83,7 +95,7 @@ class PagesController < ApplicationController
   end
 
   def assign_statuts
-    a = params.require(:viager).permit(:statuts_sci)
+    a = params.require(:viager).permit(:statuts_sci) if current_user.admin
     @viager = Viager.find(params[:format].to_i)
     @viager.update_attributes(a)
     @viager.save
@@ -94,7 +106,7 @@ class PagesController < ApplicationController
   end
 
   def assign_pacte
-    a = params.require(:viager).permit(:pacte)
+    a = params.require(:viager).permit(:pacte) if current_user.admin
     @viager = Viager.find(params[:format].to_i)
     @viager.update_attributes(a)
     @viager.save
@@ -105,7 +117,7 @@ class PagesController < ApplicationController
   end
 
   def assign_compte
-    a = params.require(:viager).permit(:compte_courant)
+    a = params.require(:viager).permit(:compte_courant) if current_user.admin
     @viager = Viager.find(params[:format].to_i)
     @viager.update_attributes(a)
     @viager.save
@@ -113,11 +125,11 @@ class PagesController < ApplicationController
   end
 
   def admin
-    @viagers = Viager.all
+    @viagers = Viager.all if current_user.admin
   end
 
   def old
-    @viager = Viager.find(params[:id])
+    @viager = Viager.find(params[:id]) if current_user.admin
     @old = Old.new
   end
 
