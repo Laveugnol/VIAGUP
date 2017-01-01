@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   end
 
   def invest_step2
-    if current_user.investment_profile == nil
+    if current_user.profil_completed == false
     @investment_profile = current_user.investment_profile
       @civilite = ["Monsieur", "Madame"]
       @categorie = ["Agriculteur", "Artisan", "Chef d'entreprise", "Cadre", "Professeur", "Profession libérale", "Profession scientfique ou artistique", "Profession intermédiare", "Employé", "Ouvrier", "Retraité", "Sans activité professionnelle"]
