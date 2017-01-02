@@ -1,0 +1,10 @@
+
+Bonjour <%=@user.investment_profile.prenom.capitalize%>,
+<br><br>
+
+Vous venez de souscrire à <%=@parts%> part(s) pour le viager situé à <%=@viager.city.capitalize%>.
+Dès que le fiancement de ce projet aura atteint 100%, vous serez inviter à signer en ligne les statuts de la SCI constituée ainsi que l'autorisation de prélévement SEPA.
+
+Les détails de cet investissement sont disponibles sur <%= link_to 'votre espace', pages_profil_url(@user)%>.
+
+A tout de suite.

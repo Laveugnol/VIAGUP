@@ -48,11 +48,13 @@ class PagesController < ApplicationController
   def finalize
     current_user.certificat = true
     current_user.save
+    UserMailer.profile_invest_signed(current_user).deliver_now
   end
 
   def attribution
     @number = current_user.investment_profile.essai.to_i
     @viager_id = Viager.find(current_user.investment_profile.product)
+    @viager = Viager.find(@viager_id)
     @number.times do
       @rente_share = RenteShare.where(viager_id: @viager_id, assign: false).first
       @rente_share.user_id = current_user.id
@@ -63,6 +65,7 @@ class PagesController < ApplicationController
       @bouquet_share.assign = true
       @bouquet_share.save
     end
+    RenteShareMailer.investissement(@number, @viager).deliver_now
   end
 
   def creation_viager
@@ -150,6 +153,7 @@ class PagesController < ApplicationController
     @user = User.find(params[:format].to_i)
     @user.profil_valid = true
     @user.save
+    UserMailer.validation(@user).deliver_now
     redirect_to pages_admin_path
   end
 

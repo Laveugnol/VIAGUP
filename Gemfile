@@ -44,6 +44,8 @@ gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 gem 'hellosign-ruby-sdk'
 
+gem "letter_opener", group: :development
+
 
 
 group :development, :test do

@@ -1,0 +1,9 @@
+Bonjour <%=@user.investment_profile.prenom.capitalize%>,
+<br><br>
+
+Votre profil investisseur vient d'être validé par nos équipes.
+Rendez-vous sur <%= link_to 'nos offres', viagers_url%> et commencez à épargner!
+
+Les détails de vos investissements sont disponibles sur <%= link_to 'votre espace', pages_profil_url(@user)%>.
+
+A tout de suite.
