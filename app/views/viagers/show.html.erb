@@ -159,7 +159,7 @@
               <p class="font-lato size-18"><%=@viager.old.projet%></p>
               <div class="row" id="cta">
                 <% if current_user != nil%>
-                  <% if current_user.profil_completed == true%>
+                  <% if current_user.profil_valid == true%>
                     <div class="col-xs-12 text-center">
                       <button type="button" class="btn-yours-big tof" data-toggle="modal" data-target="#myModal">
                             Souscrire
