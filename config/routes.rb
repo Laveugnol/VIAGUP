@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   post "pages/assign_acte"
   get "pages/compte_courant2"
   patch "pages/assign_compte"
+  get "pages/validation_profil"
+  post "pages/validate_profil"
 
 
 

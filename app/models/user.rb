@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :bouquets, through: :bouquet_shares, dependent: :nullify
 
 
+  after_create :send_welcome_email
+
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
@@ -76,6 +78,12 @@ class User < ApplicationRecord
     end
 
     return user
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
   end
 
 end
