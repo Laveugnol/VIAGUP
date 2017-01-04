@@ -35,11 +35,10 @@
 
   HelloSign.open({
     'url': '<%= @sign_url %>',
-
-    'skipDomainVerification': false,
-
+    'skipDomainVerification': true,
     'allowCancel': false,
-    "debug": true,
+    'debug': true,
+    'uxVersion': 2,
 
 
 

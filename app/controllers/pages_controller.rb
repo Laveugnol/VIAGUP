@@ -30,7 +30,7 @@ class PagesController < ApplicationController
   end
 
   def invest_step3
-    if current_user.doc_sent = false
+    if current_user.doc_sent == false
       @investment_profile = current_user.investment_profile
     else
       redirect_to pages_profil_path(current_user)
@@ -38,8 +38,10 @@ class PagesController < ApplicationController
   end
 
   def invest_step4
-    if current_user.certificat = false
+
+    if current_user.certificat == false
       @investment_profile = current_user.investment_profile
+
     else
       redirect_to pages_profil_path(current_user)
     end
