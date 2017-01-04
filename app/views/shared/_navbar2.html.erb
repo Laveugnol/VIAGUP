@@ -26,7 +26,7 @@
         Example Usage:  class="clearfix sticky header-sm transparent noborder"
       -->
 
-<div id="header" class="static clearfix header-sm dark">
+<div id="header" class="static clearfix header-sm dark colortheme">
         <!-- TOP NAV -->
   <header id="topNav">
     <div class="container bold">
@@ -112,12 +112,12 @@
                 PRODUITS
               </a>
               <ul class="dropdown-menu">
-                <li class="dropdown">
+                <li class="dropdown colortheme">
                   <a class="" href="/viagers">
                     NOTRE SELECTION
                   </a>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown  colortheme">
                   <a class="" href="#">
                     FAQ
                   </a>
@@ -129,12 +129,12 @@
                 BLOG
               </a>
               <ul class="dropdown-menu">
-                <li class="dropdown">
+                <li class="dropdown  colortheme">
                   <a class="" href="#">
                     DEFAULT
                   </a>
                 </li>
-                <li class="">
+                <li class="  colortheme">
                   <a class="" href="#">
                     COMMENTS
                   </a>
@@ -142,7 +142,7 @@
               </ul>
             </li>
 
-            <li class="dropdown">
+            <li class="dropdown  colortheme">
               <% if user_signed_in? %>
                 <a class="dropdown-toggle" href="#">
                   <% if current_user.first_name && current_user.last_name%>
@@ -151,7 +151,7 @@
                    <%=current_user.email%>
                   <%end%>
                 </a>
-              <ul class="dropdown-menu pull-right">
+              <ul class="dropdown-menu pull-right  colortheme">
                 <li><a href="/pages/profil">MON PROFIL</a></li>
                 <li><%=link_to "MON EPARGNE", pages_epargne_path(current_user)%></li>
                 <li>
