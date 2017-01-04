@@ -27,6 +27,22 @@
   color: white;
 }
 
+.btn-treehouse-large {
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  background: #6AD58B;
+  transition: background 0.3s ease;
+  font-size:20px;
+}
+.btn-treehouse-large:hover {
+  opacity: 1;
+  background: #3ac162;
+  text-decoration: none;
+  color: white;
+}
+
 
 .btn-treehouse-small {
   color: white;
