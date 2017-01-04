@@ -26,6 +26,7 @@ class InvestmentProfilesController < ApplicationController
     @user = current_user
     @investment_profile = @user.investment_profile
     @investment_profile.update_attributes(investment_profile_params2)
+
     if @investment_profile.save
       @user.profil_completed = true
       @user.save

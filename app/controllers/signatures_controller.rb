@@ -20,14 +20,17 @@ class SignaturesController < ApplicationController
     embedded_request = create_embedded_request(name: params[:name], email: params[:email])
     @sign_url = get_sign_url(embedded_request)
     render :embedded_signature
+
   end
 
   def reservation
+
 
     embedded_request = create_embedded_request_resa(name: current_user.investment_profile.nom,
                                                     email: current_user.email,
                                                     part: params[:part])
     @sign_url = get_sign_url(embedded_request)
+
     @user = current_user
     @parts = params[:part]
     current_user.investment_profile.essai = @parts
@@ -53,8 +56,8 @@ class SignaturesController < ApplicationController
       :test_mode => 1,
       :client_id => ENV["HELLO_SIGN_CLIENT"],
       :template_id => '8a76c9eb3998c1440d359448484dadb9899e2cbf',
-      :subject => 'est-ce que ça chemar le create_embedded_signature_request_with_template',
-      :message => 'bon alors?',
+      :subject => 'Signature du profil investisseur',
+      :message => 'Bienvenue votre espace de signature sécurisé',
       :signers => [
           {
               :email_address => opts[:email],
