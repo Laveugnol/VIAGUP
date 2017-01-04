@@ -5,5 +5,6 @@
 //= require scripts
 //= require underscore
 //= require gmaps/google
+//= require analytics
 
 
