@@ -149,6 +149,9 @@ GEM
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
     geocoder (1.4.0)
+    gibbon (3.0.1)
+      faraday (>= 0.9.1)
+      multi_json (>= 1.11.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     gmaps4rails (2.1.2)
@@ -352,6 +355,7 @@ DEPENDENCIES
   figaro
   font-awesome-sass
   geocoder
+  gibbon
   gmaps4rails
   hellosign-ruby-sdk
   inherited_resources!

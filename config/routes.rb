@@ -31,6 +31,9 @@ Rails.application.routes.draw do
   patch "pages/assign_compte"
   get "pages/validation_profil"
   post "pages/validate_profil"
+  get "pages/contact"
+  post "contacts/create"
+
 
 
 

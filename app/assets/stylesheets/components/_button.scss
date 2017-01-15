@@ -145,3 +145,26 @@
 .special_height{
   height: 39px;
 }
+
+
+.btn-yours-small-mailchimp{
+  color: white;
+  background: $bleu_CTA;
+  border: 1.5px solid #247291;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-weight: bold;
+  opacity: 0.8;
+  transition: background 0.8s;
+  font-size: 13px;
+  height: 32px;
+  padding-top: 8px;
+}
+
+.btn-yours-small-mailchimp:hover{
+ opacity: 1;
+  text-decoration: none;
+  color: white;
+  transition: background 0s;
+  background: $bleu_CTA;
+}

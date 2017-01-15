@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
 
   after_create :send_welcome_email
+  after_create :subscribe_to_newsletter
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)
@@ -83,7 +84,11 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
-      UserMailer.welcome(self).deliver_now
+    UserMailer.welcome(self).deliver_now
+  end
+
+  def subscribe_to_newsletter
+    SubscribeToNewsletterService.new(self).call
   end
 
 end

@@ -159,6 +159,10 @@ class PagesController < ApplicationController
     redirect_to pages_admin_path
   end
 
+  def contact
+    @contact = Contact.new
+  end
+
 
 private
 

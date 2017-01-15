@@ -1,0 +1,115 @@
+<!-- -->
+      <section>
+
+        <!--
+        Available heights
+          height-100
+          height-150
+          height-200
+          height-250
+          height-300
+          height-350
+          height-400
+          height-450
+          height-500
+          height-550
+          height-600
+        -->
+        <div id="map2" class="contact-over-map"></div>
+
+
+        <div class="container">
+
+          <div class="contact-over-box pull-right">
+
+            <h3 class="size-20">Laissez-nous un message ou un simple <strong><em>Bonjour!</em></strong></h3>
+
+
+            <!--
+              MESSAGES
+
+                How it works?
+                The form data is posted to php/contact.php where the fields are verified!
+                php.contact.php will redirect back here and will add a hash to the end of the URL:
+                  #alert_success    = email sent
+                  #alert_failed   = email not sent - internal server error (404 error or SMTP problem)
+                  #alert_mandatory  = email not sent - required fields empty
+                  Hashes are handled by assets/js/contact.js
+
+                Form data: required to be an array. Example:
+                  contact[email][required]  WHERE: [email] = field name, [required] = only if this field is required (PHP will check this)
+                  Also, add `required` to input fields if is a mandatory field.
+                  Example: <input required type="email" value="" class="form-control" name="contact[email][required]">
+
+                PLEASE NOTE: IF YOU WANT TO ADD OR REMOVE FIELDS (EXCEPT CAPTCHA), JUST EDIT THE HTML CODE, NO NEED TO EDIT php/contact.php or javascript
+                       ALL FIELDS ARE DETECTED DINAMICALY BY THE PHP
+
+                WARNING! Do not change the `email` and `name`!
+                      contact[name][required]   - should stay as it is because PHP is using it for AddReplyTo (phpmailer)
+                      contact[email][required]  - should stay as it is because PHP is using it for AddReplyTo (phpmailer)
+            -->
+
+
+
+            <%= simple_form_for @contact, :url => contacts_create_path, :method => :post do |f| %>
+
+              <fieldset>
+
+
+                <div class="row">
+                  <div class="col-md-12 margin-bottom-20">
+                     <%= f.input :fullname, required: true, autofocus: true, label: "Nom et prénom",  input_html: { class: 'form-control' }%>
+                  </div>
+                  <div class="col-md-12 margin-bottom-20">
+                    <%= f.input :email, required: true, autofocus: true, label: "Email",  input_html: { class: 'form-control' }%>
+                  </div>
+                  <div class="col-md-12 margin-bottom-20">
+                    <%= f.input :phone, required: false, autofocus: true, label: "Téléphone ",  input_html: { class: 'form-control' }%>
+                  </div>
+
+                  <div class="col-md-12 margin-bottom-20">
+                    <%= f.input :subject, required: true, autofocus: true, label: "Sujet",  input_html: { class: 'form-control' }%>
+                  </div>
+
+
+                  <div class="col-md-12 margin-bottom-20">
+                    <%= f.input :message, required: true, autofocus: true, as: :text, label: "message",  input_html: { class: 'form-control', maxlength: "10000", rows: "6"  }%>
+                  </div>
+                </div>
+              </fieldset>
+
+              <div class="row">
+                <div class="col-md-12">
+
+                  <%= f.button :submit, "Suivant" , class: 'btn-yours-small pull-right' %>
+
+                </div>
+              </div>
+            </form>
+            <% end %>
+
+
+          </div>
+
+        </div>
+      </section>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+       var handler = Gmaps.build('Google', { markers: { clusterer: undefined }});
+        handler.buildMap({ internal: { id: 'map2' } }, function(){
+          markers = handler.addMarkers([
+            {
+              "lat": 50.633333,
+              "lng": 3.066667,
+              "infowindow": "<h1>Viag'Up</h1><p></p>"
+            }
+          ]);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+        });
+        handler.getMap().setOptions({ scrollwheel: false });
+      })
+   <%end%>
+  <%end%>
