@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170101125918) do
+ActiveRecord::Schema.define(version: 20170116100243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 20170101125918) do
 
   create_table "bouquets", force: :cascade do |t|
     t.integer  "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "fullname"
+    t.string   "email"
+    t.string   "subject"
+    t.string   "phone"
+    t.text     "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -193,6 +203,10 @@ ActiveRecord::Schema.define(version: 20170101125918) do
     t.boolean  "doc_sent",               default: false
     t.boolean  "certificat",             default: false
     t.string   "idcard"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
