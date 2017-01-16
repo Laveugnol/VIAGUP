@@ -55,7 +55,7 @@ class SignaturesController < ApplicationController
     client.create_embedded_signature_request_with_template(
       :test_mode => 1,
       :client_id => ENV["HELLO_SIGN_CLIENT"],
-      :template_id => '8a76c9eb3998c1440d359448484dadb9899e2cbf',
+      :template_id => '4e2d6bd8e88f147396646c26597e35f894ce08e0',
       :subject => 'Signature du profil investisseur',
       :message => 'Bienvenue votre espace de signature sécurisé',
       :signers => [
@@ -69,8 +69,29 @@ class SignaturesController < ApplicationController
       ],
 
       :custom_fields => {
-        :patrimoine1 => current_user.investment_profile.patrimoine1,
-        :invest1=> current_user.investment_profile.invest1
+        :civilite => current_user.investment_profile.civilite,
+        :nom => current_user.investment_profile.nom,
+        :prenom => current_user.investment_profile.prenom,
+        :birth_date => current_user.investment_profile.birth_date.strftime("%d/%m/%Y"),
+        :birth_place => current_user.investment_profile.birth_place,
+        :ville => current_user.investment_profile.ville,
+        :postal => current_user.investment_profile.code_postal,
+        :profession => current_user.investment_profile.categoriesp + ',' + current_user.investment_profile.expertise,
+        :nationalite => current_user.investment_profile.nationalite,
+        :adresse => current_user.investment_profile.adresse,
+        :courriel => current_user.email,
+        :pays => current_user.investment_profile.country,
+        :tel => current_user.investment_profile.mobile,
+        :Q1 => current_user.investment_profile.invest3,
+        :Q2 => current_user.investment_profile.invest4,
+        :Q3 => current_user.investment_profile.patrimoine3,
+        :Q4 => current_user.investment_profile.patrimoine2,
+        :Q5 => current_user.investment_profile.patrimoine1,
+        :Q6 => current_user.investment_profile.blanchiement1,
+        :Q7 => current_user.investment_profile.blanchiement2,
+        :Q8 => current_user.investment_profile.invest1
+
+
       }
     )
 
