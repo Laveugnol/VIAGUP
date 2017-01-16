@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   post "pages/validate_profil"
   get "pages/contact"
   post "contacts/create"
+  get "pages/FAQ"
+  get "pages/blog"
+
+
 
 
 

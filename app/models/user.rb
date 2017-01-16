@@ -81,6 +81,8 @@ class User < ApplicationRecord
     return user
   end
 
+
+
   private
 
   def send_welcome_email

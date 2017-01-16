@@ -19,7 +19,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.inet     :current_sign_in_ip
       t.inet     :last_sign_in_ip
 
-      ## Confirmable
+      ## Confirmable je delock tout ça et je le mets dans une nouvelle migration
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
       # t.datetime :confirmation_sent_at

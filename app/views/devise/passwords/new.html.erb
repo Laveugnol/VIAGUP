@@ -22,8 +22,8 @@
               <!-- login form -->
 
 
-              <form action="#" method="post" class="sky-form boxed">
-              <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+              <%= simple_form_for(resource, as: resource_name, url: user_password_path(resource), html: { method: :post }) do |f| %>
               <%= f.error_notification %>
                <header class="size-18 margin-bottom-20">
                   Changer de mot de passe
@@ -38,7 +38,7 @@
                  <%= f.button :submit, "Recevoir les instructions" %>
                 </footer>
               <% end %>
-              </form>
+
             </div>
 
       <div class="col-md-6 col-sm-6">

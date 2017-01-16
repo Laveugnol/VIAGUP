@@ -79,9 +79,9 @@
               </fieldset>
 
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 text-center">
 
-                  <%= f.button :submit, "Suivant" , class: 'btn-yours-small pull-right' %>
+                  <%= f.button :submit, "Envoyer" , class: 'btn-yours-small' %>
 
                 </div>
               </div>
@@ -109,6 +109,7 @@
           handler.bounds.extendWith(markers);
           handler.fitMapToBounds();
           handler.getMap().setZoom(10);
+          handler.map.centerOn([50.539, 3.4902]);
         });
         handler.getMap().setOptions({ scrollwheel: false });
       })

@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [ :home, :contact, :FAQ, :blog ]
   before_action :set_viager_in_admin, only: [:signature_viager_2, :acte_propriete2,
                                              :statuts_sci2, :pacte_associes2, :compte_courant2]
 
