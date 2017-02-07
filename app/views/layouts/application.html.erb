@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VIAGUP</title>
+    <title><%= yield(:title).blank? ? "Viag'Up" : yield(:title) %></title>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="description" content="Viagu'Up est le meilleur moyen d'investir à plusieurs dans l'immobilier solidaire.">
+
     <%= stylesheet_link_tag    'application', media: 'all' %>
 
   </head>
