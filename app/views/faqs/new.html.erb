@@ -1,0 +1,24 @@
+<div class="container creation">
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+
+      <div class="form-login" id="centerbuttons">
+      <h3 class="text-center">Creer un contenu FAQ</h3>
+
+          <%= simple_form_for [@faq] do |f| %>
+            <%= f.input :theme ,label: "Selectionnez un theme", collection: ["VIAGER", "TRI", "SCI"] %>
+            <%= f.input :question,label: 'A quelle question voulez-vous répondre'%>
+            <%= f.input :contenu,label: "la réponse détaillée"%>
+            <%= f.input :photo,label: 'Photo descriptive'%>
+            <%= f.input :photo_cache, as: :hidden %>
+
+
+          <%= f.submit "C'est parti", class: "btn-yours2" %>
+          <% end %>
+
+        </div>
+
+      </div>
+    </div>
+  </div>

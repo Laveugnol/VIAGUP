@@ -131,6 +131,7 @@ class PagesController < ApplicationController
 
   def admin
     @viagers = Viager.all if current_user.admin
+    @faqs = Faq.all if current_user.admin
   end
 
   def old
@@ -161,6 +162,14 @@ class PagesController < ApplicationController
 
   def contact
     @contact = Contact.new
+  end
+
+  def FAQ
+    @faqs = Faq.all
+    @theme = []
+    @faqs.each do |faq|
+      @theme << faq.theme if ! @theme.include?(faq.theme)
+    end
   end
 
 
