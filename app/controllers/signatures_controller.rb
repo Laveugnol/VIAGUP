@@ -76,7 +76,7 @@ class SignaturesController < ApplicationController
         :birth_place => current_user.investment_profile.birth_place,
         :ville => current_user.investment_profile.ville,
         :postal => current_user.investment_profile.code_postal,
-        :profession => current_user.investment_profile.categoriesp + ',' + current_user.investment_profile.expertise,
+        :profession => current_user.investment_profile.categoriesp + "," + current_user.investment_profile.expertise,
         :nationalite => current_user.investment_profile.nationalite,
         :adresse => current_user.investment_profile.adresse,
         :courriel => current_user.email,

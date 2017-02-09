@@ -34,6 +34,9 @@ gem "gmaps4rails"
 
 gem 'gibbon'
 
+gem 'jquery-datatables-rails', '~> 3.4.0'
+gem "select2-rails"
+
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
