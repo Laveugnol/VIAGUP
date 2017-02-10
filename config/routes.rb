@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-
-
   get 'signatures/callbacks'
-
   get "pages/profil"
   get "pages/invest_step1"
   get "pages/invest_step2"
@@ -53,6 +50,7 @@ Rails.application.routes.draw do
   resources :olds
   resources :viagers
   resources :investment_profiles
+  resources :faqs
   root to: 'pages#home'
 
 
