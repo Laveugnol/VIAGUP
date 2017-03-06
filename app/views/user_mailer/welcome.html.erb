@@ -4,6 +4,8 @@ Bonjour,
 <br><br>
 
 Voilà une bonne chose de faite!<br>
-Il ne reste plus qu'à remplir votre profil investisseur et vous pourrez investir dans l'un de nos projets.
+Il ne reste plus qu'à remplir <%= link_to 'votre profil', pages_profil_url(@user), class: "btn-yours2"%> investisseur et vous pourrez investir dans l'un de nos projets.
 
 A tout de suite.
+
+<%= link_to 'mon profil', pages_profil_url(@user), class: "btn-yours2"%>

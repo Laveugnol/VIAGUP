@@ -12,7 +12,7 @@
       </section>
 
 <section class="text-center">
-<%=link_to "créer un viager", pages_creation_viager_path, class: "btn-yours2"%>
+<%=link_to "créer un viager", new_viager_path, class: "btn-yours2"%>
 <%=link_to "créer un contenu FAQ", new_faq_path, class: "btn-yours2"%>
 
 </section>
@@ -41,6 +41,8 @@
                     <th>Comptes SCI</th>
                     <th>Acte de propriété</th>
                     <th>Financement</th>
+                    <th>MAJ</th>
+                    <th>Supprimer</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -83,6 +85,8 @@
                         </div>
                       </div>
                     </td>
+                    <td class="text-center"><%=link_to "Mettre à jour", edit_viager_path(viager), class: "label orange"%></td>
+                    <td class="text-center"><%=link_to "Supprimer", viager_path(viager), class: "label orange", method: :delete%></td>
                   </tr>
                 <% end %>
                 </tbody>

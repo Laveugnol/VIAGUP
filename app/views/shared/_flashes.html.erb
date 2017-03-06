@@ -1,23 +1,12 @@
-
-
 <% if notice %>
-
-  <div class=" alert alert-success "><!-- SUCCESS -->
-    <button type="button" class="close" data-dismiss="alert">
-      <span aria-hidden="true">×</span>
-      <span class="sr-only">Close</span>
-    </button>
-    <strong>Bonjour!</strong> Vous êtes en ligne.
+  <div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= notice %>
   </div>
 <% end %>
-
 <% if alert %>
-
-  <div class="alert alert-warning "><!-- INFO -->
-  <button type="button" class="close" data-dismiss="alert">
-    <span aria-hidden="true">×</span>
-    <span class="sr-only">Close</span>
-  </button>
-  <strong>Au revoir!</strong> vous êtes à présent déconnecté.
-</div>
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= alert %>
+  </div>
 <% end %>

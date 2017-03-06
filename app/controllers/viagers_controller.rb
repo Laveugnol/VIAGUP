@@ -11,6 +11,7 @@ class ViagersController < ApplicationController
   end
 
   def new
+    @viager = Viager.new
   end
 
   def show
@@ -46,17 +47,25 @@ class ViagersController < ApplicationController
       flash[:notice] = "Hop un nouveau viager dans la besace"
       redirect_to pages_old_path(@viager, id: @viager.id)
     else
-      redirect_to pages_admin_path
+      render :new
     end
   end
 
   def update
+    if @viager.update(viager_params)
+    redirect_to pages_old_path(@viager, id: @viager.id)
+    else
+      redirect_to pages_admin_path
+    end
   end
 
   def edit
   end
 
   def destroy
+    @viager.destroy
+    flash[:alert] = "viager supprimé"
+    redirect_to pages_admin_path
   end
 
    private
