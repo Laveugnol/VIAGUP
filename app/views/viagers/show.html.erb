@@ -229,7 +229,7 @@
                                 </ul>
 
                               <h4>Nombre de parts souhaitées</h4>
-                              <input type="text" min="0" max="<%=part_available_count(@viager)%>" class="form-control stepper" id="nombre_de_parts">
+                              <input type="number" min="0" max="<%=part_available_count(@viager)%>" class="form-control stepper" id="nombre_de_parts">
 
                               <h4>Montant de votre investissement</h4>
                               <button type="button" class="btn-treehouse clickable" >Simulation</button>
@@ -347,7 +347,7 @@
               </thead>
               <tbody class="boldy text-center">
                 <tr>
-                  <td><input type="text" min="0" max="<%=part_available_count(@viager)%>" class="form-control stepper" id="nombre_de_parts2"></td>
+                  <td><input type="number" min="0" max="<%=part_available_count(@viager)%>" class="form-control stepper" id="nombre_de_parts2"></td>
                   <td><%=@viager.horizon%> ans</td>
                   <td id="col3"></td>
                   <td id="col4"></td>
@@ -404,8 +404,23 @@
       });
 
       $(".confirmation").hover(function(event) {
+       $( "#nombre_de_parts" ).change(function() {
+         var max = parseInt($(this).attr('max'));
+         var min = parseInt($(this).attr('min'));
+         if ($(this).val() > max)
+         {
+            $(this).val(max);
+         }
+         else if ($(this).val() < min)
+         {
+            $(this).val(min);
+         }
+       });
+
         var part = $('#nombre_de_parts').val();
         $('#part').html('<input type="hidden" name="part" value="'+part+'" />');
+
+        console.log(part);
       });
 
       function formatMillier(nombre){
@@ -433,6 +448,34 @@
         $('#col5').html(formatMillier(total));
         $('#col6').html(formatMillier(gain));
       });
+
+
+         $( "#nombre_de_parts" ).change(function() {
+         var max = parseInt($(this).attr('max'));
+         var min = parseInt($(this).attr('min'));
+         if ($(this).val() > max)
+         {
+            $(this).val(max);
+         }
+         else if ($(this).val() < min)
+         {
+            $(this).val(min);
+         }
+       });
+
+          $( "#nombre_de_parts2" ).change(function() {
+         var max = parseInt($(this).attr('max'));
+         var min = parseInt($(this).attr('min'));
+         if ($(this).val() > max)
+         {
+            $(this).val(max);
+         }
+         else if ($(this).val() < min)
+         {
+            $(this).val(min);
+         }
+       });
+
 
 
 
