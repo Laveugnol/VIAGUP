@@ -98,11 +98,11 @@
           -->
           <ul id="topMain" class="nav nav-pills nav-main bold">
             <% if current_user != nil%>
-            <% if current_user.admin && current_user != nil%>
-            <li class="dropdown">
+              <% if current_user.admin && current_user != nil%>
+              <li class="dropdown">
               <%=link_to "ADMIN", pages_admin_path, class: "dropdown-toggle"%>
-            </li>
-            <%end%>
+              </li>
+              <%end%>
             <%end%>
             <li>
               <%=link_to "HOME", root_path%>
