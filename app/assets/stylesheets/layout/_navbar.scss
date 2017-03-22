@@ -40,11 +40,11 @@
 
 /* Navbar standard link */
 .navbar-wagon-link {
-  color: #616668;
+  color: white;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: #15CD72;
   text-decoration: none;
 }
 
@@ -102,20 +102,19 @@
 /* Navbar dropdown menu */
 .navbar-wagon-dropdown-menu {
   margin-top: 15px;
-  box-shadow: 1px 1px 4px #E6E6E6;
-  border-color: #E6E6E6;
+
 }
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.3s ease;
-  font-weight: lighter !important;
-  color: #999999 !important;
-  font-size: 15px !important;
+  font-weight: bold !important;
+  color: white !important;
+  font-size: 13px !important;
   line-height: 22px !important;
   padding: 10px 20px;
 }
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
-  color: black !important;
+  color: #15CD72 !important;
 }
 .navbar-wagon-dropdown-menu:before {
   content: ' ';
@@ -124,8 +123,44 @@
   position: absolute;
   right: 10px;
   top: -6px;
-  background-color: white;
+  background-color: #303943;
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+  color: white;
+}
+
+.animated {
+  animation-duration: 2.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.1);}
+  100% {transform: scale(1);}
+}
+.pulse {
+  animation-name: pulse;
+  animation-duration: 1s;
+}
+
+
+
+#header.header-sm #topNav #topMain > li > a{
+  font-weight: bold !important;
+}
+#header.header-sm #topNav #topMain > li > ul > li > a{
+  font-weight: bold !important;
+}
+
+.connexion{
+  font-size: 15px;
+
+}
+.inscription{
+  color: #15CD72;
+  font-size: 15px;
+
 }

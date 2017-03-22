@@ -1,18 +1,20 @@
-<br>
-<br>
-<br>
-<br>
 
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-3">
-      <div class="list-group profil_box">
-        <%=link_to "Mon compte", edit_user_registration_path(@user), class: "list-group-item active" %>
-        <%=link_to "Profil investisseur", pages_profil_path(@user), class: "list-group-item" %>
-        <%=link_to "Mon épargne", pages_epargne_path(@user), class: "list-group-item" %>
+  <section>
+  <div class="row text-center">
+    <div class="col-xs-12 col-sm-4">
+        <%=link_to "Mon compte", edit_user_registration_path(@user), class: "btn-yours-small" %>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <%=link_to "Profil investisseur", pages_profil_path(@user), class: "btn-yours2" %>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <%=link_to "Mon épargne", pages_epargne_path(@user), class: "btn-yours2" %>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-9">
+  </section>
+  <div class="row">
+    <div class="col-xs-12">
       <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
         <div class="box-icon-title">
           <i class="fa fa-database"></i>
@@ -54,5 +56,6 @@
       </div>
     </div>
   </div>
+</div>
 
 
