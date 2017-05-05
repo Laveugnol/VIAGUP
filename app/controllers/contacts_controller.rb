@@ -9,6 +9,7 @@ skip_before_action :authenticate_user!
 
     if @contact.save
       ContactMailer.contact_form(@contact).deliver_now
+      flash[:notice] = "Votre message vient d'être envoyé!"
       redirect_to root_path
 
     else
